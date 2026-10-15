@@ -1,0 +1,15 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'es';
+---
+<PageLayout title={'Cookies en GLP-1 Cost Check: ninguna, y cómo comprobarlo'} description={'GLP-1 Cost Check no escribe cookies ni guarda nada en su navegador; solo un control de errores sin cookies. Cómo comprobarlo usted mismo en su navegador en un minuto.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Cookies</h1>
+    <p>Este sitio no escribe cookies ni guarda nada en el almacenamiento local de su navegador. No carga publicidad, perfiles de audiencia ni redes sociales. Microsoft Clarity puede funcionar sin cookies para detectar páginas con errores, con el texto y los campos ocultos.</p>
+    <p>Para comprobarlo, abra las herramientas de desarrollo de su navegador y mire las cookies de este dominio mientras usa la calculadora: la lista queda vacía. Vea también la <a href={route('privacy', lang)}>política de privacidad</a>.</p>
+  </div>
+</PageLayout>

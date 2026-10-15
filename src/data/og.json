@@ -1,0 +1,20 @@
+{
+ "accent": "#3C3B6E",
+ "symbol": "Rx",
+ "variants": [
+  {
+   "file": "og-en.png",
+   "title": "GLP-1 Cost Check",
+   "subtitle": "",
+   "badge": "2026",
+   "brand": "GLP-1 Cost Check"
+  },
+  {
+   "file": "og-es.png",
+   "title": "GLP-1 Cost Check",
+   "subtitle": "",
+   "badge": "2026",
+   "brand": "GLP-1 Cost Check"
+  }
+ ]
+}

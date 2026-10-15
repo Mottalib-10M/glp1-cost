@@ -1,0 +1,20 @@
+---
+/** Rend l'outil complet d'une page (île hydratée). */
+import GlpCalculator from './calc/GlpCalculator';
+import CompareTool from './calc/CompareTool';
+import MedicaidTool from './calc/MedicaidTool';
+import CatalogTool from './calc/CatalogTool';
+import PartDTool from './calc/PartDTool';
+import { route, type Locale } from '../i18n/routes';
+import type { ToolSpec } from '../lib/page-types';
+import sdud from '../data/sdud.json';
+import catalog from '../data/trumprx-catalog.json';
+interface Props { spec: ToolSpec; lang: Locale; idPrefix?: string }
+const { spec, lang, idPrefix = 'c' } = Astro.props;
+const methodHref = route('method', lang);
+---
+{spec.kind === 'calc' && <GlpCalculator client:load lang={lang} productId={spec.product} doseId={spec.dose} coverage={spec.coverage} year={spec.year} lock={spec.lock} methodHref={methodHref} idPrefix={idPrefix} />}
+{spec.kind === 'compare' && <CompareTool client:load lang={lang} a={spec.a} b={spec.b} doseA={spec.doseA} doseB={spec.doseB} methodHref={methodHref} idPrefix={idPrefix} />}
+{spec.kind === 'medicaid' && <MedicaidTool client:load lang={lang} productId={spec.product} data={sdud} methodHref={methodHref} idPrefix={idPrefix} />}
+{spec.kind === 'catalog' && <CatalogTool client:load lang={lang} data={catalog} idPrefix={idPrefix} />}
+{spec.kind === 'partd' && <PartDTool client:load lang={lang} productId={spec.product} methodHref={methodHref} idPrefix={idPrefix} />}

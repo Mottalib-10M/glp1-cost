@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title="GLP-1 Cost Check: Who Reads These Drug Prices, and How" description="GLP-1 Cost Check is published by Radif Partners: why one calculator for every way of paying for a GLP-1, where prices come from, and how to report an error." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About GLP-1 Cost Check</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>GLP-1 Cost Check is an independent site published by Radif Partners. It exists because the price of Ozempic, Wegovy or Zepbound in 2026 depends on so many moving parts, manufacturer self-pay grids, TrumpRx, Medicare’s cap and negotiated prices, the GLP-1 Bridge, state Medicaid choices, that a single number on a price page is almost always wrong for the person reading it.</p>
+    <h2>What we do better than the first search results</h2>
+    <p>When we built the site, the pages ranking first for “Ozempic cost without insurance” quoted prices from before the November 2025 cuts, sent readers to coupon sign-ups, or belonged to telehealth services selling a prescription. None set the self-pay price, the list price, the pharmacy cost, the Medicare share and the Medicaid record side by side for the reader’s own dose. That is what our calculator does, with every figure dated and linked to the body that publishes it.</p>
+    <h2>How we work</h2>
+    <p>Prices are read by script from TrumpRx.gov, the manufacturers’ pricing pages and CMS data files, every week, and each run must pass our tests before it is published. Rules that no data file carries are read on the official page and written once, with the source. The <a href={route('method', lang)}>method page</a> lists every source and every limit.</p>
+    <h2>What we never do</h2>
+    <p>We do not sell medicine, prescribe, or refer anyone to a pharmacy, telehealth company or insurer, and we accept no payment from any of them. We do not price compounded drugs. We give no medical advice: whether a GLP-1 suits you is for you and your prescriber.</p>
+    <h2>Funding and data</h2>
+    <p>The site is free and needs no account. Calculations run in your browser; nothing you type is sent to us. If advertising is ever added, there will be at most three spaces per page, never above a calculator, and never for a pharmacy or a prescription service.</p>
+    <h2>Spanish</h2><p>The most used pages also exist in Spanish, written for Spanish-speaking readers in the United States.</p>
+    <h2>Write to us</h2><p>A price has changed or a figure looks wrong: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See also the <a href={route('editorial', lang)}>editorial policy</a> and the <a href={route('terms', lang)}>legal notice</a>.</p>
+    <p class="text-sm text-navy-600">Prices checked on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-US')}</time>.</p>
+  </div>
+</PageLayout>

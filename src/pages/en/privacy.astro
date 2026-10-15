@@ -1,0 +1,28 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title={'Privacy Policy of GLP-1 Cost Check: What Is and Is Not Collected'} description={'What GLP-1 Cost Check does with personal data: the drug, dose and coverage you type stay in your browser, no cookie, host logs only, GDPR rights and how to write to us.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Privacy policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Privacy policy</h1>
+    <p>This policy covers {SITE_URL}. The publisher is established in France, so the EU General Data Protection Regulation applies to everything the site does, wherever you read it from.</p>
+    <h2>1. Who is responsible</h2>
+    <LegalIdentity lang={lang} />
+    <h2>2. What you type stays on your device</h2>
+    <p>The drug, dose, way of paying, copay, state or height and weight you enter in a calculator are processed by your own browser. Nothing is sent to a server, stored or linked to you. We never ask for a name, a Medicare number, an insurance ID or a diagnosis. The copy-link button puts your inputs in the page address: share that link only with people you trust.</p>
+    <h2>3. What is collected</h2>
+    <p><strong>Host logs.</strong> GitHub Pages records the IP address, time, page and browser of each visit for security, under its own retention policy.</p>
+    <p><strong>No cookie, no profile.</strong> The site writes no cookie and loads no advertising, profiling or social media script, which is why there is no consent banner.</p>
+    <p><strong>Cookie-free error monitoring.</strong> Microsoft Clarity may run in its cookie-free mode to detect broken pages; text and form fields are masked, so your figures are never recorded.</p>
+    <p><strong>E-mails</strong> you send us are kept while we answer and correct any error, then deleted within twelve months.</p>
+    <h2>4. Your rights</h2>
+    <p>Access, correction, deletion: write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>; we answer within 30 days. You may also complain to the {LEGAL.supervisoryAuthority} (<a href={LEGAL.supervisoryAuthorityUrl} rel="nofollow noopener" target="_blank">{LEGAL.supervisoryAuthorityUrl}</a>).</p>
+    <h2>5. Health information</h2>
+    <p>Because nothing you type leaves your browser, we hold no health information about you. This site is not a covered entity under HIPAA and is not a health care provider.</p>
+    <p>Updated: {displayDate(LAST_UPDATED, 'en-US')}.</p>
+  </div>
+</PageLayout>

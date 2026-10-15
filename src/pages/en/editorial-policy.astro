@@ -1,0 +1,17 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title={'Editorial Policy of GLP-1 Cost Check: Sources and Corrections'} description={'How GLP-1 Cost Check chooses sources, checks every price, dates each figure, corrects errors and stays independent of drug makers, pharmacies and telehealth services.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial policy</h1>
+    <h2>Sources</h2><p>Only primary sources: TrumpRx.gov, the manufacturers’ own pricing pages, CMS data files and rate announcements, Medicare.gov, the Code of Federal Regulations and FDA prescribing information. Press articles, coupon sites and telehealth pages are never used as sources of a figure.</p>
+    <h2>Checks</h2><p>Prices are downloaded by script every week and must pass automated tests before publication. Rules that no file publishes are re-read monthly on the official page. Each page shows the date its figures were read.</p>
+    <h2>Corrections</h2><p>A reported error is checked against the official source; if confirmed, the figure is corrected and the date updated. Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Independence</h2><p>{AUTHOR_NAME} receives nothing from manufacturers, pharmacies, insurers or telehealth companies, and the site never promotes a product, a pharmacy or compounded drugs. Nothing here is medical advice.</p>
+  </div>
+</PageLayout>

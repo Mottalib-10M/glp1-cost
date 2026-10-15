@@ -1,0 +1,15 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title={'Cookies on GLP-1 Cost Check: None Set, and How to Check'} description={'GLP-1 Cost Check writes no cookie and keeps nothing in browser storage; cookie-free error monitoring only. How to verify it yourself in your browser in a minute.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Cookies</h1>
+    <p>This site writes no cookie and stores nothing in your browser’s local storage. No advertising, analytics profile or social media script is loaded. Microsoft Clarity may run in its cookie-free mode to report broken pages, with page text and form fields masked.</p>
+    <p>To check: open your browser’s developer tools, Application or Storage tab, and look at cookies for this domain while using the calculator; the list stays empty. See also the <a href={route('privacy', lang)}>privacy policy</a>.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,35 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
+import * as M from '../../lib/engine/index';
+import { displayDate, formatMoney } from '../../lib/format';
+const lang = 'es';
+const $ = (x: number) => formatMoney(x, 0, 'es');
+const d = (iso: string) => displayDate(iso, 'es-US');
+const P = M.P; const q26 = P.partD['2026']; const q27 = P.partD['2027'];
+const path = route('method', lang);
+const S = (k: M.SourceKey) => P.sources[k];
+---
+<PageLayout title="Precios de GLP-1 Cost Check: metodología y fuentes de datos" description="Cómo calculamos cada precio: autopago de TrumpRx y fabricantes, NADAC, precios negociados de CMS, reglas de la Parte D y datos de Medicaid, cada semana." lang={lang} jsonLd={[webPageSchema({ name: 'Metodología', description: 'Cómo se calcula cada precio', path, lang }), breadcrumbSchema([{ name: 'Inicio', path: route('home', lang) }, { name: 'Metodología', path }])]} breadcrumbs={[{ label: 'Metodología' }]}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Metodología y datos</h1>
+    <p>Cada cifra del sitio sale de una fuente pública que leemos con un programa, con fecha y enlace. Solo las reglas que ningún archivo publica se escriben a mano, una sola vez, en un archivo de parámetros con la página de origen.</p>
+    <h2>Las fuentes</h2>
+    <ul>
+      <li><strong>Precios de autopago</strong>: las fichas de <a href={S('trumprx').url} rel="nofollow noopener" target="_blank">TrumpRx.gov</a>, contrastadas con las páginas de NovoCare Pharmacy y LillyDirect. Leídas el {d(M.DATA.retrieved_at)}.</li>
+      <li><strong>Costo de las farmacias</strong>: archivo semanal <a href={S('nadac').url} rel="nofollow noopener" target="_blank">NADAC 2026</a> de CMS, del {d(M.DATA.nadacAsOf)}.</li>
+      <li><strong>Precios negociados de Medicare</strong>: archivo de CMS del {d(M.DATA.mfp.fileDate ?? M.DATA.retrieved_at)}.</li>
+      <li><strong>Parte D</strong>: deducible de {$(q26.deductible)} y tope de {$(q26.oopCap)} en 2026, {$(q27.deductible)} y {$(q27.oopCap)} en 2027, según el <a href={S('cmsRate2027').url} rel="nofollow noopener" target="_blank">Anuncio de tarifas 2027</a>.</li>
+      <li><strong>GLP-1 Bridge</strong>: copago de {$(P.bridge.copay)}, fechas y criterios según <a href={S('cmsBridgeProviders').url} rel="nofollow noopener" target="_blank">CMS</a>.</li>
+      <li><strong>Medicaid</strong>: recetas por estado de los <a href={S('sdud').url} rel="nofollow noopener" target="_blank">datos de uso de medicamentos</a> de CMS.</li>
+    </ul>
+    <h2>Actualización automática</h2>
+    <p>Un proceso programado vuelve a descargar los datos cada semana, reconstruye el sitio, repite las pruebas y solo publica si todo pasa. Si una fuente falla, el sitio conserva las últimas cifras válidas con su fecha.</p>
+    <h2>Cómo se calcula lo que usted paga</h2>
+    <p>Sin seguro: el precio de autopago de la dosis, con la oferta de bienvenida o el precio por renovación tardía cuando corresponde. Con Medicare Parte D: el beneficio estándar sobre doce meses, con el precio negociado del año si existe, si no el precio de lista de TrumpRx, si no el costo NADAC. Con Medicare solo para bajar de peso: {$(P.bridge.copay)} al mes con el Bridge. Con Medicaid: el copago que usted indique.</p>
+    <h2>Límites</h2>
+    <p>Los planes reales usan copagos y precios propios; el beneficio estándar es el máximo. NADAC es un piso, no un precio de mostrador. No calculamos medicamentos compuestos. Nada de esto es consejo médico: son estimaciones indicativas.</p>
+    <p><a href={route('contact', lang)}>Contacto</a> · <a href={route('editorial', lang)}>Política editorial</a></p>
+  </div>
+</PageLayout>

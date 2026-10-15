@@ -1,0 +1,47 @@
+{
+ "legalCountry": "France",
+ "registerLabel": "SIREN",
+ "vatLabel": "VAT",
+ "jurisdiction": "France",
+ "supervisoryAuthority": "Commission nationale de l'informatique et des libertés (CNIL)",
+ "supervisoryAuthorityUrl": "https://www.cnil.fr",
+ "consentMode": "none",
+ "year": 2026,
+ "founded": "2026",
+ "volumes": "/Users/mottalib/Documents/GitHub/reports/volumes-2026-10-15/us-glp1-cost.txt",
+ "volumesNote": "Environ 251 000 recherches/mois mesurées au Keyword Planner (objetech, États-Unis, 2026-10-15) ; idée A06 validée par l'éditeur le 2026-10-15.",
+ "folder": "glp1-cost",
+ "outDir": "a-publier/Mottalib-10M",
+ "url": "https://glp1-cost.example",
+ "locales": ["en", "es"],
+ "names": {"en": "GLP-1 Cost Check", "es": "GLP-1 Cost Check"},
+ "langTags": {"en": "en-US", "es": "es-US"},
+ "ogLocales": {"en": "en_US", "es": "es_US"},
+ "localeTag": "en-US",
+ "currency": "USD",
+ "flag": "us",
+ "symbol": "Rx",
+ "accent": "#3C3B6E",
+ "authorRole": {
+  "en": "Publisher of the US prescription price calculators (GLP-1 cash, TrumpRx, Medicare, Medicaid)",
+  "es": "Editor de las calculadoras de precios de medicamentos en EE. UU. (GLP-1, TrumpRx, Medicare, Medicaid)"
+ },
+ "authorDesc": {
+  "en": "Radif Partners reads the self-pay price lists that Novo Nordisk and Eli Lilly publish, the TrumpRx.gov listings, the CMS negotiated Medicare prices, the weekly NADAC pharmacy survey and the 2026 and 2027 Part D parameters, and turns them into one monthly and yearly figure per drug, dose and way of paying.",
+  "es": "Radif Partners lee las listas de precios de autopago que publican Novo Nordisk y Eli Lilly, las fichas de TrumpRx.gov, los precios negociados de Medicare que publica CMS, la encuesta semanal NADAC de farmacias y los parámetros de la Parte D de 2026 y 2027, y los convierte en una cifra mensual y anual por medicamento, dosis y forma de pago."
+ },
+ "email": "contact@glp1-cost.example",
+ "indexnow": "7c1f4b2e9a6d4e0f8b3a5c2d1e9f7a60",
+ "shortName": "GLP-1 Cost",
+ "description": "Monthly and yearly cost of Ozempic, Wegovy, Zepbound, Mounjaro and Foundayo by dose and channel: manufacturer cash, TrumpRx, pharmacy, Medicare Part D and Medicaid.",
+ "port": 5520,
+ "og": [
+  {"file": "og-en.png", "title": "GLP-1 Cost Check", "subtitle": "", "badge": "2026", "brand": "GLP-1 Cost Check"},
+  {"file": "og-es.png", "title": "GLP-1 Cost Check", "subtitle": "", "badge": "2026", "brand": "GLP-1 Cost Check"}
+ ],
+ "lastUpdated": "2026-10-15",
+ "knowsAbout": {
+  "en": ["GLP-1 drug prices", "Manufacturer self-pay programs", "TrumpRx", "Medicare Part D out-of-pocket cap", "Medicare drug price negotiation", "Medicare GLP-1 Bridge", "Medicaid prescription drug coverage", "NADAC pharmacy acquisition cost"],
+  "es": ["Precios de los GLP-1", "Programas de autopago de los fabricantes", "TrumpRx", "Tope de gastos de la Parte D de Medicare", "Negociación de precios de Medicare", "Medicare GLP-1 Bridge", "Cobertura de medicamentos de Medicaid", "Costo de adquisición NADAC"]
+ }
+}

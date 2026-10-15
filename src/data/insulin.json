@@ -1,0 +1,330 @@
+{
+ "retrieved_at": "2026-10-15",
+ "items": [
+  {
+   "s": "admelog",
+   "n": "Admelog",
+   "g": "insulin lispro",
+   "m": "Sanofi",
+   "gen": false,
+   "v": [
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     98.07
+    ],
+    [
+     "SoloStar Pen",
+     "100",
+     "5",
+     35.0,
+     189.35
+    ]
+   ]
+  },
+  {
+   "s": "apidra",
+   "n": "Apidra",
+   "g": "insulin glulisine",
+   "m": "Sanofi",
+   "gen": false,
+   "v": [
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     85.19
+    ],
+    [
+     "SoloStar Pen",
+     "100",
+     "5",
+     35.0,
+     164.56
+    ]
+   ]
+  },
+  {
+   "s": "fiasp",
+   "n": "Fiasp",
+   "g": "insulin aspart",
+   "m": "Novo Nordisk",
+   "gen": false,
+   "v": [
+    [
+     "FlexTouch®",
+     "100",
+     "5",
+     35.0,
+     139.71
+    ],
+    [
+     "PenFill®",
+     "100",
+     "5",
+     35.0,
+     134.37
+    ],
+    [
+     "PumpCart®",
+     "100",
+     "5",
+     35.0,
+     71.66
+    ],
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     72.34
+    ]
+   ]
+  },
+  {
+   "s": "insulin-aspart",
+   "n": "Insulin Aspart",
+   "g": "Insulin Aspart",
+   "m": "",
+   "gen": true,
+   "v": [
+    [
+     "Vial",
+     "100 units",
+     "1",
+     84.67,
+     109.96
+    ],
+    [
+     "Vial",
+     "100 units",
+     "2",
+     158.48,
+     396.2
+    ],
+    [
+     "Vial",
+     "100 units",
+     "3",
+     228.08,
+     570.2
+    ]
+   ]
+  },
+  {
+   "s": "insulin-glargine",
+   "n": "Insulin Glargine (U-300)",
+   "g": "insulin glargine",
+   "m": "Sanofi",
+   "gen": false,
+   "v": [
+    [
+     "SoloStar Pen",
+     "300",
+     "3",
+     35.0,
+     126.33
+    ],
+    [
+     "Max SoloStar Pen",
+     "300",
+     "2",
+     35.0,
+     168.44
+    ]
+   ]
+  },
+  {
+   "s": "insulin-lispro",
+   "n": "Insulin Lispro",
+   "g": "insulin lispro",
+   "m": "Eli Lilly and Company",
+   "gen": false,
+   "v": [
+    [
+     "Vial",
+     "100",
+     "1",
+     25.0,
+     25.0
+    ],
+    [
+     "Vial",
+     "100",
+     "4",
+     35.0,
+     100.0
+    ],
+    [
+     "Vial",
+     "100",
+     "3",
+     35.0,
+     75.0
+    ],
+    [
+     "Vial",
+     "100",
+     "2",
+     35.0,
+     50.0
+    ]
+   ]
+  },
+  {
+   "s": "lantus",
+   "n": "Lantus",
+   "g": "insulin glargine",
+   "m": "Sanofi",
+   "gen": false,
+   "v": [
+    [
+     "SoloStar Pen",
+     "100",
+     "5",
+     35.0,
+     96.38
+    ],
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     64.26
+    ]
+   ]
+  },
+  {
+   "s": "merilog",
+   "n": "Merilog",
+   "g": "insulin aspart-szjj",
+   "m": "Sanofi",
+   "gen": false,
+   "v": [
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     69.57
+    ],
+    [
+     "SoloStar Pen",
+     "100",
+     "5",
+     35.0,
+     134.35
+    ]
+   ]
+  },
+  {
+   "s": "novolog",
+   "n": "NovoLog",
+   "g": "insulin aspart",
+   "m": "Novo Nordisk",
+   "gen": false,
+   "v": [
+    [
+     "FlexPen®",
+     "100",
+     "5",
+     35.0,
+     139.71
+    ],
+    [
+     "PenFill®",
+     "100",
+     "5",
+     35.0,
+     134.71
+    ],
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     72.34
+    ]
+   ]
+  },
+  {
+   "s": "novolog-mix-70-30",
+   "n": "NovoLog Mix 70/30",
+   "g": "insulin aspart protamine and insulin aspart",
+   "m": "Novo Nordisk",
+   "gen": false,
+   "v": [
+    [
+     "FlexPen®",
+     "100",
+     "5",
+     35.0,
+     139.71
+    ],
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     72.34
+    ]
+   ]
+  },
+  {
+   "s": "toujeo",
+   "n": "Toujeo",
+   "g": "insulin glargine",
+   "m": "Sanofi",
+   "gen": false,
+   "v": [
+    [
+     "SoloStar Pen",
+     "300",
+     "3",
+     35.0,
+     428.57
+    ],
+    [
+     "Max SoloStar Pen",
+     "300",
+     "2",
+     35.0,
+     571.43
+    ]
+   ]
+  },
+  {
+   "s": "tresiba",
+   "n": "Tresiba",
+   "g": "insulin degludec",
+   "m": "Novo Nordisk",
+   "gen": false,
+   "v": [
+    [
+     "FlexTouch®",
+     "100",
+     "5",
+     35.0,
+     141.43
+    ],
+    [
+     "FlexTouch®",
+     "200",
+     "3",
+     35.0,
+     169.71
+    ],
+    [
+     "Vial",
+     "100",
+     "1",
+     35.0,
+     94.29
+    ]
+   ]
+  }
+ ]
+}

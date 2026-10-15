@@ -1,0 +1,54 @@
+import { definePage } from '../../lib/page-types';
+import { cash, list, nadac, PD, partD, capMonth, monthName, asOf, $en, $es } from './_util';
+import { product } from '../../lib/engine/index';
+
+const MJ = product('mounjaro');
+
+export default definePage({
+  id: 'mounjaro-cost', group: 'glp1', order: 6,
+  tool: { kind: 'calc', product: 'mounjaro', dose: '7.5', lock: true },
+  related: ['ozempic-vs-mounjaro-cost', 'zepbound-cost', 'trulicity-cost', 'medicare-part-d-cap', 'medicare-prescription-payment-plan'],
+  sources: ['lillyMounjaro', 'trumprx', 'nadac', 'cmsRate2027', 'labelMounjaro'],
+  en: {
+    slug: 'mounjaro-cost', nav: 'Mounjaro cost', card: 'Mounjaro by dose: one cash price, list price, Part D cap and payment plan',
+    title: `Mounjaro Cost 2026: ${$en(cash('mounjaro', '7.5'))} a Month Cash, Medicare Part D Cap`,
+    description: `Mounjaro cost in 2026: ${$en(cash('mounjaro', '7.5'))} a month at every dose through LillyDirect or TrumpRx, list price ${$en(list('mounjaro', '7.5'))}, pharmacy cost, and the ${$en(PD(2026).oopCap)} Medicare Part D cap.`,
+    h1: 'Mounjaro cost in 2026: one cash price for every dose',
+    intro: (h) => `Without insurance, Mounjaro costs ${h.usd(cash('mounjaro', '2.5'))} a month at every strength from 2.5 to 15 mg through LillyDirect or TrumpRx; the list price is ${h.usd(list('mounjaro', '7.5'))}.`,
+    resume: (h) => `Mounjaro is tirzepatide for type 2 diabetes, the same molecule as Zepbound, sold by Eli Lilly as a carton of four weekly single-dose pens. Its self-pay price, listed on TrumpRx and routed to Lilly, is ${h.usd(cash('mounjaro', '7.5'))} a month whatever the strength, from the 2.5 mg starting pens to 15 mg, which makes it ${h.usd(cash('mounjaro', '7.5') - cash('zepbound', 'vial-7.5'))} more a month than Zepbound vials at 7.5 mg and above. The list price is ${h.usd(list('mounjaro', '7.5'))} per carton and pharmacies pay about ${h.usd(nadac('mounjaro', '7.5'))} according to the NADAC survey. Medicare Part D covers Mounjaro for diabetes and for cardiovascular risk in diabetes; under the 2026 standard benefit, your share at list price reaches the ${h.usd(PD(2026).oopCap)} cap in ${monthName(capMonth('mounjaro', '7.5', 2026), 'en')} and stops there. Mounjaro has no Medicare negotiated price and is not in the GLP-1 Bridge.`,
+    body: (h) => `
+<h2>Flat pricing, and the Zepbound comparison people make</h2>
+<p>All six Mounjaro strengths cost the same in cash. Raising the dose by 2.5 mg every four weeks, as the label allows, therefore changes nothing on the bill. The question most readers bring is a different one: Zepbound contains the same active substance and costs less in cash. The two products are approved for different conditions, diabetes for Mounjaro and weight reduction or sleep apnea for Zepbound, and insurers, Medicare included, cover them by indication. A cash price comparison does not make them interchangeable for a given patient.</p>
+${h.table(['Strength', 'Self-pay a month', 'List price', 'Pharmacy cost (NADAC)'], MJ.doses.map((d) => [d.label, h.usd(cash('mounjaro', d.id)), h.usd(list('mounjaro', d.id)), h.usd(nadac('mounjaro', d.id))]), `Mounjaro, four single-dose pens. Prices read on TrumpRx on ${h.date(asOf())}.`, ['l', 'r', 'r', 'r'])}
+<h2>Medicare Part D, month by month</h2>
+<p>A Part D enrollee on Mounjaro meets the ${h.usd(PD(2026).deductible)} deductible with the first fill, then pays a quarter of the price of each later carton. Under the defined standard benefit that adds up to the ${h.usd(PD(2026).oopCap)} ceiling in ${monthName(capMonth('mounjaro', '7.5', 2026), 'en')}; the rest of the year costs nothing. The heavy months come first, which is what the ${h.a('medicare-prescription-payment-plan', 'Medicare Prescription Payment Plan')} smooths out by billing the same amount each month. In 2027 the cap rises to ${h.usd(PD(2027).oopCap)} and, with no negotiated price for tirzepatide, a full year at list price costs about ${h.usd(partD('mounjaro', '7.5', 2027))}.</p>
+<h2>With employer insurance</h2>
+<p>Commercial plans usually cover Mounjaro for type 2 diabetes with a prior authorization. Lilly runs a savings program for commercially insured patients; it is closed to government programs. If your plan denies coverage, the ${h.usd(cash('mounjaro', '5'))} self-pay price is the reference, and payments made that way do not count toward your deductible.</p>`,
+    faqs: (h) => [
+      { q: 'How much does Mounjaro cost without insurance?', a: `${h.usd(cash('mounjaro', '5'))} a month for any strength from 2.5 to 15 mg, the self-pay price TrumpRx lists for Lilly’s program. Without the program, pharmacies work from a list price of ${h.usd(list('mounjaro', '5'))} for four pens. Ask for the Lilly self-pay price by name at the pharmacy.` },
+      { q: 'Why is Mounjaro more expensive than Zepbound in cash?', a: `Lilly prices them separately: Mounjaro ${h.usd(cash('mounjaro', '10'))} at every dose, Zepbound vials and KwikPens ${h.usd(cash('zepbound', 'vial-2.5'))} to ${h.usd(cash('zepbound', 'vial-10'))}. They share tirzepatide but are approved for different conditions, and coverage follows the indication, not the molecule. Only a prescriber can switch one for the other.` },
+      { q: 'What does Mounjaro cost on Medicare in 2026?', a: `For diabetes, under the standard Part D benefit, at most ${h.usd(PD(2026).oopCap)} for the year: the ${h.usd(PD(2026).deductible)} deductible, then 25% of the price, with the cap reached in ${monthName(capMonth('mounjaro', '7.5', 2026), 'en')} at list price. Mounjaro is not part of the GLP-1 Bridge. Mounjaro has no Medicare negotiated price either.` },
+    ],
+  },
+  es: {
+    slug: 'precio-mounjaro', nav: 'Precio de Mounjaro', card: 'Mounjaro por dosis: un solo precio en efectivo, precio de lista y tope de la Parte D',
+    title: `Precio de Mounjaro 2026: ${$es(cash('mounjaro', '7.5'))} al mes sin seguro y la Parte D`,
+    description: `Precio de Mounjaro en 2026: ${$es(cash('mounjaro', '7.5'))} al mes en todas las dosis con LillyDirect o TrumpRx, precio de lista ${$es(list('mounjaro', '7.5'))}, costo de farmacia y tope de ${$es(PD(2026).oopCap)} de Medicare.`,
+    h1: 'Precio de Mounjaro en 2026: un solo precio para todas las dosis',
+    intro: (h) => `Sin seguro, Mounjaro cuesta ${h.usd(cash('mounjaro', '2.5'))} al mes en todas las concentraciones, de 2.5 a 15 mg, con LillyDirect o TrumpRx; el precio de lista es ${h.usd(list('mounjaro', '7.5'))}.`,
+    resume: (h) => `Mounjaro es tirzepatida para la diabetes tipo 2, la misma molécula que Zepbound, que Eli Lilly vende en cajas de cuatro plumas semanales de dosis única. Su precio de autopago, publicado en TrumpRx y gestionado por Lilly, es de ${h.usd(cash('mounjaro', '7.5'))} al mes sea cual sea la concentración, desde las plumas iniciales de 2.5 mg hasta 15 mg, es decir ${h.usd(cash('mounjaro', '7.5') - cash('zepbound', 'vial-7.5'))} más al mes que los frascos de Zepbound desde 7.5 mg. El precio de lista es de ${h.usd(list('mounjaro', '7.5'))} por caja y las farmacias pagan unos ${h.usd(nadac('mounjaro', '7.5'))} según la encuesta NADAC. La Parte D de Medicare cubre Mounjaro para la diabetes y el riesgo cardiovascular en la diabetes; con el beneficio estándar de 2026, su parte a precio de lista llega al tope de ${h.usd(PD(2026).oopCap)} en ${monthName(capMonth('mounjaro', '7.5', 2026), 'es')} y se detiene ahí. Mounjaro no tiene precio negociado por Medicare y no está en el GLP-1 Bridge.`,
+    body: (h) => `
+<h2>Precio único, y la comparación con Zepbound</h2>
+<p>Las seis concentraciones de Mounjaro cuestan lo mismo en efectivo; subir la dosis 2.5 mg cada cuatro semanas, como permite la ficha, no cambia la cuenta. La pregunta frecuente es otra: Zepbound contiene la misma sustancia y cuesta menos en efectivo. Los dos están aprobados para enfermedades distintas, la diabetes para Mounjaro y la reducción de peso o la apnea del sueño para Zepbound, y los seguros, Medicare incluido, los cubren según la indicación. Una comparación de precios no los vuelve intercambiables para un paciente.</p>
+${h.table(['Concentración', 'Autopago al mes', 'Precio de lista', 'Costo farmacia (NADAC)'], MJ.doses.map((d) => [d.label, h.usd(cash('mounjaro', d.id)), h.usd(list('mounjaro', d.id)), h.usd(nadac('mounjaro', d.id))]), `Mounjaro, cuatro plumas de dosis única. Precios leídos en TrumpRx el ${h.date(asOf())}.`, ['l', 'r', 'r', 'r'])}
+<h2>La Parte D de Medicare, mes a mes</h2>
+<p>Una persona en la Parte D que usa Mounjaro paga el deducible de ${h.usd(PD(2026).deductible)} con la primera receta y luego una cuarta parte del precio de cada caja. Con el beneficio estándar eso llega al techo de ${h.usd(PD(2026).oopCap)} en ${monthName(capMonth('mounjaro', '7.5', 2026), 'es')}; el resto del año no cuesta nada. Los meses caros llegan primero, y eso es lo que suaviza el Plan de Pago de Recetas de Medicare, que factura el mismo monto cada mes. En 2027 el tope sube a ${h.usd(PD(2027).oopCap)} y, sin precio negociado para la tirzepatida, un año completo a precio de lista cuesta unos ${h.usd(partD('mounjaro', '7.5', 2027))}.</p>
+<h2>Con seguro del empleador</h2>
+<p>Los planes comerciales suelen cubrir Mounjaro para la diabetes tipo 2 con autorización previa. Lilly tiene un programa de ahorro para personas con seguro comercial, cerrado a los programas públicos. Si su plan niega la cobertura, la referencia es el precio de autopago de ${h.usd(cash('mounjaro', '5'))}, que no cuenta para el deducible.</p>`,
+    faqs: (h) => [
+      { q: '¿Cuánto cuesta Mounjaro sin seguro?', a: `${h.usd(cash('mounjaro', '5'))} al mes en cualquier concentración de 2.5 a 15 mg, el precio de autopago que TrumpRx publica para el programa de Lilly. Sin el programa, las farmacias parten de un precio de lista de ${h.usd(list('mounjaro', '5'))} por cuatro plumas. Pida el precio de autopago de Lilly por su nombre.` },
+      { q: '¿Por qué Mounjaro es más caro que Zepbound en efectivo?', a: `Lilly les pone precios distintos: Mounjaro ${h.usd(cash('mounjaro', '10'))} en todas las dosis, Zepbound en frasco o KwikPen de ${h.usd(cash('zepbound', 'vial-2.5'))} a ${h.usd(cash('zepbound', 'vial-10'))}. Comparten la tirzepatida pero están aprobados para enfermedades distintas, y la cobertura sigue la indicación. Solo su médico puede cambiar uno por otro.` },
+      { q: '¿Cuánto cuesta Mounjaro con Medicare en 2026?', a: `Para la diabetes, con el beneficio estándar de la Parte D, como máximo ${h.usd(PD(2026).oopCap)} en el año: el deducible de ${h.usd(PD(2026).deductible)} y luego el 25% del precio, con el tope alcanzado en ${monthName(capMonth('mounjaro', '7.5', 2026), 'es')} a precio de lista. Mounjaro no forma parte del GLP-1 Bridge.` },
+    ],
+  },
+});

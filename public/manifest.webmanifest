@@ -1,0 +1,21 @@
+{
+ "name": "GLP-1 Cost Check",
+ "short_name": "GLP-1 Cost",
+ "description": "Monthly and yearly cost of Ozempic, Wegovy, Zepbound, Mounjaro and Foundayo by dose and channel: manufacturer cash, TrumpRx, pharmacy, Medicare Part D and Medicaid.",
+ "start_url": "/en/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#3C3B6E",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

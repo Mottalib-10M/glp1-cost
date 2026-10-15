@@ -1,0 +1,55 @@
+import { definePage } from '../../lib/page-types';
+import { cash, late, list, nadac, BR, asOf, $en, $es } from './_util';
+import { product, cashPrice, dose } from '../../lib/engine/index';
+
+const F = product('foundayo');
+const reg = (d: string) => cashPrice(F, dose(F, d), 2027)!.monthly;
+
+export default definePage({
+  id: 'foundayo-cost', group: 'glp1', order: 7,
+  tool: { kind: 'calc', product: 'foundayo', dose: '9', lock: true },
+  related: ['wegovy-pill-vs-foundayo-cost', 'wegovy-pill-cost', 'lilly-45-day-refill-rule', 'medicare-glp-1-bridge', 'glp-1-prices-2027'],
+  sources: ['lillyFoundayo', 'trumprx', 'nadac', 'cmsBridgeProviders', 'labelFoundayo'],
+  en: {
+    slug: 'foundayo-cost', nav: 'Foundayo cost', card: 'Foundayo (orforglipron) by dose: cash price, temporary cuts to 2026, Medicare Bridge',
+    title: `Foundayo Cost 2026: ${$en(cash('foundayo', '0.8'))} to ${$en(cash('foundayo', '17.2'))} a Month, Orforglipron Pill`,
+    description: `Foundayo cost in 2026: the orforglipron pill from ${$en(cash('foundayo', '0.8'))} to ${$en(cash('foundayo', '17.2'))} a month on LillyDirect, prices after December 31, 2026, list price ${$en(list('foundayo', '9'))} and the ${$en(BR.copay)} Bridge.`,
+    h1: 'Foundayo cost: what the new GLP-1 pill costs, dose by dose',
+    intro: (h) => `Foundayo, Lilly’s daily orforglipron tablet, costs ${h.usd(cash('foundayo', '0.8'))} a month at 0.8 and 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} at 5.5 mg and ${h.usd(cash('foundayo', '9'))} from 9 mg when paid in cash.`,
+    resume: (h) => `Foundayo is orforglipron, a once-daily GLP-1 tablet that the FDA approved in 2026 to reduce excess body weight in adults with obesity or overweight with a related condition. Eli Lilly sells it to cash buyers through LillyDirect, and TrumpRx lists the same prices: ${h.usd(cash('foundayo', '0.8'))} for 30 tablets of 0.8 mg, ${h.usd(cash('foundayo', '2.5'))} for 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} for 5.5 mg and ${h.usd(cash('foundayo', '9'))} for 9, 14.5 and 17.2 mg. Two of those prices are temporary: after December 31, 2026 the 2.5 mg bottle returns to ${h.usd(reg('2.5'))} and the 5.5 mg bottle to ${h.usd(reg('5.5'))}. At the two highest strengths the price holds only if each refill comes within 45 days; otherwise it is ${h.usd(late('foundayo', '17.2'))}. The list price is ${h.usd(list('foundayo', '9'))}, under half of Wegovy’s ${h.usd(list('wegovy', '2.4'))}, and pharmacies pay about ${h.usd(nadac('foundayo', '9'))} according to NADAC. Medicare Part D excludes weight-loss drugs, but the GLP-1 Bridge covers Foundayo at ${h.usd(BR.copay)} a month.`,
+    body: (h) => `
+<h2>A price grid with an end date</h2>
+<p>Foundayo launched with a price grid that rewards the early months. The 0.8 mg starting dose and the 2.5 mg step cost the same, and both 2.5 mg and 5.5 mg carry a reduction that Lilly says runs through December 31, 2026. The label raises the dose every 30 days or more, so a patient who starts in the autumn of 2026 crosses that date mid-titration. The calculator applies the regular price when you choose 2027.</p>
+${h.table(['Tablet', 'Self-pay 2026', 'Self-pay 2027', 'Late refill', 'List price', 'Pharmacy cost (NADAC)'], F.doses.map((d) => [d.label, h.usd(cash('foundayo', d.id)), h.usd(reg(d.id)), Number.isNaN(late('foundayo', d.id)) ? '–' : h.usd(late('foundayo', d.id)), h.usd(list('foundayo', d.id)), Number.isNaN(nadac('foundayo', d.id)) ? '–' : h.usd(nadac('foundayo', d.id))]), `Foundayo, 30 tablets. LillyDirect and TrumpRx prices read on ${h.date(asOf())}; NADAC not yet published for 14.5 and 17.2 mg.`, ['l', 'r', 'r', 'r', 'r', 'r'])}
+<h2>Why its list price is lower</h2>
+<p>At ${h.usd(list('foundayo', '9'))} a month, Foundayo’s wholesale price sits well below Wegovy’s ${h.usd(list('wegovy', '2.4'))} and the Zepbound vial’s ${h.usd(list('zepbound', 'vial-5'))}. It is a small molecule rather than a peptide, made by chemical synthesis rather than in living cells, and it reached the market in 2026, after both makers had already cut their self-pay prices. For a cash payer the gap with the Wegovy pill is small at the start and nil at maintenance; the ${h.a('wegovy-pill-vs-foundayo-cost', 'comparison page')} prices both side by side.</p>
+<h2>Medicare and insurance</h2>
+<p>Foundayo is approved only for weight management, the use Part D cannot cover by law. CMS added it to the Medicare GLP-1 Bridge after its approval, in an update dated April 6, 2026: Part D enrollees who meet the body-mass-index criteria pay ${h.usd(BR.copay)} a month through December 31, 2027, with a prior authorization sent by the prescriber. With employer coverage that includes it, Lilly states that eligible commercially insured patients can pay as little as $25 a month.</p>`,
+    faqs: (h) => [
+      { q: 'How much does Foundayo cost without insurance?', a: `On LillyDirect or through TrumpRx: ${h.usd(cash('foundayo', '0.8'))} a month for 0.8 or 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} for 5.5 mg and ${h.usd(cash('foundayo', '9'))} for 9, 14.5 or 17.2 mg. The 2.5 and 5.5 mg prices are reduced until December 31, 2026; after that they are ${h.usd(reg('2.5'))} and ${h.usd(reg('5.5'))}.` },
+      { q: 'Does Medicare cover Foundayo?', a: `Not through Part D, which excludes drugs used for weight loss. Since July 1, 2026 the Medicare GLP-1 Bridge covers Foundayo for Part D enrollees who meet CMS’s criteria, at ${h.usd(BR.copay)} a month, until December 31, 2027. The prescriber files a prior authorization.` },
+      { q: 'What happens if I refill Foundayo late?', a: `At 14.5 and 17.2 mg, the ${h.usd(cash('foundayo', '14.5'))} price requires a refill within 45 days of the last delivery. A later refill is billed at ${h.usd(late('foundayo', '14.5'))}. The lower strengths have no such condition. Ordering a week before the bottle runs out keeps the interval safe.` },
+    ],
+  },
+  es: {
+    slug: 'precio-foundayo', nav: 'Precio de Foundayo', card: 'Foundayo (orforglipron) por dosis: precio en efectivo, rebajas hasta 2026 y Bridge',
+    title: `Precio de Foundayo 2026: de ${$es(cash('foundayo', '0.8'))} a ${$es(cash('foundayo', '17.2'))} al mes, por dosis`,
+    description: `Precio de Foundayo en 2026: la pastilla de orforglipron de ${$es(cash('foundayo', '0.8'))} a ${$es(cash('foundayo', '17.2'))} al mes en LillyDirect, precios después del 31 de diciembre de 2026 y Bridge de Medicare.`,
+    h1: 'Precio de Foundayo: lo que cuesta la nueva pastilla GLP-1',
+    intro: (h) => `Foundayo, el comprimido diario de orforglipron de Lilly, cuesta ${h.usd(cash('foundayo', '0.8'))} al mes en 0.8 y 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} en 5.5 mg y ${h.usd(cash('foundayo', '9'))} desde 9 mg pagando en efectivo.`,
+    resume: (h) => `Foundayo es orforglipron, un comprimido GLP-1 de una toma diaria que la FDA aprobó en 2026 para reducir el exceso de peso en adultos con obesidad, o con sobrepeso y una enfermedad relacionada. Eli Lilly lo vende en efectivo por LillyDirect y TrumpRx publica los mismos precios: ${h.usd(cash('foundayo', '0.8'))} por 30 comprimidos de 0.8 mg, ${h.usd(cash('foundayo', '2.5'))} por los de 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} por los de 5.5 mg y ${h.usd(cash('foundayo', '9'))} por los de 9, 14.5 y 17.2 mg. Dos de esos precios son temporales: después del 31 de diciembre de 2026, el frasco de 2.5 mg vuelve a ${h.usd(reg('2.5'))} y el de 5.5 mg a ${h.usd(reg('5.5'))}. En las dos concentraciones más altas el precio solo se mantiene si cada renovación llega dentro de 45 días; si no, cuesta ${h.usd(late('foundayo', '17.2'))}. El precio de lista es de ${h.usd(list('foundayo', '9'))}, menos de la mitad de los ${h.usd(list('wegovy', '2.4'))} de Wegovy. La Parte D excluye los medicamentos para bajar de peso, pero el GLP-1 Bridge cubre Foundayo a ${h.usd(BR.copay)} al mes.`,
+    body: (h) => `
+<h2>Una tabla de precios con fecha de fin</h2>
+<p>Foundayo llegó con precios que favorecen los primeros meses. La dosis inicial de 0.8 mg y el escalón de 2.5 mg cuestan lo mismo, y tanto 2.5 mg como 5.5 mg tienen una rebaja que Lilly mantiene hasta el 31 de diciembre de 2026. La ficha sube la dosis cada 30 días o más, así que quien empieza en otoño de 2026 cruza esa fecha a mitad de la escalada. La calculadora aplica el precio normal cuando elige 2027.</p>
+${h.table(['Comprimido', 'Autopago 2026', 'Autopago 2027', 'Renovación tardía', 'Precio de lista', 'Costo farmacia (NADAC)'], F.doses.map((d) => [d.label, h.usd(cash('foundayo', d.id)), h.usd(reg(d.id)), Number.isNaN(late('foundayo', d.id)) ? '–' : h.usd(late('foundayo', d.id)), h.usd(list('foundayo', d.id)), Number.isNaN(nadac('foundayo', d.id)) ? '–' : h.usd(nadac('foundayo', d.id))]), `Foundayo, 30 comprimidos. Precios de LillyDirect y TrumpRx leídos el ${h.date(asOf())}; NADAC aún no publicado para 14.5 y 17.2 mg.`, ['l', 'r', 'r', 'r', 'r', 'r'])}
+<h2>Por qué su precio de lista es menor</h2>
+<p>Con ${h.usd(list('foundayo', '9'))} al mes, el precio mayorista de Foundayo queda muy por debajo de los ${h.usd(list('wegovy', '2.4'))} de Wegovy y los ${h.usd(list('zepbound', 'vial-5'))} del frasco de Zepbound. Es una molécula pequeña, no un péptido: se fabrica por síntesis química y no en células vivas, y salió al mercado en 2026, cuando los dos fabricantes ya habían bajado sus precios de autopago. Para quien paga en efectivo, la diferencia con Wegovy en pastilla es pequeña al principio y nula en mantenimiento.</p>
+<h2>Medicare y seguros</h2>
+<p>Foundayo solo está aprobado para controlar el peso, el uso que la Parte D no puede cubrir por ley. CMS lo añadió al Medicare GLP-1 Bridge tras su aprobación, en una actualización del 6 de abril de 2026: quienes están en la Parte D y cumplen los criterios de índice de masa corporal pagan ${h.usd(BR.copay)} al mes hasta el 31 de diciembre de 2027, con una autorización previa de su médico. Con un seguro del empleador que lo cubre, Lilly indica que las personas elegibles con seguro comercial pueden pagar desde $25 al mes.</p>`,
+    faqs: (h) => [
+      { q: '¿Cuánto cuesta Foundayo sin seguro?', a: `En LillyDirect o por TrumpRx: ${h.usd(cash('foundayo', '0.8'))} al mes en 0.8 o 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} en 5.5 mg y ${h.usd(cash('foundayo', '9'))} en 9, 14.5 o 17.2 mg. Los precios de 2.5 y 5.5 mg están rebajados hasta el 31 de diciembre de 2026; después serán ${h.usd(reg('2.5'))} y ${h.usd(reg('5.5'))}.` },
+      { q: '¿Medicare cubre Foundayo?', a: `No por la Parte D, que excluye los medicamentos para bajar de peso. Desde el 1 de julio de 2026, el Medicare GLP-1 Bridge cubre Foundayo para quienes están en la Parte D y cumplen los criterios de CMS, a ${h.usd(BR.copay)} al mes, hasta el 31 de diciembre de 2027.` },
+      { q: '¿Qué pasa si renuevo Foundayo tarde?', a: `En 14.5 y 17.2 mg, el precio de ${h.usd(cash('foundayo', '14.5'))} exige renovar dentro de los 45 días siguientes a la última entrega. Una renovación posterior se cobra a ${h.usd(late('foundayo', '14.5'))}. Las concentraciones más bajas no tienen esa condición. Pedir el frasco una semana antes evita el problema.` },
+    ],
+  },
+});

@@ -1,0 +1,1398 @@
+{
+ "retrieved_at": "2026-10-15",
+ "trumprx": {
+  "ozempic": {
+   "slug": "ozempic",
+   "url": "https://trumprx.gov/p/ozempic",
+   "name": "Ozempic® Pen",
+   "maker": "Novo Nordisk®",
+   "generic": "semaglutide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "Limited Time Offer – New self-pay patients pay $199* for the first two monthly fills of Ozempic® (semaglutide) injection 0.25mg or 0.5mg. Only available for 2 monthly fills between 11/17/2025 – 12/31/2026. For each fill after, pay $349/month for Ozempic® 0.25mg, 0.5mg or 1mg, and $499/month for Ozempic® 2mg. For eligible patients only.",
+   "variants": [
+    {
+     "form": "Prefilled Pen",
+     "strength": "0.25/0.5",
+     "quantity": "1",
+     "trx": 199.0,
+     "before": 1027.51,
+     "introFills": 2,
+     "introPrice": 199.0,
+     "regular": 349.0,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "0.5/0.5",
+     "quantity": "1",
+     "trx": 199.0,
+     "before": 1027.51,
+     "introFills": 2,
+     "introPrice": 199.0,
+     "regular": 349.0,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "1/0.5",
+     "quantity": "1",
+     "trx": 349.0,
+     "before": 1027.51,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "2/0.5",
+     "quantity": "1",
+     "trx": 499.0,
+     "before": 1027.51,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    }
+   ]
+  },
+  "ozempic-pill": {
+   "slug": "ozempic-pill",
+   "url": "https://trumprx.gov/p/ozempic-pill",
+   "name": "Ozempic® Pill",
+   "maker": "Novo Nordisk®",
+   "generic": "semaglutide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "Self-pay pricing varies by dose. Eligibility and restrictions apply. Government beneficiaries excluded. One month defined as 1 bottle of 30 tablets. Novo Nordisk reserves the right to modify or cancel at any time. See full terms and conditions.",
+   "variants": [
+    {
+     "form": "Tablet",
+     "strength": "1.5",
+     "quantity": "30",
+     "trx": 149.0,
+     "before": 1027.51,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "4",
+     "quantity": "30",
+     "trx": 199.0,
+     "before": 1027.51,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "9",
+     "quantity": "30",
+     "trx": 299.0,
+     "before": 1027.51,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    }
+   ]
+  },
+  "wegovy": {
+   "slug": "wegovy",
+   "url": "https://trumprx.gov/p/wegovy",
+   "name": "Wegovy® Pen",
+   "maker": "Novo Nordisk®",
+   "generic": "semaglutide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "Limited Time Offer – New patients pay $199* for the first two monthly fills of Wegovy® (semaglutide) injection 0.25mg and 0.5mg, then $349/month. Only available for 2 monthly fills between 11/17/2025- 12/31/2026. For each fill after, pay $349/month for Wegovy® 0.25mg, 0.5mg, 1mg, 1.7mg, or 2.4mg and $399/month for Wegovy® HD 7.2mg.",
+   "variants": [
+    {
+     "form": "Prefilled Pen",
+     "strength": "0.25/0.5",
+     "quantity": "1",
+     "trx": 199.0,
+     "before": 1349.02,
+     "introFills": 2,
+     "introPrice": 199.0,
+     "regular": 349.0,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "0.5/0.5",
+     "quantity": "1",
+     "trx": 199.0,
+     "before": 1349.02,
+     "introFills": 2,
+     "introPrice": 199.0,
+     "regular": 349.0,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "1/0.5",
+     "quantity": "1",
+     "trx": 349.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "1.7/0.75",
+     "quantity": "1",
+     "trx": 349.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "2.4/0.75",
+     "quantity": "1",
+     "trx": 349.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Prefilled Pen",
+     "strength": "7.2/0.75",
+     "quantity": "1",
+     "trx": 399.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    }
+   ]
+  },
+  "wegovy-pill": {
+   "slug": "wegovy-pill",
+   "url": "https://trumprx.gov/p/wegovy-pill",
+   "name": "Wegovy® Pill",
+   "maker": "Novo Nordisk®",
+   "generic": "semaglutide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "Self-pay pricing varies by dose. Eligibility and restrictions apply. Government beneficiaries excluded. One month is defined as one bottle containing 30 tablets. Novo Nordisk reserves the right to modify or cancel this offer at any time. See full Terms and Conditions.",
+   "variants": [
+    {
+     "form": "Tablet",
+     "strength": "1.5",
+     "quantity": "30",
+     "trx": 149.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "4",
+     "quantity": "30",
+     "trx": 199.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "9",
+     "quantity": "30",
+     "trx": 299.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "25",
+     "quantity": "30",
+     "trx": 299.0,
+     "before": 1349.02,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    }
+   ]
+  },
+  "zepbound": {
+   "slug": "zepbound",
+   "url": "https://trumprx.gov/p/zepbound",
+   "name": "Zepbound® Vial",
+   "maker": "Eli Lilly and Company®",
+   "generic": "tirzepatide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "*Eligibility required, terms and conditions apply. Review full terms and conditions.",
+   "variants": [
+    {
+     "form": "Vial",
+     "strength": "2.5",
+     "quantity": "1",
+     "trx": 299.0,
+     "before": 1087.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Vial",
+     "strength": "5",
+     "quantity": "1",
+     "trx": 399.0,
+     "before": 1087.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Vial",
+     "strength": "7.5",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 1087.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 499.0,
+     "onMaker": true
+    },
+    {
+     "form": "Vial",
+     "strength": "10",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 1087.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 699.0,
+     "onMaker": true
+    },
+    {
+     "form": "Vial",
+     "strength": "12.5",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 1087.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 699.0,
+     "onMaker": true
+    },
+    {
+     "form": "Vial",
+     "strength": "15",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 1087.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 699.0,
+     "onMaker": true
+    }
+   ]
+  },
+  "zepbound-kwikpen": {
+   "slug": "zepbound-kwikpen",
+   "url": "https://trumprx.gov/p/zepbound-kwikpen",
+   "name": "Zepbound® KwikPen®",
+   "maker": "Eli Lilly and Company®",
+   "generic": "tirzepatide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "*Eligibility required, terms and conditions apply. Review full terms and conditions.",
+   "variants": [
+    {
+     "form": "Multi-dose KwikPen®",
+     "strength": "2.5",
+     "quantity": "1",
+     "trx": 299.0,
+     "before": 499.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Multi-dose KwikPen®",
+     "strength": "5",
+     "quantity": "1",
+     "trx": 399.0,
+     "before": 499.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Multi-dose KwikPen®",
+     "strength": "7.5",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 499.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 499.0,
+     "onMaker": true
+    },
+    {
+     "form": "Multi-dose KwikPen®",
+     "strength": "10",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 699.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 699.0,
+     "onMaker": true
+    },
+    {
+     "form": "Multi-dose KwikPen®",
+     "strength": "12.5",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 699.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 699.0,
+     "onMaker": true
+    },
+    {
+     "form": "Multi-dose KwikPen®",
+     "strength": "15",
+     "quantity": "1",
+     "trx": 449.0,
+     "before": 699.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 699.0,
+     "onMaker": true
+    }
+   ]
+  },
+  "mounjaro": {
+   "slug": "mounjaro",
+   "url": "https://trumprx.gov/p/mounjaro",
+   "name": "Mounjaro®",
+   "maker": "Eli Lilly and Company®",
+   "generic": "tirzepatide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "*Eligibility required, terms and conditions apply. Review full terms and conditions.",
+   "variants": [
+    {
+     "form": "Single-dose Pen",
+     "strength": "2.5/0.5",
+     "quantity": "1",
+     "trx": 499.0,
+     "before": 1112.16,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "5/0.5",
+     "quantity": "1",
+     "trx": 499.0,
+     "before": 1112.16,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "7.5/0.5",
+     "quantity": "1",
+     "trx": 499.0,
+     "before": 1112.16,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "10/0.5",
+     "quantity": "1",
+     "trx": 499.0,
+     "before": 1112.16,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "12.5/0.5",
+     "quantity": "1",
+     "trx": 499.0,
+     "before": 1112.16,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "15/0.5",
+     "quantity": "1",
+     "trx": 499.0,
+     "before": 1112.16,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    }
+   ]
+  },
+  "foundayo": {
+   "slug": "foundayo",
+   "url": "https://trumprx.gov/p/foundayo",
+   "name": "Foundayo™",
+   "maker": "Eli Lilly and Company®",
+   "generic": "orforglipron",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "The price for the 2.5mg dose is temporarily reduced through December 31, 2026. Regular price is $199. The price for the 5.5mg dose is temporarily reduced through December 31, 2026. Regular price is $299. *Eligibility required, terms and conditions apply. Review full terms and conditions.",
+   "variants": [
+    {
+     "form": "Tablet",
+     "strength": "0.8",
+     "quantity": "30",
+     "trx": 149.0,
+     "before": 649.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "2.5",
+     "quantity": "30",
+     "trx": 149.0,
+     "before": 649.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "5.5",
+     "quantity": "30",
+     "trx": 199.0,
+     "before": 649.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "9",
+     "quantity": "30",
+     "trx": 299.0,
+     "before": 649.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "14.5",
+     "quantity": "30",
+     "trx": 299.0,
+     "before": 649.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 349.0,
+     "onMaker": true
+    },
+    {
+     "form": "Tablet",
+     "strength": "17.2",
+     "quantity": "30",
+     "trx": 299.0,
+     "before": 649.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": 349.0,
+     "onMaker": true
+    }
+   ]
+  },
+  "trulicity": {
+   "slug": "trulicity",
+   "url": "https://trumprx.gov/p/trulicity",
+   "name": "Trulicity®",
+   "maker": "Eli Lilly and Company®",
+   "generic": "dulaglutide",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": "*Eligibility required, terms and conditions apply. Review full terms and conditions.",
+   "variants": [
+    {
+     "form": "Single-dose Pen",
+     "strength": "0.75/0.5",
+     "quantity": "1",
+     "trx": 389.0,
+     "before": 987.19,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "1.5/0.5",
+     "quantity": "1",
+     "trx": 389.0,
+     "before": 987.19,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "3/0.5",
+     "quantity": "1",
+     "trx": 389.0,
+     "before": 987.19,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    },
+    {
+     "form": "Single-dose Pen",
+     "strength": "4.5/0.5",
+     "quantity": "1",
+     "trx": 389.0,
+     "before": 987.19,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": true
+    }
+   ]
+  },
+  "xarelto": {
+   "slug": "xarelto",
+   "url": "https://trumprx.gov/p/xarelto",
+   "name": "Xarelto®",
+   "maker": "Johnson \\u0026 Johnson",
+   "generic": "rivaroxaban",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": null,
+   "variants": [
+    {
+     "form": "Tablet",
+     "strength": "10",
+     "quantity": "30",
+     "trx": 197.0,
+     "before": 611.82,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "15",
+     "quantity": "30",
+     "trx": 197.0,
+     "before": 611.82,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "20",
+     "quantity": "30",
+     "trx": 197.0,
+     "before": 611.82,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "10",
+     "quantity": "90",
+     "trx": 591.0,
+     "before": 1835.45,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "15",
+     "quantity": "90",
+     "trx": 591.0,
+     "before": 1835.45,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "20",
+     "quantity": "90",
+     "trx": 591.0,
+     "before": 1835.45,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    }
+   ]
+  },
+  "farxiga": {
+   "slug": "farxiga",
+   "url": "https://trumprx.gov/p/farxiga",
+   "name": "Farxiga®",
+   "maker": "AstraZeneca®",
+   "generic": "dapagliflozin",
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": null,
+   "variants": [
+    {
+     "form": "Tablet",
+     "strength": "5",
+     "quantity": "30",
+     "trx": 35.0,
+     "before": 377.82,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "10",
+     "quantity": "30",
+     "trx": 35.0,
+     "before": 377.82,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    }
+   ]
+  },
+  "januvia": {
+   "slug": "januvia",
+   "url": "https://trumprx.gov/p/januvia",
+   "name": "Januvia®",
+   "maker": "Merck",
+   "generic": null,
+   "isGeneric": false,
+   "wacLabel": "Original price represents the Wholesale Acquisition Cost",
+   "disclaimer": null,
+   "variants": [
+    {
+     "form": "Tablet",
+     "strength": "25",
+     "quantity": "30",
+     "trx": 84.57,
+     "before": 330.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "50",
+     "quantity": "30",
+     "trx": 84.57,
+     "before": 330.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
+    }
+   ]
+  }
+ },
+ "nadac": {
+  "OZEMPIC 0.25-0.5 MG/DOSE (2 MG/3 ML) PEN": {
+   "perUnit": 331.99085,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "OZEMPIC 1 MG/DOSE (4 MG/3 ML) PEN": {
+   "perUnit": 331.90037,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "OZEMPIC 1.5 MG TABLET": {
+   "perUnit": 33.12635,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "OZEMPIC 2 MG/DOSE (8 MG/3 ML) PEN": {
+   "perUnit": 331.97208,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "OZEMPIC 4 MG TABLET": {
+   "perUnit": 33.17974,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "OZEMPIC 9 MG TABLET": {
+   "perUnit": 33.17868,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 0.25 MG/0.5 ML PEN": {
+   "perUnit": 653.29422,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 0.5 MG/0.5 ML PEN": {
+   "perUnit": 653.27365,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 1 MG/0.5 ML PEN": {
+   "perUnit": 653.04458,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 1.5 MG TABLET": {
+   "perUnit": 43.51871,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 1.7 MG/0.75 ML PEN": {
+   "perUnit": 435.55769,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 2.4 MG/0.75 ML PEN": {
+   "perUnit": 435.52629,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 25 MG TABLET": {
+   "perUnit": 43.4289,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 4 MG TABLET": {
+   "perUnit": 43.48634,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY 9 MG TABLET": {
+   "perUnit": 43.46516,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "WEGOVY HD 7.2 MG/0.75 ML PEN": {
+   "perUnit": 434.95017,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 10 MG/0.5 ML PEN": {
+   "perUnit": 526.04607,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 10 MG/DOSE (40 MG/2.4 ML) KWIKPEN": {
+   "perUnit": 281.62145,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 12.5 MG/0.5 ML PEN": {
+   "perUnit": 525.84865,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 12.5 MG/DOSE (50 MG/2.4 ML) KWIKPEN": {
+   "perUnit": 281.98531,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 15 MG/0.5 ML PEN": {
+   "perUnit": 525.92209,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 15 MG/DOSE (60 MG/2.4 ML) KWIKPEN": {
+   "perUnit": 281.42838,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 2.5 MG/0.5 ML PEN": {
+   "perUnit": 526.20422,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 2.5 MG/DOSE (10 MG/2.4 ML) KWIKPEN": {
+   "perUnit": 201.2566,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 5 MG/0.5 ML PEN": {
+   "perUnit": 526.08276,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 5 MG/DOSE (20 MG/2.4 ML) KWIKPEN": {
+   "perUnit": 201.03732,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 7.5 MG/0.5 ML PEN": {
+   "perUnit": 526.00415,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ZEPBOUND 7.5 MG/DOSE (30 MG/2.4 ML) KWIKPEN": {
+   "perUnit": 200.9187,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "MOUNJARO 10 MG/0.5 ML PEN": {
+   "perUnit": 538.68356,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "MOUNJARO 12.5 MG/0.5 ML PEN": {
+   "perUnit": 538.52518,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "MOUNJARO 15 MG/0.5 ML PEN": {
+   "perUnit": 538.51759,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "MOUNJARO 2.5 MG/0.5 ML PEN": {
+   "perUnit": 538.68839,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "MOUNJARO 5 MG/0.5 ML PEN": {
+   "perUnit": 538.63384,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "MOUNJARO 7.5 MG/0.5 ML PEN": {
+   "perUnit": 538.68042,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "RYBELSUS 14 MG TABLET": {
+   "perUnit": 33.18852,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "RYBELSUS 3 MG TABLET": {
+   "perUnit": 33.19015,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "RYBELSUS 7 MG TABLET": {
+   "perUnit": 33.19336,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "TRULICITY 0.75 MG/0.5 ML PEN": {
+   "perUnit": 487.57264,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "TRULICITY 1.5 MG/0.5 ML PEN": {
+   "perUnit": 487.54289,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "TRULICITY 3 MG/0.5 ML PEN": {
+   "perUnit": 487.5022,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "TRULICITY 4.5 MG/0.5 ML PEN": {
+   "perUnit": 487.41808,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "FOUNDAYO 0.8 MG TABLET": {
+   "perUnit": 20.89256,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "FOUNDAYO 2.5 MG TABLET": {
+   "perUnit": 20.83709,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "FOUNDAYO 5.5 MG TABLET": {
+   "perUnit": 20.81886,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "FOUNDAYO 9 MG TABLET": {
+   "perUnit": 20.8537,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ELIQUIS 2.5 MG TABLET": {
+   "perUnit": 5.51282,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ELIQUIS 5 MG TABLET": {
+   "perUnit": 5.52114,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ELIQUIS DVT-PE TREATMENT 30-DAY STARTER 5 MG PACK": {
+   "perUnit": 5.50766,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "JARDIANCE 10 MG TABLET": {
+   "perUnit": 11.18929,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "JARDIANCE 25 MG TABLET": {
+   "perUnit": 11.1897,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "XARELTO 1 MG/ML SUSPENSION": {
+   "perUnit": 3.77426,
+   "unit": "ML",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "XARELTO 10 MG TABLET": {
+   "perUnit": 19.52226,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "XARELTO 15 MG TABLET": {
+   "perUnit": 19.53519,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "XARELTO 2.5 MG TABLET": {
+   "perUnit": 9.77474,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "XARELTO 20 MG TABLET": {
+   "perUnit": 19.54187,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "XARELTO DVT-PE TREATMENT 30-DAY STARTER 15-20 MG PACK": {
+   "perUnit": 19.46651,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "FARXIGA 10 MG TABLET": {
+   "perUnit": 12.07703,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "FARXIGA 5 MG TABLET": {
+   "perUnit": 12.07577,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "JANUVIA 100 MG TABLET": {
+   "perUnit": 10.55179,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "JANUVIA 25 MG TABLET": {
+   "perUnit": 10.54364,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "JANUVIA 50 MG TABLET": {
+   "perUnit": 10.55215,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ENTRESTO 24 MG-26 MG TABLET": {
+   "perUnit": 11.5927,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ENTRESTO 49 MG-51 MG TABLET": {
+   "perUnit": 11.56059,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ENTRESTO 97 MG-103 MG TABLET": {
+   "perUnit": 11.58867,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ENTRESTO SPRINKLE 15-16 MG PLT": {
+   "perUnit": 11.60672,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  },
+  "ENTRESTO SPRINKLE 6-6 MG PELLET": {
+   "perUnit": 11.6248,
+   "unit": "EA",
+   "effective": "2026-09-23",
+   "asOf": "2026-10-14"
+  }
+ },
+ "nadacAsOf": "2026-10-14",
+ "nadacSource": "https://data.medicaid.gov/dataset/fbb83258-11c7-47f5-8b18-5f8e79f7e704",
+ "mfp": {
+  "file": "CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.csv",
+  "url": "https://www.cms.gov/files/zip/selected-drug-list-negotiated-prices-also-known-maximum-fair-prices-statutezip.zip",
+  "fileDate": "2026-09-21",
+  "retrieved_at": "2026-10-15",
+  "drugs": {
+   "ELIQUIS; ELIQUIS SPRINKLE": {
+    "ingredient": "APIXABAN",
+    "ipay": "2026",
+    "prices": {
+     "2026": 231.0,
+     "2027": 237.25
+    }
+   },
+   "ENBREL": {
+    "ingredient": "ETANERCEPT",
+    "ipay": "2026",
+    "prices": {
+     "2026": 2355.0,
+     "2027": 2418.7
+    }
+   },
+   "ENTRESTO; ENTRESTO SPRINKLE": {
+    "ingredient": "VALSARTAN / SACUBITRILAT",
+    "ipay": "2026",
+    "prices": {
+     "2026": 295.0
+    }
+   },
+   "FARXIGA": {
+    "ingredient": "DAPAGLIFLOZIN",
+    "ipay": "2026",
+    "prices": {
+     "2026": 178.5,
+     "2027": 183.33
+    }
+   },
+   "IMBRUVICA": {
+    "ingredient": "IBRUTINIB",
+    "ipay": "2026",
+    "prices": {
+     "2026": 9319.0,
+     "2027": 9571.07
+    }
+   },
+   "JANUVIA": {
+    "ingredient": "SITAGLIPTIN",
+    "ipay": "2026",
+    "prices": {
+     "2026": 113.0,
+     "2027": 116.06
+    }
+   },
+   "JARDIANCE": {
+    "ingredient": "EMPAGLIFLOZIN",
+    "ipay": "2026",
+    "prices": {
+     "2026": 197.0,
+     "2027": 202.33
+    }
+   },
+   "NOVOLOG; NOVOLOG FLEXPEN; NOVOLOG PENFILL; FIASP; FIASP FLEXTOUCH; FIASP PENFILL": {
+    "ingredient": "INSULIN ASPART, HUMAN",
+    "ipay": "2026",
+    "prices": {
+     "2026": 119.0
+    }
+   },
+   "STELARA": {
+    "ingredient": "USTEKINUMAB",
+    "ipay": "2026",
+    "prices": {
+     "2026": 4695.0
+    }
+   },
+   "XARELTO": {
+    "ingredient": "RIVAROXABAN",
+    "ipay": "2026",
+    "prices": {
+     "2026": 197.0
+    }
+   },
+   "AUSTEDO; AUSTEDO XR": {
+    "ingredient": "DEUTETRABENAZINE",
+    "ipay": "2027",
+    "prices": {
+     "2027": 4093.0
+    }
+   },
+   "BREO ELLIPTA": {
+    "ingredient": "FLUTICASONE; VILANTEROL",
+    "ipay": "2027",
+    "prices": {
+     "2027": 67.0
+    }
+   },
+   "CALQUENCE": {
+    "ingredient": "ACALABRUTINIB",
+    "ipay": "2027",
+    "prices": {
+     "2027": 8600.0
+    }
+   },
+   "IBRANCE": {
+    "ingredient": "PALBOCICLIB",
+    "ipay": "2027",
+    "prices": {
+     "2027": 7871.0
+    }
+   },
+   "JANUMET; JANUMET XR": {
+    "ingredient": "METFORMIN; SITAGLIPTIN",
+    "ipay": "2027",
+    "prices": {
+     "2027": 80.0
+    }
+   },
+   "LINZESS": {
+    "ingredient": "LINACLOTIDE",
+    "ipay": "2027",
+    "prices": {
+     "2027": 136.0
+    }
+   },
+   "OFEV": {
+    "ingredient": "NINTEDANIB",
+    "ipay": "2027",
+    "prices": {
+     "2027": 6350.0
+    }
+   },
+   "OTEZLA; OTEZLA XR": {
+    "ingredient": "APREMILAST",
+    "ipay": "2027",
+    "prices": {
+     "2027": 1650.0
+    }
+   },
+   "OZEMPIC; RYBELSUS; WEGOVY": {
+    "ingredient": "SEMAGLUTIDE",
+    "ipay": "2027",
+    "prices": {
+     "2027": 274.0
+    }
+   },
+   "POMALYST": {
+    "ingredient": "POMALIDOMIDE",
+    "ipay": "2027",
+    "prices": {
+     "2027": 8650.0
+    }
+   },
+   "TRADJENTA": {
+    "ingredient": "LINAGLIPTIN",
+    "ipay": "2027",
+    "prices": {
+     "2027": 78.0
+    }
+   },
+   "TRELEGY ELLIPTA": {
+    "ingredient": "FLUTICASONE; UMECLIDINIUM; VILANTEROL",
+    "ipay": "2027",
+    "prices": {
+     "2027": 175.0
+    }
+   },
+   "VRAYLAR": {
+    "ingredient": "CARIPRAZINE",
+    "ipay": "2027",
+    "prices": {
+     "2027": 770.0
+    }
+   },
+   "XIFAXAN": {
+    "ingredient": "RIFAXIMIN",
+    "ipay": "2027",
+    "prices": {
+     "2027": 1000.0
+    }
+   },
+   "XTANDI": {
+    "ingredient": "ENZALUTAMIDE",
+    "ipay": "2027",
+    "prices": {
+     "2027": 7004.0
+    }
+   }
+  }
+ }
+}

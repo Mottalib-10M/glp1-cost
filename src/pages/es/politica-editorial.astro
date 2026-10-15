@@ -1,0 +1,17 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'es';
+---
+<PageLayout title={'Política editorial de GLP-1 Cost Check: fuentes y correcciones'} description={'Cómo GLP-1 Cost Check elige sus fuentes, verifica cada precio, fecha cada cifra, corrige errores y se mantiene independiente de fabricantes, farmacias y telesalud.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Política editorial' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Política editorial</h1>
+    <h2>Fuentes</h2><p>Solo fuentes primarias: TrumpRx.gov, las páginas de precios de los fabricantes, los archivos de CMS, Medicare.gov, el Código de Regulaciones Federales y las fichas de la FDA.</p>
+    <h2>Verificación</h2><p>Los precios se descargan cada semana y deben pasar pruebas automáticas antes de publicarse. Cada página muestra la fecha de sus cifras.</p>
+    <h2>Correcciones</h2><p>Un error señalado se contrasta con la fuente oficial y, si se confirma, se corrige. Escriba a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Independencia</h2><p>{AUTHOR_NAME} no recibe nada de fabricantes, farmacias, aseguradoras ni empresas de telesalud. Nada de esto es consejo médico.</p>
+  </div>
+</PageLayout>

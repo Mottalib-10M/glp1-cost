@@ -1,0 +1,23 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'es';
+---
+<PageLayout title={'Privacidad en GLP-1 Cost Check: qué se recoge y qué no'} description={'Lo que GLP-1 Cost Check hace con los datos personales: el medicamento, la dosis y la cobertura que escribe se quedan en su navegador, sin cookies, y cómo ejercer sus derechos.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Privacidad' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Política de privacidad</h1>
+    <p>Esta política cubre {SITE_URL}. El editor está establecido en Francia, por lo que se aplica el Reglamento General de Protección de Datos de la UE.</p>
+    <h2>1. Responsable</h2>
+    <LegalIdentity lang={lang} />
+    <h2>2. Lo que escribe se queda en su equipo</h2>
+    <p>El medicamento, la dosis, la forma de pago, el copago, el estado o la estatura y el peso que introduce se procesan en su navegador. Nada se envía a un servidor ni se guarda. Nunca pedimos su nombre, su número de Medicare ni un diagnóstico.</p>
+    <h2>3. Lo que se recoge</h2>
+    <p>GitHub Pages registra la dirección IP, la hora y la página de cada visita por seguridad. El sitio no escribe cookies ni carga publicidad ni perfiles. Microsoft Clarity puede funcionar sin cookies para detectar errores, con el texto y los campos ocultos. Los correos que nos envía se borran en un plazo de doce meses.</p>
+    <h2>4. Sus derechos</h2>
+    <p>Acceso, rectificación y supresión: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. También puede reclamar ante la {LEGAL.supervisoryAuthority}.</p>
+    <p>Actualizado: {displayDate(LAST_UPDATED, 'es-US')}.</p>
+  </div>
+</PageLayout>

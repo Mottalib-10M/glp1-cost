@@ -1,0 +1,73 @@
+name: Deploy to GitHub Pages
+
+# Déploiement à chaque push, et chaque jeudi : le relevé hebdomadaire des prix (TrumpRx,
+# fabricants, NADAC du mercredi, prix négociés CMS, SDUD) est refait, testé, puis publié.
+# Si une source ne répond pas, scripts/build-data.py échoue sans écraser les données :
+# le job s'arrête et le site garde le dernier relevé valide. Aucune clé d'API n'est nécessaire.
+on:
+  push:
+    branches: ['main']
+  schedule:
+    - cron: '17 9 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: npm ci
+      - name: Relevé des données officielles (hebdomadaire)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          python3 scripts/build-data.py
+          sed -i "s/^export const LAST_UPDATED = '.*';/export const LAST_UPDATED = '$(date -u +%F)';/" src/data/site-config.ts
+      - name: Tests du moteur
+        run: npx vitest run
+      - name: Build (avec contrôle des snippets)
+        run: npm run build
+      - name: Enregistrer le relevé dans le dépôt
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "glp1-cost-data"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/data src/data/site-config.ts
+          git diff --cached --quiet || (git commit -m "Relevé hebdomadaire des prix $(date -u +%F)" && git push)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: IndexNow
+        run: |
+          curl -s "https://api.indexnow.org/indexnow?url=https://glp1-cost.example/en/&key=7c1f4b2e9a6d4e0f8b3a5c2d1e9f7a60" || true

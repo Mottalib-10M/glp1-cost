@@ -1,0 +1,73 @@
+---
+/**
+ * Accueil d'une langue (page pilier, RECETTE §5). Trame propre au site : le calculateur d'abord,
+ * le bloc citable replié, le tableau de tous les GLP-1 (prix calculés par le moteur), le texte.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import GlpCalculator from './calc/GlpCalculator';
+import Clamp from './Clamp.astro';
+import { HOME } from '../content/home';
+import { route, hasRoute, type Locale } from '../i18n/routes';
+import { helpers } from '../lib/helpers';
+import * as M from '../lib/engine/index';
+import { AUTHOR_NAME } from '../data/site-config';
+import { faqSchema, organizationSchema, websiteSchema, webPageSchema, webApplicationSchema } from '../lib/seo';
+import { productName, doseLabel } from './calc/labels';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const x = HOME[lang];
+const H = helpers(lang);
+const es = lang === 'es';
+const path = route('home', lang);
+const faqs = x.faqs(H);
+const keys: M.SourceKey[] = ['trumprx', 'novocarePharmacy', 'lillyZepbound', 'nadac', 'cmsNegotiation', 'cmsRate2027', 'cmsBridge', 'sdud', 'ecfrPartD'];
+const sources = keys.map((k) => ({ name: M.P.sources[k].label[lang], url: M.P.sources[k].url }));
+const jsonLd = [websiteSchema(lang), organizationSchema(lang), webPageSchema({ name: x.h1, description: x.description, path, lang }), webApplicationSchema({ name: x.h1, description: x.description, path, lang }), faqSchema(faqs, lang)];
+const PAGE: Record<string, string> = { ozempic: 'ozempic-cost', 'ozempic-pill': 'ozempic-pill-cost', wegovy: 'wegovy-cost', 'wegovy-pill': 'wegovy-pill-cost', zepbound: 'zepbound-cost', mounjaro: 'mounjaro-cost', foundayo: 'foundayo-cost', rybelsus: 'rybelsus-cost', trulicity: 'trulicity-cost' };
+const rows = M.PRODUCTS.filter((p) => p.group === 'glp1').map((p) => {
+  const d = M.dose(p, p.defaultDose);
+  const c = M.cashPrice(p, d, 2026);
+  return { p, d, cash: c?.monthly ?? null, list: M.listPrice(d), nadac: M.nadacMonth(d)?.monthly ?? null, mfp27: M.mfp(p, 2027), bridge: M.bridgeEligible(p, d) };
+});
+const $ = (v: number | null) => (v === null ? '–' : H.usd(v));
+const pageHref = (id: string) => { const r = PAGE[id]; return r && hasRoute(r, lang) ? route(r, lang) : r && hasRoute(r, 'en') ? route(r, 'en') : null; };
+---
+<PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={faqs} sources={sources}>
+  <header class="mb-4">
+    <h1 class="text-[1.75rem] font-bold text-navy-900 max-sm:leading-tight sm:text-3xl md:text-4xl">{x.h1}</h1>
+    <p class="mt-2 text-base text-navy-700 sm:text-lg" set:html={x.intro(H)} />
+  </header>
+  <div data-calculateur><GlpCalculator client:load lang={lang} productId="wegovy" methodHref={route('method', lang)} idPrefix="home" /></div>
+  <p class="mt-4 text-sm text-navy-600">{es ? 'Precios leídos por' : 'Prices read by'} <a href={route('about', lang)} class="underline">{AUTHOR_NAME}</a> · <a href={route('method', lang)} class="underline">{es ? 'Método y datos' : 'Method and data'}</a></p>
+  <Clamp text={x.resume(H)} lang={lang} id="clamp-home" sentences={2} class="mt-8" />
+  <section class="mt-10" id="prices">
+    <h2 class="text-2xl font-bold text-navy-900">{x.tableTitle}</h2>
+    <p class="mt-2 text-navy-700" set:html={x.tableIntro(H)} />
+    <div class="not-prose mt-4 overflow-x-auto">
+      <table class="journal w-full text-sm">
+        <caption class="mb-2 text-left text-sm text-navy-600">{es ? 'Precio de un mes, en dólares' : 'One month, in US dollars'}</caption>
+        <thead><tr>
+          <th scope="col" class="px-2 py-2 text-left font-semibold text-navy-900">{es ? 'Medicamento y dosis' : 'Drug and dose'}</th>
+          <th scope="col" class="px-2 py-2 text-right font-semibold text-navy-900">{es ? 'Autopago' : 'Self-pay'}</th>
+          <th scope="col" class="px-2 py-2 text-right font-semibold text-navy-900">{es ? 'Precio de lista' : 'List price'}</th>
+          <th scope="col" class="px-2 py-2 text-right font-semibold text-navy-900">{es ? 'Costo farmacia' : 'Pharmacy cost'}</th>
+          <th scope="col" class="px-2 py-2 text-right font-semibold text-navy-900">{es ? 'Medicare 2027' : 'Medicare 2027'}</th>
+          <th scope="col" class="px-2 py-2 text-right font-semibold text-navy-900">Bridge</th>
+        </tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <th scope="row" class="border-b border-navy-100 px-2 py-1.5 text-left font-medium text-navy-800">{pageHref(r.p.id) ? <a class="text-accent-700 underline" href={pageHref(r.p.id)}>{productName(r.p, lang)}</a> : productName(r.p, lang)} <span class="text-navy-600">{doseLabel(r.d, lang)}</span></th>
+              <td class="tabular-nums border-b border-navy-100 px-2 py-1.5 text-right text-navy-900">{$(r.cash)}</td>
+              <td class="tabular-nums border-b border-navy-100 px-2 py-1.5 text-right text-navy-900">{$(r.list)}</td>
+              <td class="tabular-nums border-b border-navy-100 px-2 py-1.5 text-right text-navy-900">{$(r.nadac)}</td>
+              <td class="tabular-nums border-b border-navy-100 px-2 py-1.5 text-right text-navy-900">{$(r.mfp27)}</td>
+              <td class="tabular-nums border-b border-navy-100 px-2 py-1.5 text-right text-navy-900">{r.bridge ? H.usd(M.P.bridge.copay) : '–'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <div class="prose prose-slate mt-10 max-w-none" set:html={x.body(H)} />
+</PageLayout>

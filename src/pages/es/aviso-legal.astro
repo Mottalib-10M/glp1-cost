@@ -1,0 +1,21 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'es';
+---
+<PageLayout title={'Aviso legal de GLP-1 Cost Check: editor, alojamiento y límites'} description={'Editor, alojamiento, finalidad, límites de responsabilidad y ley aplicable de GLP-1 Cost Check, sitio independiente de calculadoras de precios de medicamentos en EE. UU.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Aviso legal' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Aviso legal</h1>
+    <h2>Editor</h2>
+    <LegalIdentity lang={lang} />
+    <h2>Alojamiento</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>Finalidad</h2>
+    <p>Calculadoras y guías gratuitas sobre el precio de los GLP-1 y otros medicamentos caros en Estados Unidos, basadas en precios y reglas publicados por TrumpRx.gov, CMS, Medicare.gov, datos de Medicaid y los fabricantes. Los resultados son una <strong>estimación indicativa</strong>: no son consejo médico, legal ni financiero. El sitio es independiente y no está afiliado a ningún organismo, fabricante, farmacia ni aseguradora.</p>
+    <h2>Marcas</h2><p>Ozempic, Wegovy, Rybelsus y NovoCare son marcas de Novo Nordisk; Zepbound, Mounjaro, Foundayo, Trulicity y LillyDirect de Eli Lilly. Se citan solo para identificar los productos.</p>
+    <h2>Ley aplicable</h2><p>Ley francesa, sin perjuicio de las protecciones del consumidor de su lugar de residencia. Actualizado: {displayDate(LAST_UPDATED, 'es-US')}.</p>
+  </div>
+</PageLayout>

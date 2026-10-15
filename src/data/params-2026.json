@@ -1,0 +1,337 @@
+{
+  "_lisezmoi": "Règles et paramètres officiels du site (RECETTE §4). Les prix eux-mêmes (TrumpRx, NADAC, prix négociés Medicare, SDUD) sont téléchargés par scripts/build-data.py dans prices.json et sdud.json ; ce fichier porte les règles qu'aucun flux ne publie : paramètres de la Partie D, programme GLP-1 Bridge, offres temporaires des fabricants, règles Medicaid. Chaque valeur a été lue sur la source citée le jour de retrieved_at.",
+  "year": 2026,
+  "retrieved_at": "2026-10-15",
+  "valid_from": "2026-01-01",
+  "valid_to": "2027-12-31",
+  "partD": {
+    "_source": "cmsRate2027 (Table V-2, Updated Part D Benefit Parameters for Defined Standard Benefit, 2026 et 2027)",
+    "2026": {
+      "deductible": 615,
+      "oopCap": 2100,
+      "coinsurance": 0.25,
+      "lisFullBenefitOther": 4.9,
+      "lisOther": 12.65,
+      "lisFullBenefitGeneric": 1.6,
+      "lisGeneric": 5.1
+    },
+    "2027": {
+      "deductible": 700,
+      "oopCap": 2400,
+      "coinsurance": 0.25,
+      "lisFullBenefitOther": 5.0,
+      "lisOther": 14.4,
+      "lisFullBenefitGeneric": 1.65,
+      "lisGeneric": 5.8
+    }
+  },
+  "bridge": {
+    "_source": "cmsBridge (FAQ « What is the copay… » et « What GLP-1 drugs will be available », mise à jour du 6 avril 2026)",
+    "copay": 50,
+    "start": "2026-07-01",
+    "end": "2027-12-31",
+    "products": [
+      "wegovy",
+      "wegovy-pill",
+      "zepbound-kwikpen",
+      "foundayo"
+    ],
+    "countsTowardCap": false,
+    "lis": false,
+    "bmi": {
+      "alone": 35,
+      "withHfpefHtnCkd": 30,
+      "withPrediabetesMiStrokePad": 27
+    }
+  },
+  "makerOffers": {
+    "_source": "novocarePharmacy, novocareWegovy, novocareOzempic, lillyFoundayo, trumprx (textes des offres relevés le 2026-10-15)",
+    "novoIntro": {
+      "price": 199,
+      "fills": 2,
+      "doses": [
+        "0.25",
+        "0.5"
+      ],
+      "products": [
+        "ozempic",
+        "wegovy"
+      ],
+      "until": "2026-12-31"
+    },
+    "novoCopayCard": {
+      "floor": 25,
+      "maxSavings": 100,
+      "products": [
+        "ozempic",
+        "ozempic-pill",
+        "wegovy",
+        "wegovy-pill"
+      ]
+    },
+    "lillyLateRefillDays": 45,
+    "foundayoTemporary": {
+      "until": "2026-12-31",
+      "regular": {
+        "2.5": 199,
+        "5.5": 299
+      }
+    }
+  },
+  "medicaid": {
+    "_source": "ecfrCostSharing (42 CFR 447.53) et medicaidCostSharing (tableau FY 2013 publié par CMS)",
+    "preferredCopayFY2013": 4,
+    "nonPreferredCopayFY2013": 8,
+    "aggregateCapShareOfIncome": 0.05,
+    "defaultCopay": 4
+  },
+  "sources": {
+    "trumprx": {
+      "url": "https://trumprx.gov/",
+      "label": {
+        "en": "TrumpRx.gov, federal prescription price site (HHS)",
+        "es": "TrumpRx.gov, sitio federal de precios de medicamentos (HHS)"
+      }
+    },
+    "trumprxBrowse": {
+      "url": "https://trumprx.gov/browse",
+      "label": {
+        "en": "TrumpRx.gov, full list of medications and prices",
+        "es": "TrumpRx.gov, lista completa de medicamentos y precios"
+      }
+    },
+    "novocarePharmacy": {
+      "url": "https://www.novocare.com/pharmacy.html",
+      "label": {
+        "en": "Novo Nordisk, NovoCare Pharmacy self-pay prices",
+        "es": "Novo Nordisk, precios de autopago de NovoCare Pharmacy"
+      }
+    },
+    "novocareWegovy": {
+      "url": "https://www.novocare.com/pharmacy/wegovy.html",
+      "label": {
+        "en": "Novo Nordisk, Wegovy pricing table (NovoCare Pharmacy)",
+        "es": "Novo Nordisk, tabla de precios de Wegovy (NovoCare Pharmacy)"
+      }
+    },
+    "novocareOzempic": {
+      "url": "https://www.novocare.com/pharmacy/ozempic.html",
+      "label": {
+        "en": "Novo Nordisk, Ozempic pricing table (NovoCare Pharmacy)",
+        "es": "Novo Nordisk, tabla de precios de Ozempic (NovoCare Pharmacy)"
+      }
+    },
+    "lillyZepbound": {
+      "url": "https://www.lilly.com/lillydirect/zepbound",
+      "label": {
+        "en": "Eli Lilly, Zepbound self-pay prices on LillyDirect",
+        "es": "Eli Lilly, precios de autopago de Zepbound en LillyDirect"
+      }
+    },
+    "lillyFoundayo": {
+      "url": "https://www.lilly.com/lillydirect/medicines/foundayo",
+      "label": {
+        "en": "Eli Lilly, Foundayo self-pay prices on LillyDirect",
+        "es": "Eli Lilly, precios de autopago de Foundayo en LillyDirect"
+      }
+    },
+    "lillyMounjaro": {
+      "url": "https://www.lilly.com/lillydirect/mounjaro",
+      "label": {
+        "en": "Eli Lilly, Mounjaro on LillyDirect",
+        "es": "Eli Lilly, Mounjaro en LillyDirect"
+      }
+    },
+    "cmsNegotiation": {
+      "url": "https://www.cms.gov/priorities/medicare-prescription-drug-affordability/overview/medicare-drug-price-negotiation-program/selected-drugs-and-negotiated-prices",
+      "label": {
+        "en": "CMS, Selected Drugs and Negotiated Prices (Medicare Drug Price Negotiation Program)",
+        "es": "CMS, medicamentos seleccionados y precios negociados de Medicare"
+      }
+    },
+    "cmsFactSheet2027": {
+      "url": "https://www.cms.gov/files/document/fact-sheet-negotiated-prices-ipay-2027.pdf",
+      "label": {
+        "en": "CMS, fact sheet: negotiated prices for 2027",
+        "es": "CMS, hoja informativa: precios negociados para 2027"
+      }
+    },
+    "cmsFactSheet2026": {
+      "url": "https://www.cms.gov/files/document/fact-sheet-negotiated-prices-initial-price-applicability-year-2026.pdf",
+      "label": {
+        "en": "CMS, fact sheet: negotiated prices for 2026",
+        "es": "CMS, hoja informativa: precios negociados para 2026"
+      }
+    },
+    "cmsBridge": {
+      "url": "https://www.cms.gov/medicare/coverage/prescription-drug-coverage/medicare-glp-1-bridge",
+      "label": {
+        "en": "CMS, Medicare GLP-1 Bridge (overview and FAQs)",
+        "es": "CMS, Medicare GLP-1 Bridge (resumen y preguntas frecuentes)"
+      }
+    },
+    "cmsBridgeProviders": {
+      "url": "https://www.cms.gov/medicare/coverage/prescription-drug-coverage/medicare-glp-1-bridge/information-providers",
+      "label": {
+        "en": "CMS, Medicare GLP-1 Bridge: information for providers (eligibility, drugs, NDCs)",
+        "es": "CMS, Medicare GLP-1 Bridge: información para proveedores (requisitos, medicamentos)"
+      }
+    },
+    "medicareBridge": {
+      "url": "https://www.medicare.gov/glp1bridge",
+      "label": {
+        "en": "Medicare.gov, Medicare GLP-1 Bridge",
+        "es": "Medicare.gov, Medicare GLP-1 Bridge"
+      }
+    },
+    "cmsRate2027": {
+      "url": "https://www.cms.gov/files/document/2027-announcement.pdf",
+      "label": {
+        "en": "CMS, CY 2027 Rate Announcement, Table V-2: Part D benefit parameters for 2026 and 2027",
+        "es": "CMS, Anuncio de tarifas 2027, tabla V-2: parámetros de la Parte D para 2026 y 2027"
+      }
+    },
+    "medicarePartDCosts": {
+      "url": "https://www.medicare.gov/drug-coverage-part-d/costs-for-medicare-drug-coverage",
+      "label": {
+        "en": "Medicare.gov, costs for Medicare drug coverage",
+        "es": "Medicare.gov, costos de la cobertura de medicamentos"
+      }
+    },
+    "medicarePaymentPlan": {
+      "url": "https://www.medicare.gov/prescription-payment-plan",
+      "label": {
+        "en": "Medicare.gov, Medicare Prescription Payment Plan",
+        "es": "Medicare.gov, Plan de Pago de Recetas de Medicare"
+      }
+    },
+    "medicareExtraHelp": {
+      "url": "https://www.medicare.gov/basics/costs/help/drug-costs",
+      "label": {
+        "en": "Medicare.gov, help with drug costs (Extra Help)",
+        "es": "Medicare.gov, ayuda con el costo de los medicamentos (Ayuda Adicional)"
+      }
+    },
+    "cmsBalance": {
+      "url": "https://www.cms.gov/priorities/innovation/innovation-models/balance",
+      "label": {
+        "en": "CMS Innovation Center, BALANCE Model (GLP-1 coverage in Medicaid)",
+        "es": "Centro de Innovación de CMS, modelo BALANCE (GLP-1 en Medicaid)"
+      }
+    },
+    "ecfrPartD": {
+      "url": "https://www.ecfr.gov/current/title-42/section-423.100",
+      "label": {
+        "en": "42 CFR 423.100, definition of a Part D drug (weight-loss exclusion)",
+        "es": "42 CFR 423.100, definición de medicamento de la Parte D (exclusión de la pérdida de peso)"
+      }
+    },
+    "ecfrCostSharing": {
+      "url": "https://www.ecfr.gov/current/title-42/section-447.53",
+      "label": {
+        "en": "42 CFR 447.53, Medicaid cost sharing for drugs",
+        "es": "42 CFR 447.53, copagos de Medicaid para medicamentos"
+      }
+    },
+    "medicaidCostSharing": {
+      "url": "https://www.medicaid.gov/medicaid/cost-sharing/cost-sharing-out-pocket-costs",
+      "label": {
+        "en": "Medicaid.gov, cost sharing out-of-pocket costs",
+        "es": "Medicaid.gov, gastos de bolsillo y copagos"
+      }
+    },
+    "nadac": {
+      "url": "https://data.medicaid.gov/dataset/fbb83258-11c7-47f5-8b18-5f8e79f7e704",
+      "label": {
+        "en": "CMS, NADAC (National Average Drug Acquisition Cost) 2026, weekly file",
+        "es": "CMS, NADAC (costo nacional promedio de adquisición) 2026, archivo semanal"
+      }
+    },
+    "sdud": {
+      "url": "https://data.medicaid.gov/dataset/2957a7f9-9a15-453e-9afd-3bbdcbac8fd3",
+      "label": {
+        "en": "CMS, State Drug Utilization Data 2026 (Medicaid prescriptions by state)",
+        "es": "CMS, datos de uso de medicamentos por estado 2026 (Medicaid)"
+      }
+    },
+    "sdud2025": {
+      "url": "https://data.medicaid.gov/dataset/158a1baa-5506-400a-8ec3-97756f0b0536",
+      "label": {
+        "en": "CMS, State Drug Utilization Data 2025",
+        "es": "CMS, datos de uso de medicamentos por estado 2025"
+      }
+    },
+    "labelWegovy": {
+      "url": "https://www.novo-pi.com/wegovy.pdf",
+      "label": {
+        "en": "Wegovy prescribing information (FDA label, Novo Nordisk)",
+        "es": "Ficha técnica de Wegovy (etiqueta de la FDA, Novo Nordisk)"
+      }
+    },
+    "labelOzempic": {
+      "url": "https://www.novo-pi.com/ozempic.pdf",
+      "label": {
+        "en": "Ozempic prescribing information (FDA label, Novo Nordisk)",
+        "es": "Ficha técnica de Ozempic (etiqueta de la FDA, Novo Nordisk)"
+      }
+    },
+    "labelOzempicPill": {
+      "url": "https://www.novo-pi.com/ozempic-pill.pdf",
+      "label": {
+        "en": "Rybelsus and Ozempic tablets prescribing information (FDA label)",
+        "es": "Ficha técnica de Rybelsus y Ozempic en comprimidos (FDA)"
+      }
+    },
+    "labelZepbound": {
+      "url": "https://pi.lilly.com/us/zepbound-uspi.pdf",
+      "label": {
+        "en": "Zepbound prescribing information (FDA label, Eli Lilly)",
+        "es": "Ficha técnica de Zepbound (etiqueta de la FDA, Eli Lilly)"
+      }
+    },
+    "labelMounjaro": {
+      "url": "https://pi.lilly.com/us/mounjaro-uspi.pdf",
+      "label": {
+        "en": "Mounjaro prescribing information (FDA label, Eli Lilly)",
+        "es": "Ficha técnica de Mounjaro (etiqueta de la FDA, Eli Lilly)"
+      }
+    },
+    "labelFoundayo": {
+      "url": "https://pi.lilly.com/us/foundayo-uspi.pdf",
+      "label": {
+        "en": "Foundayo prescribing information (FDA label, Eli Lilly)",
+        "es": "Ficha técnica de Foundayo (etiqueta de la FDA, Eli Lilly)"
+      }
+    },
+    "labelTrulicity": {
+      "url": "https://pi.lilly.com/us/trulicity-uspi.pdf",
+      "label": {
+        "en": "Trulicity prescribing information (FDA label, Eli Lilly)",
+        "es": "Ficha técnica de Trulicity (etiqueta de la FDA, Eli Lilly)"
+      }
+    },
+    "medicareInsulin": {
+      "url": "https://www.medicare.gov/coverage/insulin",
+      "label": {
+        "en": "Medicare.gov, insulin coverage ($35 a month cap)",
+        "es": "Medicare.gov, cobertura de la insulina (tope de $35 al mes)"
+      }
+    },
+    "trumprxSitemap": {
+      "url": "https://trumprx.gov/sitemap.xml",
+      "label": {
+        "en": "TrumpRx.gov, list of all medication pages (sitemap)",
+        "es": "TrumpRx.gov, lista de todas las fichas (mapa del sitio)"
+      }
+    }
+  },
+  "cmsList2023": {
+    "_source": "cmsFactSheet2026 (List Price for 30-day Supply, CY 2023, WAC)",
+    "eliquis": 521,
+    "jardiance": 573,
+    "xarelto": 517,
+    "farxiga": 556,
+    "januvia": 527,
+    "entresto": 628
+  }
+}

@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title={'Legal Notice of GLP-1 Cost Check: Publisher, Host and Limits'} description={'Publisher, host, purpose, limits of liability and governing law of GLP-1 Cost Check, an independent site of US prescription drug price calculators. Not medical advice.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Legal notice' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Legal notice</h1>
+    <h2>Publisher</h2>
+    <LegalIdentity lang={lang} />
+    <p>Person responsible for the content of {SITE_URL}: {AUTHOR_NAME}.</p>
+    <h2>Host</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>What the site is for</h2>
+    <p>Free calculators and guides on the price of GLP-1 and other costly drugs in the United States, built from prices and rules published by TrumpRx.gov, CMS, Medicare.gov, state Medicaid data and the manufacturers. Results are <strong>estimates</strong>. They are not medical, legal or financial advice, not an offer to sell, and not a promise of coverage. The site is independent and not affiliated with any government agency, manufacturer, pharmacy or insurer; it uses no official logo. Method and limits: <a href={route('method', lang)}>method page</a>.</p>
+    <h2>Limits of liability</h2>
+    <p>Prices are read weekly and tested, but they change; no figure is guaranteed. The publisher is not liable for a decision taken on an estimate alone. Report an error through the <a href={route('contact', lang)}>contact page</a>.</p>
+    <h2>Trademarks</h2>
+    <p>Ozempic, Wegovy, Rybelsus and NovoCare are trademarks of Novo Nordisk; Zepbound, Mounjaro, Foundayo, Trulicity and LillyDirect of Eli Lilly; other drug names belong to their owners. They are cited to identify the products only.</p>
+    <h2>Embedding</h2><p>The calculator may be embedded free of charge with its credit link: see the <a href={route('widget', lang)}>embed page</a>.</p>
+    <h2>Governing law</h2><p>French law, the publisher’s place of establishment, without prejudice to mandatory consumer protections where you live. Updated: {displayDate(LAST_UPDATED, 'en-US')}.</p>
+  </div>
+</PageLayout>

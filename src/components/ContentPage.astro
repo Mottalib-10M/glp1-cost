@@ -1,0 +1,67 @@
+---
+/**
+ * Une page de `src/content/pages/`. Page outil : H1, chapeau, bloc citable replié, l'outil, le corps.
+ * Guide : H1, chapeau, bloc citable replié, le mini-simulateur, le corps (RECETTE §5, §9.3, §21).
+ * FAQ (affichée et balisée depuis la même liste), pages liées, sources et encart éditeur : PageLayout.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import MiniSim from './calc/MiniSim';
+import Clamp from './Clamp.astro';
+import Tool from './Tool.astro';
+import { route, ROUTES, hasRoute, type Locale } from '../i18n/routes';
+import { label } from '../i18n/nav';
+import { t } from '../i18n/ui';
+import { pageById } from '../lib/pages';
+import { helpers } from '../lib/helpers';
+import { P } from '../lib/engine/index';
+import { articleSchema, faqSchema, breadcrumbSchema, webPageSchema, webApplicationSchema } from '../lib/seo';
+import { AUTHOR_NAME } from '../data/site-config';
+import { getSpec } from '../lib/mini-specs';
+import type { PageDef } from '../lib/page-types';
+interface Props { page: PageDef; lang: Locale }
+const { page, lang } = Astro.props;
+const x = page[lang]!;
+const ui = t(lang);
+const path = route(page.id, lang);
+const H = helpers(lang);
+const parts = x.body(H).split(/<!--mini:([A-Za-z0-9_]+)-->/);
+const resume = x.resume(H);
+const intro = x.intro(H);
+const faqs = x.faqs(H);
+const jsonLd = [webPageSchema({ name: x.h1, description: x.description, path, lang }), breadcrumbSchema([{ name: ui.breadcrumbHome, path: route('home', lang) }, { name: x.nav, path }])];
+if (page.tool) jsonLd.push(webApplicationSchema({ name: x.h1, description: x.description, path, lang }));
+else jsonLd.unshift(articleSchema({ title: x.h1, description: x.description, path, lang }));
+if (faqs.length) jsonLd.push(faqSchema(faqs, lang));
+const related = page.related.filter((id) => ROUTES.some((r) => r.id === id) && hasRoute(id, lang)).map((id) => ({ href: route(id, lang), name: label(id, lang), description: (pageById(id)?.[lang] ?? pageById(id)?.en)?.card ?? '' }));
+const sources = page.sources.map((k) => ({ name: P.sources[k].label[lang], url: P.sources[k].url }));
+const methodHref = route('method', lang);
+const cible = page.miniHref ?? 'home';
+const miniHref = ROUTES.some((r) => r.id === cible) ? route(cible, lang) : route('home', lang);
+const mots = (s: string) => s.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+const spec = page.mini ? getSpec(page.mini, lang) : null;
+const motsAvantOutil = mots(`${intro} ${resume} ${ui.readMore} ${spec?.title ?? ''} ${spec?.inputs[0]?.label ?? ''}`);
+const dateEnHaut = !page.tool && (!page.mini || motsAvantOutil >= 250);
+---
+<PageLayout dateEnHaut={dateEnHaut} title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={faqs} related={related} sources={sources} breadcrumbs={[{ label: x.nav }]}>
+  <article>
+    <header class="mb-3">
+      <h1 class="text-[1.75rem] font-bold text-navy-900 max-sm:leading-tight sm:text-3xl md:text-4xl">{x.h1}</h1>
+      <p class="mt-2 text-base text-navy-700 sm:text-lg" set:html={intro} />
+    </header>
+    {page.tool ? (
+      <>
+        <Clamp text={resume} lang={lang} id={`clamp-${page.id}`} class="mb-3" />
+        <div data-outil class="mb-4"><Tool spec={page.tool} lang={lang} idPrefix={page.id.slice(0, 5)} /></div>
+      </>
+    ) : (
+      <>
+        <Clamp text={resume} lang={lang} id={`clamp-${page.id}`} class="mb-2" />
+        {page.mini && <MiniSim client:load spacing="mb-4 mt-2" kind={page.mini} lang={lang} href={miniHref} />}
+      </>
+    )}
+    <p class="mb-8 text-sm text-navy-600">{ui.reviewedBy} <a href={route('about', lang)} class="underline hover:text-navy-900">{AUTHOR_NAME}</a> · <a href={route('editorial', lang)} class="underline hover:text-navy-900">{ui.editorialPolicy}</a> · <a href={methodHref} class="underline hover:text-navy-900">{label('method', lang)}</a></p>
+    <div class="prose prose-slate max-w-none">
+      {parts.map((p, i) => i % 2 === 0 ? <Fragment set:html={p} /> : <MiniSim client:load secondary kind={p} lang={lang} href={miniHref} />)}
+    </div>
+  </article>
+</PageLayout>

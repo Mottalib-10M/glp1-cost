@@ -1,0 +1,21 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+const lang = 'es';
+---
+<PageLayout title="GLP-1 Cost Check: quién lee estos precios y cómo lo hace" description="GLP-1 Cost Check lo publica Radif Partners: una sola calculadora para todas las formas de pagar un GLP-1, de dónde salen los precios y cómo señalar un error." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Inicio', path: route('home', lang) }, { name: 'Quiénes somos', path: route('about', lang) }])]} breadcrumbs={[{ label: 'Quiénes somos' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">Quiénes somos</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>GLP-1 Cost Check es un sitio independiente publicado por Radif Partners. Existe porque el precio de Ozempic, Wegovy o Zepbound en 2026 depende de tantas piezas, las tablas de autopago de los fabricantes, TrumpRx, el tope y los precios negociados de Medicare, el GLP-1 Bridge y las decisiones de cada Medicaid, que una sola cifra casi nunca es la correcta para quien la lee.</p>
+    <h2>Cómo trabajamos</h2>
+    <p>Los precios se leen cada semana con un programa en TrumpRx.gov, en las páginas de los fabricantes y en los archivos de CMS, y cada actualización debe pasar nuestras pruebas antes de publicarse. La <a href={route('method', lang)}>metodología</a> enumera cada fuente y cada límite.</p>
+    <h2>Lo que nunca hacemos</h2>
+    <p>No vendemos medicamentos, no recetamos y no lo enviamos a ninguna farmacia, empresa de telesalud o aseguradora, y no recibimos dinero de ninguna. No damos consejo médico.</p>
+    <h2>Escríbanos</h2><p>Un precio cambió o una cifra parece incorrecta: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <p class="text-sm text-navy-600">Precios revisados el <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'es-US')}</time>.</p>
+  </div>
+</PageLayout>

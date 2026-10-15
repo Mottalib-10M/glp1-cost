@@ -1,0 +1,17 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title={'Contact GLP-1 Cost Check: Report a Price or an Error'} description={'Write to GLP-1 Cost Check to report a changed price, a wrong figure or a missing drug. We answer within a few days; we cannot give medical advice or sell medicine.'} lang={lang} noindex={true} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Useful reports: a self-pay price that changed on TrumpRx, NovoCare or LillyDirect, a Medicare rule we have wrong, a state Medicaid change, a drug you would like priced. Please give the page address and, if you can, the official page that shows the right figure.</p>
+    <p>We cannot answer medical questions, review prescriptions, sell or order medicine, or tell you whether you qualify for a program; for that, contact your prescriber, your plan, 1-800-MEDICARE or your state Medicaid agency.</p>
+    <p>Clinics, pharmacists and patient groups who want the GLP-1 price tool on their own pages will find the iframe code on the <a href={route("widget", lang)}>widget page</a>.</p>
+    <LegalIdentity lang={lang} />
+  </div>
+</PageLayout>

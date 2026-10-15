@@ -1,0 +1,53 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
+import * as M from '../../lib/engine/index';
+import { displayDate, formatMoney } from '../../lib/format';
+import catalog from '../../data/trumprx-catalog.json';
+import sdud from '../../data/sdud.json';
+const lang = 'en';
+const $ = (x: number, d = 0) => formatMoney(x, d, 'en');
+const d = (iso: string) => displayDate(iso, 'en-US');
+const P = M.P; const q26 = P.partD['2026']; const q27 = P.partD['2027'];
+const path = route('method', lang);
+const S = (k: M.SourceKey) => P.sources[k];
+---
+<PageLayout title="Method and Data: How GLP-1 Cost Check Prices Each Drug" description="How GLP-1 Cost Check builds every price: TrumpRx and maker self-pay grids, NADAC, CMS negotiated prices, Part D rules and Medicaid data, refreshed weekly." lang={lang} jsonLd={[webPageSchema({ name: 'Method and data', description: 'How every price is built', path, lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'Method and data', path }])]} breadcrumbs={[{ label: 'Method and data' }]}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Method and data</h1>
+    <p>Every figure on this site comes from a public source that we read with a script, date and link. Nothing is typed in by hand except the rules that no data file publishes, and those are written once, in a parameter file, with the page they come from. This page lists each source, how often it is read, how the calculator combines them, and what it cannot do.</p>
+    <h2>The sources and when we read them</h2>
+    <ul>
+      <li><strong>Self-pay prices.</strong> TrumpRx.gov publishes, on each drug page, a structured list of strengths with the TrumpRx price and the “original price”, which TrumpRx defines as the wholesale acquisition cost. We read the pages of the {M.PRODUCTS.filter((p) => p.doses.some((x) => x.trx)).length} drugs priced here, and every price is cross-checked against the manufacturer’s own pricing page (<a href={S('novocarePharmacy').url} rel="nofollow noopener" target="_blank">NovoCare Pharmacy</a>, <a href={S('lillyZepbound').url} rel="nofollow noopener" target="_blank">LillyDirect</a>). Last read: {d(M.DATA.retrieved_at)}.</li>
+      <li><strong>The full TrumpRx catalogue</strong>, {catalog.count} listings, read page by page from the site map. Last read: {d(catalog.retrieved_at)}.</li>
+      <li><strong>Pharmacy acquisition cost.</strong> CMS’s <a href={S('nadac').url} rel="nofollow noopener" target="_blank">NADAC 2026</a> weekly file, per unit, converted to a month with the quantities the makers use (one Ozempic pen, four Wegovy pens, 30 tablets…). File used: {d(M.DATA.nadacAsOf)}.</li>
+      <li><strong>Medicare negotiated prices.</strong> The CMS <a href={S('cmsNegotiation').url} rel="nofollow noopener" target="_blank">file of selected drugs and maximum fair prices</a>, dated {d(M.DATA.mfp.fileDate ?? M.DATA.retrieved_at)}. A line whose end date precedes its start date is treated as void.</li>
+      <li><strong>Part D parameters</strong>: deductible {$(q26.deductible)} and cap {$(q26.oopCap)} in 2026, {$(q27.deductible)} and {$(q27.oopCap)} in 2027, 25% coinsurance, Extra Help copays, from Table V-2 of the <a href={S('cmsRate2027').url} rel="nofollow noopener" target="_blank">CMS 2027 Rate Announcement</a>.</li>
+      <li><strong>Medicare GLP-1 Bridge</strong>: {$(P.bridge.copay)} copay, dates, drugs, BMI thresholds, from the <a href={S('cmsBridgeProviders').url} rel="nofollow noopener" target="_blank">CMS provider FAQ</a>.</li>
+      <li><strong>Medicaid</strong>: prescriptions and amounts reimbursed by state from CMS’s <a href={S('sdud').url} rel="nofollow noopener" target="_blank">State Drug Utilization Data</a>, quarters {sdud.quarters[0]} to {sdud.quarters[sdud.quarters.length - 1]}; copay ceilings from <a href={S('ecfrCostSharing').url} rel="nofollow noopener" target="_blank">42 CFR 447.53</a>.</li>
+      <li><strong>Drug facts</strong> (indications, dose escalation): the FDA prescribing information of each product, linked on its page.</li>
+    </ul>
+    <h2>Automatic refresh</h2>
+    <p>A scheduled job reruns the download script every week, rebuilds the site, replays the tests and publishes only if everything passes. If a source cannot be read, the job stops and the site keeps the last valid figures with their dates. Rules that no feed carries (Part D parameters, Bridge terms, maker offers and their end dates) are checked by hand each month.</p>
+    <h2>How the calculator computes “what you pay”</h2>
+    <ul>
+      <li><strong>No insurance</strong>: the self-pay price of the dose. A new patient on Ozempic or Wegovy 0.25 or 0.5 mg pays the starter price for the first two fills of 2026; a Lilly refill after 45 days pays the regular price. For 2027, offers announced to end on December 31, 2026 are removed. Drugs without a self-pay price show the pharmacy cost as a floor.</li>
+      <li><strong>Private insurance</strong>: your copay; for Novo Nordisk drugs, the savings card (at least $25, at most $100 off a month).</li>
+      <li><strong>Medicare Part D</strong>: the standard benefit applied to twelve months of the drug: deductible, then 25% of the cost until the cap. The cost basis is the negotiated price of the year when one exists, otherwise the list price published by TrumpRx, otherwise the NADAC cost. With Extra Help, the CMS maximum copay per brand prescription.</li>
+      <li><strong>Medicare for weight loss</strong>: {$(P.bridge.copay)} a month for Bridge drugs; otherwise the self-pay price, since Part D excludes the use.</li>
+      <li><strong>Medicaid</strong>: the copay you enter, nominal by federal rule.</li>
+    </ul>
+    <h2>Checks</h2>
+    <p>Automated tests replay reference cases worked out by hand from the published figures: the Part D share at the cap and below it, the month the cap is reached, the payment plan, the Novo card, starter and late-refill prices, the Bridge rules and the monthly conversion of NADAC. The build fails if one deviates.</p>
+    <h2>Limits</h2>
+    <ul>
+      <li>Real plans use tiers, copays and their own negotiated prices; the standard benefit is the upper bound of what Part D can charge you.</li>
+      <li>Retail cash prices outside the makers’ programs are not published; NADAC is a floor, not a quote.</li>
+      <li>Medicaid prescription counts show that a state pays for a drug, not for which use; state coverage rules are confirmed by the state agency.</li>
+      <li>Compounded drugs are not priced: they are not FDA-approved and no official source publishes a price.</li>
+      <li>Nothing here is medical advice. Estimates only.</li>
+    </ul>
+    <p>Errors: see the <a href={route('contact', lang)}>contact page</a> and the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+  </div>
+</PageLayout>
