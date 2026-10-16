@@ -1,5 +1,5 @@
 import { definePage } from '../../lib/page-types';
-import { cash, list, nadac, PD, partD, capMonth, monthName, asOf, $en } from './_util';
+import { cash, list, nadac, PD, partD, capMonth, monthName, asOf, $en, cardOf } from './_util';
 import { product, mfpFirstYear } from '../../lib/engine/index';
 
 const TR = product('trulicity');
@@ -8,7 +8,7 @@ export default definePage({
   id: 'trulicity-cost', group: 'glp1', order: 9,
   tool: { kind: 'calc', product: 'trulicity', dose: '1.5', lock: true },
   related: ['ozempic-cost', 'mounjaro-cost', 'medicare-negotiated-prices', 'medicare-part-d-cap', 'trumprx-prices'],
-  sources: ['trumprx', 'nadac', 'cmsNegotiation', 'cmsRate2027', 'labelTrulicity'],
+  sources: ['trumprx', 'lillyTrulicitySavings', 'nadac', 'cmsNegotiation', 'cmsRate2027', 'labelTrulicity'],
   en: {
     slug: 'trulicity-cost', nav: 'Trulicity cost', card: 'Trulicity by dose: LillyDirect cash price, list price, Part D, 2028 negotiation',
     title: `Trulicity Cost 2026: ${$en(cash('trulicity', '1.5'))} a Month Cash, Medicare and 2028`,
@@ -23,7 +23,7 @@ ${h.table(['Strength', 'Self-pay a month', 'List price', 'Pharmacy cost (NADAC)'
 <h2>Selected for 2028</h2>
 <p>The Inflation Reduction Act lets Medicare negotiate the price of drugs with high Part D spending that have been on the market for years. Trulicity is on the list of fifteen drugs CMS selected for prices that apply from January 1, 2028, alongside Biktarvy, Xolair and others; the negotiated amounts are not public yet. Until then, Part D plans pay their own contracted price and your share follows the standard rules. The ${h.a('medicare-negotiated-prices', 'negotiated prices page')} tracks every selected drug.</p>
 <h2>Cash or coverage</h2>
-<p>For an uninsured patient, the self-pay price is a large cut on what a pharmacy would otherwise charge. With employer coverage, check your plan’s copay first: if it is above the self-pay price, paying cash may cost less month to month, but those payments do not count toward your deductible or out-of-pocket maximum.</p>`,
+<p>For an uninsured patient, the self-pay price is a large cut on what a pharmacy would otherwise charge. With employer coverage that includes Trulicity, Lilly’s savings card lets you pay as little as ${h.usd(cardOf('trulicity').floor)}, saving at most ${h.usd(cardOf('trulicity').maxMonthly)} a month and ${h.usd(cardOf('trulicity').maxAnnual!)} a year until December 31, 2026. Without the card, check your plan’s copay first: if it is above the self-pay price, paying cash may cost less month to month, but those payments do not count toward your deductible or out-of-pocket maximum.</p>`,
     faqs: (h) => [
       { q: 'How much is Trulicity without insurance?', a: `${h.usd(cash('trulicity', '1.5'))} a month for four pens of any strength, through LillyDirect or the TrumpRx listing that sends you there. The list price is ${h.usd(list('trulicity', '1.5'))}, and pharmacies pay about ${h.usd(nadac('trulicity', '1.5'))} for a carton. All four strengths cost the same, whatever the dose step.` },
       { q: 'Will Medicare negotiate the price of Trulicity?', a: `Yes. CMS selected Trulicity in the third negotiation cycle, for a price that applies from January 1, ${mfpFirstYear(TR) ?? 2028}. The amount will be published by CMS once negotiations end; until then Part D plans pay their own price. We will add it to the calculator as soon as CMS publishes it.` },

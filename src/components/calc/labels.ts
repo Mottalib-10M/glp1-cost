@@ -1,5 +1,5 @@
 /** Libellés des produits, dosages et règles dans les deux langues (anglais, espagnol des États-Unis). */
-import type { ProductDef, DoseDef, Result, Coverage } from '../../lib/engine/index';
+import type { ProductDef, DoseDef, Result, Coverage, CardResult } from '../../lib/engine/index';
 import { formatMoney } from '../../lib/format';
 import type { L } from './kit';
 
@@ -32,13 +32,28 @@ export function ruleText(r: Result, p: ProductDef, l: L, year: number): string {
   const es = l === 'es';
   const prog = p.program === 'TrumpRx' ? 'TrumpRx' : `${p.program ?? ''}${p.program ? ' / TrumpRx' : ''}`;
   switch (r.rule) {
-    case 'cash': return es ? `Precio de autopago publicado por ${prog}, el mismo en las dos vías.` : `Self-pay price published by ${prog}, the same through both.`;
+    case 'cash': {
+      const both = p.program && p.program !== 'TrumpRx';
+      if (both && r.cash && !r.cash.confirmed) return es ? `Precio de autopago publicado por TrumpRx; ${p.program} no muestra precio para esta dosis en su página.` : `Self-pay price published by TrumpRx; ${p.program} lists no price for this dose on its page.`;
+      return es ? `Precio de autopago publicado por ${prog}, el mismo en las dos vías.` : `Self-pay price published by ${prog}, the same through both.`;
+    }
     case 'cash-intro': return es ? `Paciente nuevo: ${r.cash!.intro!.fills} primeros meses a ${$(r.cash!.intro!.price)}, luego ${$(r.cash!.monthly)} (oferta hasta el 31 de diciembre de 2026).` : `New patient: first ${r.cash!.intro!.fills} months at ${$(r.cash!.intro!.price)}, then ${$(r.cash!.monthly)} (offer runs to December 31, 2026).`;
     case 'cash-late': return es ? `Renovación más de 45 días después de la anterior: se aplica el precio normal de ${$(r.cash!.late!)} en vez de ${$(r.cash!.monthly)}.` : `Refill more than 45 days after the last one: the regular ${$(r.cash!.late!)} applies instead of ${$(r.cash!.monthly)}.`;
     case 'cash-temp': return es ? `Precio rebajado hasta el 31 de diciembre de 2026; luego ${$(r.cash!.temporary!.regular)} al mes.` : `Temporary price to December 31, 2026; ${$(r.cash!.temporary!.regular)} a month after that.`;
     case 'no-cash': return es ? 'Ni el fabricante ni TrumpRx publican un precio de autopago para este medicamento: en la farmacia, el precio en efectivo parte como mínimo del costo que paga la farmacia (NADAC).' : 'Neither the maker nor TrumpRx publishes a self-pay price for this drug: at the counter, a cash price starts at least at what the pharmacy pays for it (NADAC).';
     case 'commercial': return es ? 'Su copago, tal como lo fija su plan. Los cupones del fabricante no se aplican si el plan no cubre el medicamento.' : 'Your copay, as your plan sets it. Maker coupons only apply when the plan covers the drug.';
-    case 'commercial-card': return es ? 'Tarjeta de ahorro de Novo Nordisk: paga al menos $25 y ahorra hasta $100 al mes sobre su copago.' : 'Novo Nordisk savings card: you pay at least $25 and save up to $100 a month off your copay.';
+    case 'commercial-card': {
+      const k = r.card as CardResult;
+      const c = k.card;
+      const cap = c.maxAnnual != null ? (es ? `, como máximo ${$(c.maxAnnual)} al año${c.maxFills ? ` y ${c.maxFills} surtidos` : ''}` : `, at most ${$(c.maxAnnual)} a year${c.maxFills ? ` and ${c.maxFills} fills` : ''}`) : '';
+      const end = c.ends ? (es ? ' Según sus condiciones, el ahorro termina el 31 de diciembre de 2026.' : ' Its terms end the savings on December 31, 2026.') : '';
+      const hit = k.annualCapped ? (es ? ` Aquí el tope anual se alcanza: ahorra ${$(k.yearlySaving)} en el año, no ${$(12 * k.saving)}.` : ` The yearly cap binds here: it saves ${$(k.yearlySaving)} over the year, not ${$(12 * k.saving)}.`) : '';
+      return es ? `Tarjeta de ahorro de ${c.maker}: paga al menos ${$(c.floor)} y ahorra hasta ${$(c.maxMonthly)} al mes sobre su copago${cap}.${hit}${end}` : `${c.maker} savings card: you pay at least ${$(c.floor)} and save up to ${$(c.maxMonthly)} a month off your copay${cap}.${hit}${end}`;
+    }
+    case 'commercial-card-ended': {
+      const m = (r.card as { card: { maker: string } }).card.maker;
+      return es ? `La tarjeta de ahorro de ${m} termina el 31 de diciembre de 2026 según sus condiciones, y aún no hay condiciones publicadas para ${year}: se muestra su copago sin tarjeta.` : `The ${m} savings card ends on December 31, 2026 under its terms, and no ${year} terms are published yet: your copay is shown without a card.`;
+    }
     case 'partd': return es ? `Beneficio estándar de la Parte D ${year}: deducible y luego 25% del costo, sin llegar al tope anual.` : `Standard ${year} Part D benefit: deductible, then 25% of the cost, below the yearly cap.`;
     case 'partd-cap': return es ? `Se alcanza el tope anual de la Parte D ${year}: no paga nada más ese año por los medicamentos cubiertos.` : `You reach the ${year} Part D yearly cap: nothing more to pay that year for covered drugs.`;
     case 'partd-lis': return es ? `Ayuda Adicional (Extra Help): copago máximo por receta fijado por CMS para ${year}.` : `Extra Help: the per-prescription maximum CMS sets for ${year}.`;

@@ -155,13 +155,39 @@ export function bridgeEligible(p: ProductDef, d: DoseDef): boolean {
   return list.includes(p.id);
 }
 
-/** Carte d'économies Novo Nordisk (assurance commerciale qui couvre le médicament) : on paie au
- *  moins 25 $, l'économie est plafonnée à 100 $ par mois. */
+/** Carte d'économies d'un fabricant (assurance commerciale qui couvre le médicament), telle que
+ *  ses conditions la publient : on paie au moins `floor`, l'économie est plafonnée à `maxMonthly`
+ *  par mois et, chez Lilly, à `maxAnnual` et `maxFills` renouvellements par année civile. */
+export interface SavingsCardDef { id: string; maker: string; products: string[]; forms?: string[]; floor: number; maxMonthly: number; maxAnnual: number | null; maxFills: number | null; ends: string | null; source: string }
+export const SAVINGS_CARDS = P.savingsCards.cards as unknown as SavingsCardDef[];
+
+/** Carte applicable à un produit et à une forme, ou null (vial ou KwikPen Zepbound, produits sans carte). */
+export function savingsCardFor(p: ProductDef, d?: DoseDef): SavingsCardDef | null {
+  const c = SAVINGS_CARDS.find((x) => x.products.includes(p.id));
+  if (!c) return null;
+  if (c.forms && !(d?.form && c.forms.includes(d.form))) return null;
+  return c;
+}
+/** La carte est-elle encore en vigueur l'année donnée (fin publiée au 31 décembre 2026 chez Lilly) ? */
+export const cardActive = (c: SavingsCardDef, year: Year) => !c.ends || Number(c.ends.slice(0, 4)) >= year;
+
+export interface CardResult { card: SavingsCardDef; monthly: number; saving: number; yearly: number; yearlySaving: number; annualCapped: boolean }
+/** Ce que l'on paie avec la carte : par mois, puis sur 12 mois avec le plafond annuel et le nombre de
+ *  renouvellements admis (les mois au-delà sont payés au copaiement plein). */
+export function cardCost(c: SavingsCardDef, copay: number): CardResult {
+  const monthly = copay <= c.floor ? copay : Math.max(c.floor, copay - c.maxMonthly);
+  const saving = copay - monthly;
+  const months = Math.min(12, c.maxFills ?? 12);
+  const raw = months * saving;
+  const yearlySaving = c.maxAnnual != null ? Math.min(raw, c.maxAnnual) : raw;
+  return { card: c, monthly: round2(monthly), saving: round2(saving), yearly: round2(12 * copay - yearlySaving), yearlySaving: round2(yearlySaving), annualCapped: yearlySaving < 12 * saving - 0.005 };
+}
+
+/** Copaiement d'un mois avec la carte du fabricant (null si aucune carte ne s'applique). Compatibilité. */
 export function novoCard(p: ProductDef, copay: number): number | null {
-  const c = P.makerOffers.novoCopayCard;
-  if (!c.products.includes(p.id)) return null;
-  if (copay <= c.floor) return round2(copay);
-  return round2(Math.max(c.floor, copay - c.maxSavings));
+  const c = savingsCardFor(p, p.doses[0]);
+  if (!c || c.id !== 'novo') return null;
+  return cardCost(c, copay).monthly;
 }
 
 export interface Query {
@@ -172,10 +198,12 @@ export interface Query {
 export interface Result {
   monthly: number | null; yearly: number | null;
   /** Ce qui produit le chiffre : la règle appliquée, en clé de libellé. */
-  rule: 'cash' | 'cash-intro' | 'cash-late' | 'cash-temp' | 'no-cash' | 'commercial' | 'commercial-card' | 'partd' | 'partd-cap' | 'partd-lis' | 'bridge' | 'not-covered-cash' | 'not-covered-none' | 'medicaid';
+  rule: 'cash' | 'cash-intro' | 'cash-late' | 'cash-temp' | 'no-cash' | 'commercial' | 'commercial-card' | 'commercial-card-ended' | 'partd' | 'partd-cap' | 'partd-lis' | 'bridge' | 'not-covered-cash' | 'not-covered-none' | 'medicaid';
   cash: CashPrice | null; list: number | null; nadac: ReturnType<typeof nadacMonth>; mfp: number | null;
   partD: { basis: 'mfp' | 'wac' | 'nadac'; monthlyCost: number; oop: number; capped: boolean; capMonth: number | null } | null;
   bridge: boolean;
+  /** Carte d'économies appliquée au copaiement (assurance commerciale), ou carte arrivée à échéance. */
+  card?: CardResult | { card: SavingsCardDef; ended: true };
 }
 
 /** Le calcul du site : ce que paie la personne, par mois et par an, dans sa situation. */
@@ -197,9 +225,13 @@ export function compute(q: Query): Result {
   switch (q.coverage) {
     case 'cash': return cashRes();
     case 'commercial': {
-      const card = novoCard(p, q.copay);
-      const mo = card ?? q.copay;
-      return { ...base, monthly: round2(mo), yearly: round2(12 * mo), rule: card !== null && card < q.copay ? 'commercial-card' : 'commercial' };
+      const c = savingsCardFor(p, d);
+      if (c && !cardActive(c, q.year)) return { ...base, monthly: round2(q.copay), yearly: round2(12 * q.copay), rule: 'commercial-card-ended', card: { card: c, ended: true } };
+      if (c) {
+        const k = cardCost(c, q.copay);
+        if (k.saving > 0) return { ...base, monthly: k.monthly, yearly: k.yearly, rule: 'commercial-card', card: k };
+      }
+      return { ...base, monthly: round2(q.copay), yearly: round2(12 * q.copay), rule: 'commercial' };
     }
     case 'partd': {
       if (p.partD === 'excluded' || !pd) {

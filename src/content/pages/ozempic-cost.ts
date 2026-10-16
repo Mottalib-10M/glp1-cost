@@ -8,7 +8,7 @@ export default definePage({
   id: 'ozempic-cost', group: 'glp1', order: 1,
   tool: { kind: 'calc', product: 'ozempic', dose: '1', lock: true },
   related: ['ozempic-pill-cost', 'ozempic-vs-wegovy-cost', 'ozempic-vs-mounjaro-cost', 'medicare-part-d-cap', 'medicare-negotiated-prices', 'glp-1-prices-2027'],
-  sources: ['novocareOzempic', 'trumprx', 'nadac', 'cmsNegotiation', 'cmsRate2027', 'labelOzempic'],
+  sources: ['novocareOzempic', 'novocareOzempicCard', 'trumprx', 'nadac', 'cmsNegotiation', 'cmsRate2027', 'labelOzempic'],
   en: {
     slug: 'ozempic-cost', nav: 'Ozempic cost', card: 'Ozempic pen by dose: self-pay, list price, Part D cap and the 2027 negotiated price',
     title: `Ozempic Cost 2026: ${$en(cash('ozempic', '1'))} Without Insurance, Part D and 2027`,

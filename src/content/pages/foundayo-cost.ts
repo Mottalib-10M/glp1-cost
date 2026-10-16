@@ -1,5 +1,5 @@
 import { definePage } from '../../lib/page-types';
-import { cash, late, list, nadac, BR, asOf, $en, $es } from './_util';
+import { cash, late, list, nadac, BR, asOf, $en, $es, cardOf } from './_util';
 import { product, cashPrice, dose } from '../../lib/engine/index';
 
 const F = product('foundayo');
@@ -9,7 +9,7 @@ export default definePage({
   id: 'foundayo-cost', group: 'glp1', order: 7,
   tool: { kind: 'calc', product: 'foundayo', dose: '9', lock: true },
   related: ['wegovy-pill-vs-foundayo-cost', 'wegovy-pill-cost', 'lilly-45-day-refill-rule', 'medicare-glp-1-bridge', 'glp-1-prices-2027'],
-  sources: ['lillyFoundayo', 'trumprx', 'nadac', 'cmsBridgeProviders', 'labelFoundayo'],
+  sources: ['lillyFoundayo', 'lillyFoundayoSavings', 'trumprx', 'nadac', 'cmsBridgeProviders', 'labelFoundayo'],
   en: {
     slug: 'foundayo-cost', nav: 'Foundayo cost', card: 'Foundayo (orforglipron) by dose: cash price, temporary cuts to 2026, Medicare Bridge',
     title: `Foundayo Cost 2026: ${$en(cash('foundayo', '0.8'))} to ${$en(cash('foundayo', '17.2'))} a Month, Orforglipron Pill`,
@@ -24,7 +24,7 @@ ${h.table(['Tablet', 'Self-pay 2026', 'Self-pay 2027', 'Late refill', 'List pric
 <h2>Why its list price is lower</h2>
 <p>At ${h.usd(list('foundayo', '9'))} a month, Foundayo’s wholesale price sits well below Wegovy’s ${h.usd(list('wegovy', '2.4'))} and the Zepbound vial’s ${h.usd(list('zepbound', 'vial-5'))}. It is a small molecule rather than a peptide, made by chemical synthesis rather than in living cells, and it reached the market in 2026, after both makers had already cut their self-pay prices. For a cash payer the gap with the Wegovy pill is small at the start and nil at maintenance; the ${h.a('wegovy-pill-vs-foundayo-cost', 'comparison page')} prices both side by side.</p>
 <h2>Medicare and insurance</h2>
-<p>Foundayo is approved only for weight management, the use Part D cannot cover by law. CMS added it to the Medicare GLP-1 Bridge after its approval, in an update dated April 6, 2026: Part D enrollees who meet the body-mass-index criteria pay ${h.usd(BR.copay)} a month through December 31, 2027, with a prior authorization sent by the prescriber. With employer coverage that includes it, Lilly states that eligible commercially insured patients can pay as little as $25 a month.</p>`,
+<p>Foundayo is approved only for weight management, the use Part D cannot cover by law. CMS added it to the Medicare GLP-1 Bridge after its approval, in an update dated April 6, 2026: Part D enrollees who meet the body-mass-index criteria pay ${h.usd(BR.copay)} a month through December 31, 2027, with a prior authorization sent by the prescriber. With employer coverage that includes it, Lilly’s savings card lets eligible patients pay as little as ${h.usd(cardOf('foundayo').floor)} a month, with savings capped at ${h.usd(cardOf('foundayo').maxMonthly)} a month, ${h.usd(cardOf('foundayo').maxAnnual!)} a year and ${cardOf('foundayo').maxFills} fills, until December 31, 2026.</p>`,
     faqs: (h) => [
       { q: 'How much does Foundayo cost without insurance?', a: `On LillyDirect or through TrumpRx: ${h.usd(cash('foundayo', '0.8'))} a month for 0.8 or 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} for 5.5 mg and ${h.usd(cash('foundayo', '9'))} for 9, 14.5 or 17.2 mg. The 2.5 and 5.5 mg prices are reduced until December 31, 2026; after that they are ${h.usd(reg('2.5'))} and ${h.usd(reg('5.5'))}.` },
       { q: 'Does Medicare cover Foundayo?', a: `Not through Part D, which excludes drugs used for weight loss. Since July 1, 2026 the Medicare GLP-1 Bridge covers Foundayo for Part D enrollees who meet CMS’s criteria, at ${h.usd(BR.copay)} a month, until December 31, 2027. The prescriber files a prior authorization.` },
@@ -45,7 +45,7 @@ ${h.table(['Comprimido', 'Autopago 2026', 'Autopago 2027', 'Renovación tardía'
 <h2>Por qué su precio de lista es menor</h2>
 <p>Con ${h.usd(list('foundayo', '9'))} al mes, el precio mayorista de Foundayo queda muy por debajo de los ${h.usd(list('wegovy', '2.4'))} de Wegovy y los ${h.usd(list('zepbound', 'vial-5'))} del frasco de Zepbound. Es una molécula pequeña, no un péptido: se fabrica por síntesis química y no en células vivas, y salió al mercado en 2026, cuando los dos fabricantes ya habían bajado sus precios de autopago. Para quien paga en efectivo, la diferencia con Wegovy en pastilla es pequeña al principio y nula en mantenimiento.</p>
 <h2>Medicare y seguros</h2>
-<p>Foundayo solo está aprobado para controlar el peso, el uso que la Parte D no puede cubrir por ley. CMS lo añadió al Medicare GLP-1 Bridge tras su aprobación, en una actualización del 6 de abril de 2026: quienes están en la Parte D y cumplen los criterios de índice de masa corporal pagan ${h.usd(BR.copay)} al mes hasta el 31 de diciembre de 2027, con una autorización previa de su médico. Con un seguro del empleador que lo cubre, Lilly indica que las personas elegibles con seguro comercial pueden pagar desde $25 al mes.</p>`,
+<p>Foundayo solo está aprobado para controlar el peso, el uso que la Parte D no puede cubrir por ley. CMS lo añadió al Medicare GLP-1 Bridge tras su aprobación, en una actualización del 6 de abril de 2026: quienes están en la Parte D y cumplen los criterios de índice de masa corporal pagan ${h.usd(BR.copay)} al mes hasta el 31 de diciembre de 2027, con una autorización previa de su médico. Con un seguro del empleador que lo cubre, la tarjeta de ahorro de Lilly permite pagar desde ${h.usd(cardOf('foundayo').floor)} al mes, con un ahorro máximo de ${h.usd(cardOf('foundayo').maxMonthly)} al mes, ${h.usd(cardOf('foundayo').maxAnnual!)} al año y ${cardOf('foundayo').maxFills} surtidos, hasta el 31 de diciembre de 2026.</p>`,
     faqs: (h) => [
       { q: '¿Cuánto cuesta Foundayo sin seguro?', a: `En LillyDirect o por TrumpRx: ${h.usd(cash('foundayo', '0.8'))} al mes en 0.8 o 2.5 mg, ${h.usd(cash('foundayo', '5.5'))} en 5.5 mg y ${h.usd(cash('foundayo', '9'))} en 9, 14.5 o 17.2 mg. Los precios de 2.5 y 5.5 mg están rebajados hasta el 31 de diciembre de 2026; después serán ${h.usd(reg('2.5'))} y ${h.usd(reg('5.5'))}.` },
       { q: '¿Medicare cubre Foundayo?', a: `No por la Parte D, que excluye los medicamentos para bajar de peso. Desde el 1 de julio de 2026, el Medicare GLP-1 Bridge cubre Foundayo para quienes están en la Parte D y cumplen los criterios de CMS, a ${h.usd(BR.copay)} al mes, hasta el 31 de diciembre de 2027.` },

@@ -131,11 +131,12 @@ export default function GlpCalculator({ lang = 'en', productId = 'wegovy', doseI
     const base = { product: pid, dose: d.id, year: yr, newPatient, onTime, copay, extraHelp: extra, medicaidCopay: mcopay };
     const y = (c: Coverage) => compute({ ...base, coverage: c }).yearly;
     const out: Line[] = [{ label: T(lang, 'Paying cash (self-pay)', 'Pagando en efectivo (autopago)'), value: y('cash'), text: T(lang, 'no published price', 'sin precio publicado') }];
+    if (cov === 'commercial') { const rc = compute({ ...base, coverage: 'commercial' }); out.push({ label: rc.rule === 'commercial-card' ? T(lang, `Private plan, ${usd(copay, lang)} copay with the savings card`, `Plan privado, copago de ${usd(copay, lang)} con la tarjeta`) : T(lang, `Private plan, ${usd(copay, lang)} copay`, `Plan privado, copago de ${usd(copay, lang)}`), value: rc.yearly }); }
     if (p.partD !== 'excluded') out.push({ label: T(lang, 'Medicare Part D, covered use', 'Parte D de Medicare, uso cubierto'), value: y('partd') });
     if (r.bridge) out.push({ label: T(lang, 'Medicare GLP-1 Bridge, weight loss', 'Medicare GLP-1 Bridge, bajar de peso'), value: y('weightonly') });
     out.push({ label: T(lang, `Medicaid, at a ${usd(mcopay, lang, 2)} copay`, `Medicaid, con copago de ${usd(mcopay, lang, 2)}`), value: y('medicaid') });
     return out;
-  }, [pid, d.id, yr, newPatient, onTime, copay, extra, mcopay, lang, p.partD, r.bridge]);
+  }, [pid, d.id, yr, newPatient, onTime, copay, extra, mcopay, lang, p.partD, r.bridge, cov]);
   const below = (
     <div className="mt-6 border-t border-navy-200 pt-4">
       <Bars lang={lang} title={T(lang, `The whole of ${yr}, by way of paying`, `Todo ${yr}, según la forma de pago`)} lines={yearLines} />

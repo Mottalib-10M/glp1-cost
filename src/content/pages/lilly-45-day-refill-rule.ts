@@ -5,7 +5,7 @@ export default definePage({
   id: 'lilly-45-day-refill-rule', group: 'guides', order: 63,
   mini: 'lateRefill', miniHref: 'zepbound-cost',
   related: ['zepbound-cost', 'foundayo-cost', 'zepbound-vial-vs-kwikpen', 'glp-1-cost-first-year', 'trumprx-vs-novocare-lillydirect'],
-  sources: ['lillyZepbound', 'lillyFoundayo', 'trumprx'],
+  sources: ['lillyZepboundSavings', 'lillyFoundayoSavings', 'lillyZepbound', 'lillyFoundayo', 'trumprx'],
   en: {
     slug: 'lilly-45-day-refill-rule', nav: 'LillyDirect 45-day refill rule', card: 'Why a late Zepbound or Foundayo refill costs more, and how much',
     title: 'Zepbound 45-Day Refill Rule 2026: What a Late Refill Costs',
@@ -17,7 +17,7 @@ export default definePage({
 <h2>Which doses the rule covers</h2>
 ${h.table(['Product and dose', 'Refill within 45 days', 'Refill after 45 days', 'Difference'], [['Zepbound 7.5 mg', cash('zepbound', 'vial-7.5'), late('zepbound', 'vial-7.5')], ['Zepbound 10 mg', cash('zepbound', 'vial-10'), late('zepbound', 'vial-10')], ['Zepbound 12.5 mg', cash('zepbound', 'vial-12.5'), late('zepbound', 'vial-12.5')], ['Zepbound 15 mg', cash('zepbound', 'vial-15'), late('zepbound', 'vial-15')], ['Foundayo 14.5 mg', cash('foundayo', '14.5'), late('foundayo', '14.5')], ['Foundayo 17.2 mg', cash('foundayo', '17.2'), late('foundayo', '17.2')]].map(([n, a, b]) => [n as string, h.usd(a as number), h.usd(b as number), h.usd((b as number) - (a as number))]), 'LillyDirect and TrumpRx self-pay prices; vials and KwikPens priced alike.', ['l', 'r', 'r', 'r'])}
 <h2>How the 45 days are counted</h2>
-<p>Lilly’s terms count from the delivery or receipt of the previous fill to the next one, not from the prescription date. The first fill at a new dose always gets the lower price, which is why moving up a dose never triggers the higher price by itself. A pause in treatment, for illness, travel or a supply problem, followed by a restart at the same dose, is the typical way to cross the line.</p>
+<p>Lilly’s terms count from the delivery or receipt of the previous fill to the next one, not from the prescription date. Lilly’s terms grant the lower price automatically on the first purchase of a covered dose, and new and existing patients are both eligible, so moving up to 7.5 mg or above starts at the program price. A pause in treatment, for illness, travel or a supply problem, followed by a restart at the same dose, is the typical way to cross the line.</p>
 <h2>What it means over a year</h2>
 <p>Thirteen four-week cycles fit in a year, and a refill pattern of every 28 days leaves a 17-day margin each time. One late refill at 10 mg costs ${h.usd(late('zepbound', 'vial-10') - cash('zepbound', 'vial-10'))}; three cost ${h.usd(3 * (late('zepbound', 'vial-10') - cash('zepbound', 'vial-10')))}. That is still far below the list price of a single-dose pen month, but it can turn Zepbound from cheaper than Wegovy at maintenance into more expensive.</p>
 <h2>Why Lilly does it</h2>

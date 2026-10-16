@@ -29,17 +29,17 @@ const S = (k: M.SourceKey) => P.sources[k];
       <li><strong>Drug facts</strong> (indications, dose escalation): the FDA prescribing information of each product, linked on its page.</li>
     </ul>
     <h2>Automatic refresh</h2>
-    <p>A scheduled job reruns the download script every week, rebuilds the site, replays the tests and publishes only if everything passes. If a source cannot be read, the job stops and the site keeps the last valid figures with their dates. Rules that no feed carries (Part D parameters, Bridge terms, maker offers and their end dates) are checked by hand each month.</p>
+    <p>A scheduled job reruns the download script every week, rebuilds the site, replays the tests and publishes only if everything passes. If a source cannot be read, the job stops and the site keeps the last valid figures with their dates. Rules that no feed carries (Part D parameters, Bridge terms, maker offers, savings card terms and their end dates) are checked by hand each month.</p>
     <h2>How the calculator computes “what you pay”</h2>
     <ul>
       <li><strong>No insurance</strong>: the self-pay price of the dose. A new patient on Ozempic or Wegovy 0.25 or 0.5 mg pays the starter price for the first two fills of 2026; a Lilly refill after 45 days pays the regular price. For 2027, offers announced to end on December 31, 2026 are removed. Drugs without a self-pay price show the pharmacy cost as a floor.</li>
-      <li><strong>Private insurance</strong>: your copay; for Novo Nordisk drugs, the savings card (at least $25, at most $100 off a month).</li>
+      <li><strong>Private insurance</strong>: your copay, minus the maker’s savings card when one applies, with the floor, monthly maximum, yearly cap and fill limit its terms publish: Novo Nordisk (<a href={S('novoSavingsTerms').url} rel="nofollow noopener" target="_blank">Wegovy, Ozempic and their tablets</a>), Lilly (<a href={S('lillyZepboundSavings').url} rel="nofollow noopener" target="_blank">Zepbound single-dose pen</a>, <a href={S('lillyMounjaroSavings').url} rel="nofollow noopener" target="_blank">Mounjaro</a>, <a href={S('lillyFoundayoSavings').url} rel="nofollow noopener" target="_blank">Foundayo</a>, <a href={S('lillyTrulicitySavings').url} rel="nofollow noopener" target="_blank">Trulicity</a>). Terms read on {d(P.savingsCards.retrieved_at)}. Lilly’s cards end on December 31, 2026, so none is applied for 2027.</li>
       <li><strong>Medicare Part D</strong>: the standard benefit applied to twelve months of the drug: deductible, then 25% of the cost until the cap. The cost basis is the negotiated price of the year when one exists, otherwise the list price published by TrumpRx, otherwise the NADAC cost. With Extra Help, the CMS maximum copay per brand prescription.</li>
       <li><strong>Medicare for weight loss</strong>: {$(P.bridge.copay)} a month for Bridge drugs; otherwise the self-pay price, since Part D excludes the use.</li>
-      <li><strong>Medicaid</strong>: the copay you enter, nominal by federal rule.</li>
+      <li><strong>Medicaid</strong>: the copay you enter, {$(P.medicaid.defaultCopay)} by default, the preferred-drug maximum of the FY 2013 table, the latest CMS publishes; 42 CFR 447.53 indexes it each October, but CMS publishes no indexed amount and states set their own copays at or below it.</li>
     </ul>
     <h2>Checks</h2>
-    <p>Automated tests replay reference cases worked out by hand from the published figures: the Part D share at the cap and below it, the month the cap is reached, the payment plan, the Novo card, starter and late-refill prices, the Bridge rules and the monthly conversion of NADAC. The build fails if one deviates.</p>
+    <p>Automated tests replay reference cases worked out by hand from the published figures: the Part D share at the cap and below it, the month the cap is reached, the payment plan, the savings cards and their yearly caps, starter and late-refill prices, the Bridge rules and the monthly conversion of NADAC. The build fails if one deviates.</p>
     <h2>Limits</h2>
     <ul>
       <li>Real plans use tiers, copays and their own negotiated prices; the standard benefit is the upper bound of what Part D can charge you.</li>

@@ -252,14 +252,21 @@ MAKER_PAGES = {
 }
 
 
+# Fiche TrumpRx → page LillyDirect qui publie le prix par dosage.
+LILLY_PAGE = {'zepbound': 'zepbound', 'zepbound-kwikpen': 'zepbound', 'mounjaro': 'mounjaro', 'foundayo': 'foundayo', 'trulicity': 'trulicity'}
+
+
 def maker_text():
-    out = {}
+    out = {'lillyPages': {}}
     for k, urls in MAKER_PAGES.items():
         txt = ''
         for u in urls:
             r = _safe(get, u)
             if r:
-                txt += ' ' + text_of(r)
+                t = text_of(r)
+                txt += ' ' + t
+                if k == 'lilly':
+                    out['lillyPages'][u.rstrip('/').rsplit('/', 1)[-1]] = t
         out[k] = txt
     return out
 
@@ -282,9 +289,17 @@ def main():
     print('Fabricants : pages de prix')
     mk = maker_text()
     for s, r in trx.items():
-        txt = mk['novo'] if 'Novo' in (r['maker'] or '') else mk['lilly'] if 'Lilly' in (r['maker'] or '') else ''
+        lilly = 'Lilly' in (r['maker'] or '')
+        txt = mk['novo'] if 'Novo' in (r['maker'] or '') else mk['lilly'] if lilly else ''
         for v in r['variants']:
-            v['onMaker'] = bool(txt) and (f"${v['trx']:,.0f}" in txt or f"${v['trx']:.0f}" in txt)
+            price = f"${v['trx']:,.0f}"
+            if lilly and s in LILLY_PAGE:
+                # LillyDirect publie un prix par dosage (« 7.5 mg/0.5 mL … Self-pay price: Starting at $449/month ») :
+                # le prix TrumpRx doit figurer en face du même dosage, pas seulement quelque part sur la page.
+                mg = re.escape((v['strength'] or '').split('/')[0])
+                v['onMaker'] = bool(re.search(mg + r' ?mg[^$]{0,160}?Starting at ' + re.escape(price) + r'\b', mk['lillyPages'].get(LILLY_PAGE[s], '')))
+            else:
+                v['onMaker'] = bool(txt) and (price in txt or f"${v['trx']:.0f}" in txt)
     print('NADAC')
     nd = {}
     for like in NADAC_LIKE:

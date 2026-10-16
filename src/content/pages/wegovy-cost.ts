@@ -8,7 +8,7 @@ export default definePage({
   id: 'wegovy-cost', group: 'glp1', order: 3,
   tool: { kind: 'calc', product: 'wegovy', dose: '2.4', lock: true },
   related: ['wegovy-pill-cost', 'wegovy-vs-zepbound-cost', 'ozempic-vs-wegovy-cost', 'medicare-glp-1-bridge', 'does-medicare-cover-wegovy', 'medicaid-glp-1-coverage'],
-  sources: ['novocareWegovy', 'trumprx', 'nadac', 'cmsNegotiation', 'cmsBridge', 'labelWegovy'],
+  sources: ['novocareWegovy', 'novoSavingsTerms', 'trumprx', 'nadac', 'cmsNegotiation', 'cmsBridge', 'labelWegovy'],
   en: {
     slug: 'wegovy-cost', nav: 'Wegovy cost', card: 'Wegovy injection by dose: self-pay, list price, Medicare and the $50 Bridge',
     title: `Wegovy Cost 2026: ${$en(cash('wegovy', '2.4'))} a Month Self-Pay, Every Dose Priced`,

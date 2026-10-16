@@ -45,7 +45,7 @@
     }
   },
   "makerOffers": {
-    "_source": "novocarePharmacy, novocareWegovy, novocareOzempic, lillyFoundayo, trumprx (textes des offres relevés le 2026-10-15)",
+    "_source": "novocarePharmacy, novocareWegovy, novocareOzempic, lillyFoundayo, trumprx (textes des offres relevés le 2026-10-15) ; cartes d'économies : novoSavingsTerms, novocareOzempicCard, lillyZepboundSavings, lillyMounjaroSavings, lillyFoundayoSavings, lillyTrulicitySavings (conditions relues le 2026-10-16)",
     "novoIntro": {
       "price": 199,
       "fills": 2,
@@ -59,16 +59,6 @@
       ],
       "until": "2026-12-31"
     },
-    "novoCopayCard": {
-      "floor": 25,
-      "maxSavings": 100,
-      "products": [
-        "ozempic",
-        "ozempic-pill",
-        "wegovy",
-        "wegovy-pill"
-      ]
-    },
     "lillyLateRefillDays": 45,
     "foundayoTemporary": {
       "until": "2026-12-31",
@@ -79,10 +69,18 @@
     }
   },
   "medicaid": {
-    "_source": "ecfrCostSharing (42 CFR 447.53) et medicaidCostSharing (tableau FY 2013 publié par CMS)",
+    "_source": "ecfrCostSharing (42 CFR 447.53(b), eCFR à jour au 2026-10-14), ecfrAggregate (447.56(f)), medicaidCostSharing (tableau FY 2013, dernier publié par CMS, relu le 2026-10-16), blsMedicalCpi (indice CPI-U « medical care », CUUR0000SAM, septembre), pl11921 (loi 119-21, sec. 71120)",
+    "retrieved_at": "2026-10-16",
+    "tableYear": "FY 2013",
     "preferredCopayFY2013": 4,
     "nonPreferredCopayFY2013": 8,
+    "nonPreferredShareAbove150": 0.2,
     "aggregateCapShareOfIncome": 0.05,
+    "indexedSince": "2015-10-01",
+    "cpiMedicalSep2013": 428.026,
+    "cpiMedicalSep2025": 584.858,
+    "expansionCostSharingFrom": "2028-10-01",
+    "expansionCostSharingMax": 35,
     "defaultCopay": 4
   },
   "sources": {
@@ -229,8 +227,8 @@
     "ecfrCostSharing": {
       "url": "https://www.ecfr.gov/current/title-42/section-447.53",
       "label": {
-        "en": "42 CFR 447.53, Medicaid cost sharing for drugs",
-        "es": "42 CFR 447.53, copagos de Medicaid para medicamentos"
+        "en": "42 CFR 447.53, Medicaid cost sharing for drugs (maximums and yearly indexing)",
+        "es": "42 CFR 447.53, copagos de Medicaid para medicamentos (máximos e indexación anual)"
       }
     },
     "medicaidCostSharing": {
@@ -323,6 +321,90 @@
         "en": "TrumpRx.gov, list of all medication pages (sitemap)",
         "es": "TrumpRx.gov, lista de todas las fichas (mapa del sitio)"
       }
+    },
+    "novoSavingsTerms": {
+      "url": "https://www.novocare.com/eligibility/wegovy-savings-card.html",
+      "label": {
+        "en": "Novo Nordisk, Wegovy savings offer terms and conditions (WegovyTerms.com)",
+        "es": "Novo Nordisk, condiciones de la oferta de ahorro de Wegovy (WegovyTerms.com)"
+      }
+    },
+    "novocareOzempicCard": {
+      "url": "https://www.novocare.com/ozempic/savings-card.html",
+      "label": {
+        "en": "Novo Nordisk, Ozempic savings card (pen and pill)",
+        "es": "Novo Nordisk, tarjeta de ahorro de Ozempic (pluma y pastilla)"
+      }
+    },
+    "lillyZepboundSavings": {
+      "url": "https://zepbound.lilly.com/coverage-savings#terms-and-conditions",
+      "label": {
+        "en": "Eli Lilly, Zepbound savings card terms and conditions",
+        "es": "Eli Lilly, condiciones de la tarjeta de ahorro de Zepbound"
+      }
+    },
+    "lillyMounjaroSavings": {
+      "url": "https://mounjaro.lilly.com/savings-resources#special-terms-and-conditions",
+      "label": {
+        "en": "Eli Lilly, Mounjaro savings card terms and conditions",
+        "es": "Eli Lilly, condiciones de la tarjeta de ahorro de Mounjaro"
+      }
+    },
+    "lillyFoundayoSavings": {
+      "url": "https://foundayo.lilly.com/coverage-savings",
+      "label": {
+        "en": "Eli Lilly, Foundayo savings card terms and conditions",
+        "es": "Eli Lilly, condiciones de la tarjeta de ahorro de Foundayo"
+      }
+    },
+    "lillyTrulicitySavings": {
+      "url": "https://trulicity.lilly.com/savings-resources",
+      "label": {
+        "en": "Eli Lilly, Trulicity savings card terms and conditions",
+        "es": "Eli Lilly, condiciones de la tarjeta de ahorro de Trulicity"
+      }
+    },
+    "ecfrAggregate": {
+      "url": "https://www.ecfr.gov/current/title-42/section-447.56",
+      "label": {
+        "en": "42 CFR 447.56, Medicaid exemptions and the 5% aggregate limit",
+        "es": "42 CFR 447.56, exenciones de Medicaid y límite total del 5%"
+      }
+    },
+    "blsMedicalCpi": {
+      "url": "https://data.bls.gov/timeseries/CUUR0000SAM",
+      "label": {
+        "en": "BLS, CPI-U medical care index (series CUUR0000SAM)",
+        "es": "BLS, índice de precios de la atención médica (serie CUUR0000SAM)"
+      }
+    },
+    "pl11921": {
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
+      "label": {
+        "en": "Public Law 119-21, section 71120 (Medicaid cost sharing for expansion adults from October 2028)",
+        "es": "Ley pública 119-21, sección 71120 (copagos de Medicaid para adultos de la expansión desde octubre de 2028)"
+      }
+    },
+    "usc1396r8": {
+      "url": "https://www.govinfo.gov/link/uscode/42/1396r-8?link-type=html",
+      "label": {
+        "en": "42 U.S.C. 1396r-8(d)(2)(A), drugs a state Medicaid program may exclude (weight loss)",
+        "es": "42 U.S.C. 1396r-8(d)(2)(A), medicamentos que Medicaid puede excluir (pérdida de peso)"
+      }
+    },
+    "medicarePaymentPlanUsing": {
+      "url": "https://www.medicare.gov/prescription-payment-plan/using-payment-option",
+      "label": {
+        "en": "Medicare.gov, using the Medicare Prescription Payment Plan (bills, missed payments, leaving)",
+        "es": "Medicare.gov, cómo usar el Plan de Pago de Recetas de Medicare"
+      }
+    },
+    "medicarePaymentPlanBefore": {
+      "url": "https://www.medicare.gov/prescription-payment-plan/before-payment-option",
+      "label": {
+        "en": "Medicare.gov, how the monthly payment plan bill is calculated",
+        "es": "Medicare.gov, cómo se calcula la factura mensual del plan de pago"
+      }
     }
   },
   "cmsList2023": {
@@ -333,5 +415,82 @@
     "farxiga": 556,
     "januvia": 527,
     "entresto": 628
+  },
+  "savingsCards": {
+    "_source": "Conditions officielles des cartes, relues le 2026-10-16 : WegovyTerms.com (novocare.com/eligibility/wegovy-savings-card.html) et novocare.com/ozempic/savings-card.html pour Novo Nordisk ; « Terms and Conditions » de zepbound.lilly.com/coverage-savings, mounjaro.lilly.com/savings-resources, foundayo.lilly.com/coverage-savings et trulicity.lilly.com/savings-resources pour Lilly. Assurance commerciale qui couvre le médicament ; programmes publics exclus. floor = « pay as little as » ; maxMonthly = économie maximale par mois ; maxAnnual et maxFills = plafond annuel et nombre de renouvellements par année civile (null : aucun publié) ; forms = formes admises ; ends = fin publiée des économies (null : aucune).",
+    "retrieved_at": "2026-10-16",
+    "cards": [
+      {
+        "id": "novo",
+        "maker": "Novo Nordisk",
+        "products": [
+          "ozempic",
+          "ozempic-pill",
+          "wegovy",
+          "wegovy-pill"
+        ],
+        "floor": 25,
+        "maxMonthly": 100,
+        "maxAnnual": null,
+        "maxFills": null,
+        "ends": null,
+        "source": "novoSavingsTerms"
+      },
+      {
+        "id": "zepbound",
+        "maker": "Eli Lilly",
+        "products": [
+          "zepbound"
+        ],
+        "forms": [
+          "pen"
+        ],
+        "floor": 25,
+        "maxMonthly": 100,
+        "maxAnnual": 1300,
+        "maxFills": 13,
+        "ends": "2026-12-31",
+        "source": "lillyZepboundSavings"
+      },
+      {
+        "id": "mounjaro",
+        "maker": "Eli Lilly",
+        "products": [
+          "mounjaro"
+        ],
+        "floor": 25,
+        "maxMonthly": 150,
+        "maxAnnual": 1950,
+        "maxFills": 13,
+        "ends": "2026-12-31",
+        "source": "lillyMounjaroSavings"
+      },
+      {
+        "id": "foundayo",
+        "maker": "Eli Lilly",
+        "products": [
+          "foundayo"
+        ],
+        "floor": 25,
+        "maxMonthly": 100,
+        "maxAnnual": 1000,
+        "maxFills": 10,
+        "ends": "2026-12-31",
+        "source": "lillyFoundayoSavings"
+      },
+      {
+        "id": "trulicity",
+        "maker": "Eli Lilly",
+        "products": [
+          "trulicity"
+        ],
+        "floor": 25,
+        "maxMonthly": 150,
+        "maxAnnual": 1950,
+        "maxFills": 13,
+        "ends": "2026-12-31",
+        "source": "lillyTrulicitySavings"
+      }
+    ]
   }
 }

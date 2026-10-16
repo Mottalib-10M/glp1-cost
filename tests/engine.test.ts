@@ -1,7 +1,7 @@
 /**
  * Tests du moteur. Deux familles :
  *  - formules, sur des entrées fixes, résultats recalculés à la main (Partie D, plan de paiement,
- *    carte Novo, offres) : ils ne dépendent pas du relevé ;
+ *    cartes d'économies Novo et Lilly, offres) : ils ne dépendent pas du relevé ;
  *  - cohérence des données relevées (chaque prix d'autopago sous le prix catalogue, chaque produit
  *    a un prix…), plus des cas de référence datés du relevé du 2026-10-15, joués seulement sur ce relevé.
  */
@@ -52,6 +52,41 @@ describe('Carte d’économies Novo Nordisk (au moins 25 $, économie plafonnée
   it('ne s’applique pas aux produits Lilly', () => expect(M.novoCard(M.product('zepbound'), 150)).toBeNull());
 });
 
+describe('Cartes d’économies Lilly (conditions relues le 2026-10-16)', () => {
+  const card = (id: string) => M.SAVINGS_CARDS.find((c) => c.id === id)!;
+  const q = (product: M.ProductId, dose: string, copay: number, year: M.Year = 2026) => M.compute({ product, dose, year, coverage: 'commercial', newPatient: false, onTime: true, copay, extraHelp: 'none', medicaidCopay: 4 });
+  // Mounjaro : 25 $ au moins, 150 $ par mois, 1 950 $ par an, 13 renouvellements.
+  it.each([[250, 100, 1200], [150, 25, 300], [175, 25, 300], [20, 20, 240], [600, 450, 5400]])('Mounjaro, copaiement %d $ → %d $ par mois, %d $ sur 12 mois', (c, m, y) => {
+    const k = M.cardCost(card('mounjaro'), c); close(k.monthly, m); close(k.yearly, y);
+  });
+  // Foundayo : 100 $ par mois mais 1 000 $ par an et 10 renouvellements → 12 × 150 − 1 000 = 800 $.
+  it('Foundayo : le plafond annuel de 1 000 $ s’applique', () => {
+    const k = M.cardCost(card('foundayo'), 150); close(k.monthly, 50); close(k.yearlySaving, 1000); close(k.yearly, 800); expect(k.annualCapped).toBe(true);
+  });
+  it('Zepbound : pluma de dosis única seulement (ni flacon ni KwikPen)', () => {
+    const z = M.product('zepbound');
+    expect(M.savingsCardFor(z, M.dose(z, 'pen-5'))?.id).toBe('zepbound');
+    expect(M.savingsCardFor(z, M.dose(z, 'vial-5'))).toBeNull();
+    expect(M.savingsCardFor(z, M.dose(z, 'kwikpen-5'))).toBeNull();
+    close(q('zepbound', 'pen-5', 150).monthly!, 50); close(q('zepbound', 'pen-5', 150).yearly!, 600);
+    expect(q('zepbound', 'vial-5', 150).rule).toBe('commercial');
+  });
+  it('2027 : aucune carte Lilly (fin des économies au 31 décembre 2026), la carte Novo reste', () => {
+    const r = q('mounjaro', '7.5', 250, 2027); expect(r.rule).toBe('commercial-card-ended'); close(r.monthly!, 250);
+    expect(q('wegovy', '2.4', 250, 2027).rule).toBe('commercial-card');
+  });
+  it('Novo : aucun plafond annuel publié, 12 × 100 $ d’économie', () => {
+    close(M.cardCost(card('novo'), 250).yearly, 1800);
+  });
+});
+
+describe('Medicaid (42 CFR 447.53, tableau FY 2013 de CMS)', () => {
+  it('maximums du tableau FY 2013 et hausse de l’indice médical (BLS) de sept. 2013 à sept. 2025', () => {
+    expect(M.P.medicaid.preferredCopayFY2013).toBe(4); expect(M.P.medicaid.nonPreferredCopayFY2013).toBe(8);
+    close(M.P.medicaid.cpiMedicalSep2025 / M.P.medicaid.cpiMedicalSep2013 - 1, 0.3664, 0.0001);
+  });
+});
+
 describe('GLP-1 Bridge (FAQ CMS)', () => {
   const z = M.product('zepbound');
   it('Zepbound : KwikPen seulement', () => {
@@ -91,7 +126,7 @@ describe('Cohérence des données relevées', () => {
   it('le prix négocié de la sémaglutide existe pour 2027', () => expect(M.mfp(M.product('ozempic'), 2027)).toBeGreaterThan(0));
 });
 
-describe.runIf(M.DATA.retrieved_at === '2026-10-15')('Cas de référence du relevé du 2026-10-15', () => {
+describe.runIf(['2026-10-15', '2026-10-16'].includes(M.DATA.retrieved_at))('Cas de référence des relevés du 2026-10-15 et du 2026-10-16 (prix identiques)', () => {
   it('Wegovy 0,25 mg, nouveau patient 2026 : 2 × 199 + 10 × 349 = 3 888 $', () => {
     const r = M.compute({ product: 'wegovy', dose: '0.25', year: 2026, coverage: 'cash', newPatient: true, onTime: true, copay: 0, extraHelp: 'none', medicaidCopay: 4 });
     close(r.yearly!, 3888); close(r.monthly!, 349); expect(r.rule).toBe('cash-intro');

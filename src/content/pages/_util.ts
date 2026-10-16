@@ -35,3 +35,5 @@ import { formatMoney } from '../../lib/format';
 /** Montant pour un titre ou une description (chaîne fixe au build, suit les données au relevé suivant). */
 export const $en = (x: number) => formatMoney(x, 0, 'en');
 export const $es = (x: number) => formatMoney(x, 0, 'es');
+/** Carte d'économies d'un fabricant (conditions publiées, params-2026.json). */
+export const cardOf = (id: string) => M.SAVINGS_CARDS.find((c) => c.id === id)!;

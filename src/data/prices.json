@@ -1,5 +1,5 @@
 {
- "retrieved_at": "2026-10-15",
+ "retrieved_at": "2026-10-16",
  "trumprx": {
   "ozempic": {
    "slug": "ozempic",
@@ -645,7 +645,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     }
    ]
   },
@@ -1210,7 +1210,7 @@
   "file": "CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.csv",
   "url": "https://www.cms.gov/files/zip/selected-drug-list-negotiated-prices-also-known-maximum-fair-prices-statutezip.zip",
   "fileDate": "2026-09-21",
-  "retrieved_at": "2026-10-15",
+  "retrieved_at": "2026-10-16",
   "drugs": {
    "ELIQUIS; ELIQUIS SPRINKLE": {
     "ingredient": "APIXABAN",

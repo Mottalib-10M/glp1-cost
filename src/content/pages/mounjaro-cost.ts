@@ -1,5 +1,5 @@
 import { definePage } from '../../lib/page-types';
-import { cash, list, nadac, PD, partD, capMonth, monthName, asOf, $en, $es } from './_util';
+import { cash, list, nadac, PD, partD, capMonth, monthName, asOf, $en, $es, cardOf } from './_util';
 import { product } from '../../lib/engine/index';
 
 const MJ = product('mounjaro');
@@ -8,7 +8,7 @@ export default definePage({
   id: 'mounjaro-cost', group: 'glp1', order: 6,
   tool: { kind: 'calc', product: 'mounjaro', dose: '7.5', lock: true },
   related: ['ozempic-vs-mounjaro-cost', 'zepbound-cost', 'trulicity-cost', 'medicare-part-d-cap', 'medicare-prescription-payment-plan'],
-  sources: ['lillyMounjaro', 'trumprx', 'nadac', 'cmsRate2027', 'labelMounjaro'],
+  sources: ['lillyMounjaro', 'lillyMounjaroSavings', 'trumprx', 'nadac', 'cmsRate2027', 'labelMounjaro'],
   en: {
     slug: 'mounjaro-cost', nav: 'Mounjaro cost', card: 'Mounjaro by dose: one cash price, list price, Part D cap and payment plan',
     title: `Mounjaro Cost 2026: ${$en(cash('mounjaro', '7.5'))} a Month Cash, Medicare Part D Cap`,
@@ -23,7 +23,7 @@ ${h.table(['Strength', 'Self-pay a month', 'List price', 'Pharmacy cost (NADAC)'
 <h2>Medicare Part D, month by month</h2>
 <p>A Part D enrollee on Mounjaro meets the ${h.usd(PD(2026).deductible)} deductible with the first fill, then pays a quarter of the price of each later carton. Under the defined standard benefit that adds up to the ${h.usd(PD(2026).oopCap)} ceiling in ${monthName(capMonth('mounjaro', '7.5', 2026), 'en')}; the rest of the year costs nothing. The heavy months come first, which is what the ${h.a('medicare-prescription-payment-plan', 'Medicare Prescription Payment Plan')} smooths out by billing the same amount each month. In 2027 the cap rises to ${h.usd(PD(2027).oopCap)} and, with no negotiated price for tirzepatide, a full year at list price costs about ${h.usd(partD('mounjaro', '7.5', 2027))}.</p>
 <h2>With employer insurance</h2>
-<p>Commercial plans usually cover Mounjaro for type 2 diabetes with a prior authorization. Lilly runs a savings program for commercially insured patients; it is closed to government programs. If your plan denies coverage, the ${h.usd(cash('mounjaro', '5'))} self-pay price is the reference, and payments made that way do not count toward your deductible.</p>`,
+<p>Commercial plans usually cover Mounjaro for type 2 diabetes with a prior authorization. With a plan that covers it, Lilly’s savings card lets you pay as little as ${h.usd(cardOf('mounjaro').floor)}, saving at most ${h.usd(cardOf('mounjaro').maxMonthly)} a month and ${h.usd(cardOf('mounjaro').maxAnnual!)} a year until December 31, 2026; it is closed to government programs. A ${h.usd(250)} copay becomes ${h.usd(250 - cardOf('mounjaro').maxMonthly)}. If your plan denies coverage, the ${h.usd(cash('mounjaro', '5'))} self-pay price is the reference, and payments made that way do not count toward your deductible.</p>`,
     faqs: (h) => [
       { q: 'How much does Mounjaro cost without insurance?', a: `${h.usd(cash('mounjaro', '5'))} a month for any strength from 2.5 to 15 mg, the self-pay price TrumpRx lists for Lilly’s program. Without the program, pharmacies work from a list price of ${h.usd(list('mounjaro', '5'))} for four pens. Ask for the Lilly self-pay price by name at the pharmacy.` },
       { q: 'Why is Mounjaro more expensive than Zepbound in cash?', a: `Lilly prices them separately: Mounjaro ${h.usd(cash('mounjaro', '10'))} at every dose, Zepbound vials and KwikPens ${h.usd(cash('zepbound', 'vial-2.5'))} to ${h.usd(cash('zepbound', 'vial-10'))}. They share tirzepatide but are approved for different conditions, and coverage follows the indication, not the molecule. Only a prescriber can switch one for the other.` },
@@ -44,7 +44,7 @@ ${h.table(['Concentración', 'Autopago al mes', 'Precio de lista', 'Costo farmac
 <h2>La Parte D de Medicare, mes a mes</h2>
 <p>Una persona en la Parte D que usa Mounjaro paga el deducible de ${h.usd(PD(2026).deductible)} con la primera receta y luego una cuarta parte del precio de cada caja. Con el beneficio estándar eso llega al techo de ${h.usd(PD(2026).oopCap)} en ${monthName(capMonth('mounjaro', '7.5', 2026), 'es')}; el resto del año no cuesta nada. Los meses caros llegan primero, y eso es lo que suaviza el Plan de Pago de Recetas de Medicare, que factura el mismo monto cada mes. En 2027 el tope sube a ${h.usd(PD(2027).oopCap)} y, sin precio negociado para la tirzepatida, un año completo a precio de lista cuesta unos ${h.usd(partD('mounjaro', '7.5', 2027))}.</p>
 <h2>Con seguro del empleador</h2>
-<p>Los planes comerciales suelen cubrir Mounjaro para la diabetes tipo 2 con autorización previa. Lilly tiene un programa de ahorro para personas con seguro comercial, cerrado a los programas públicos. Si su plan niega la cobertura, la referencia es el precio de autopago de ${h.usd(cash('mounjaro', '5'))}, que no cuenta para el deducible.</p>`,
+<p>Los planes comerciales suelen cubrir Mounjaro para la diabetes tipo 2 con autorización previa. Con un plan que lo cubre, la tarjeta de ahorro de Lilly permite pagar desde ${h.usd(cardOf('mounjaro').floor)}, con un ahorro máximo de ${h.usd(cardOf('mounjaro').maxMonthly)} al mes y ${h.usd(cardOf('mounjaro').maxAnnual!)} al año hasta el 31 de diciembre de 2026; está cerrada a los programas públicos. Un copago de ${h.usd(250)} queda en ${h.usd(250 - cardOf('mounjaro').maxMonthly)}. Si su plan niega la cobertura, la referencia es el precio de autopago de ${h.usd(cash('mounjaro', '5'))}, que no cuenta para el deducible.</p>`,
     faqs: (h) => [
       { q: '¿Cuánto cuesta Mounjaro sin seguro?', a: `${h.usd(cash('mounjaro', '5'))} al mes en cualquier concentración de 2.5 a 15 mg, el precio de autopago que TrumpRx publica para el programa de Lilly. Sin el programa, las farmacias parten de un precio de lista de ${h.usd(list('mounjaro', '5'))} por cuatro plumas. Pida el precio de autopago de Lilly por su nombre.` },
       { q: '¿Por qué Mounjaro es más caro que Zepbound en efectivo?', a: `Lilly les pone precios distintos: Mounjaro ${h.usd(cash('mounjaro', '10'))} en todas las dosis, Zepbound en frasco o KwikPen de ${h.usd(cash('zepbound', 'vial-2.5'))} a ${h.usd(cash('zepbound', 'vial-10'))}. Comparten la tirzepatida pero están aprobados para enfermedades distintas, y la cobertura sigue la indicación. Solo su médico puede cambiar uno por otro.` },

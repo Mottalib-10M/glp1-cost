@@ -8,7 +8,7 @@ export default definePage({
   id: 'ozempic-pill-cost', group: 'glp1', order: 2,
   tool: { kind: 'calc', product: 'ozempic-pill', dose: '4', lock: true },
   related: ['ozempic-cost', 'rybelsus-cost', 'wegovy-pill-cost', 'glp-1-price-comparison', 'medicare-part-d-cap'],
-  sources: ['novocarePharmacy', 'trumprx', 'nadac', 'cmsNegotiation', 'labelOzempicPill'],
+  sources: ['novocarePharmacy', 'novocareOzempicCard', 'trumprx', 'nadac', 'cmsNegotiation', 'labelOzempicPill'],
   en: {
     slug: 'ozempic-pill-cost', nav: 'Ozempic pill cost', card: 'Ozempic tablets 1.5, 4 and 9 mg: cash price, list price and Medicare',
     title: `Ozempic Pill Cost 2026: From ${$en(cash('ozempic-pill', '1.5'))} a Month, All 3 Strengths`,
