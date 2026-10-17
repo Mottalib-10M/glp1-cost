@@ -1,7 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import LegalIdentity from '../../components/LegalIdentity.astro';
-import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { AUTHOR_NAME, CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
 import { route } from '../../i18n/routes';
 import { displayDate } from '../../lib/format';
 const lang = 'es';
@@ -16,6 +16,10 @@ const lang = 'es';
     <h2>Finalidad</h2>
     <p>Calculadoras y guías gratuitas sobre el precio de los GLP-1 y otros medicamentos caros en Estados Unidos, basadas en precios y reglas publicados por TrumpRx.gov, CMS, Medicare.gov, datos de Medicaid y los fabricantes. Los resultados son una <strong>estimación indicativa</strong>: no son consejo médico, legal ni financiero. El sitio es independiente y no está afiliado a ningún organismo, fabricante, farmacia ni aseguradora.</p>
     <h2>Marcas</h2><p>Ozempic, Wegovy, Rybelsus y NovoCare son marcas de Novo Nordisk; Zepbound, Mounjaro, Foundayo, Trulicity y LillyDirect de Eli Lilly. Se citan solo para identificar los productos.</p>
+    {/* gen-legal-pages:terms */}
+    <h2>Datos personales y cookies</h2>
+    {GA4_ID ? (<p>Lo que introduce en las calculadoras no sale de su navegador. El sitio instala cookies de medición de audiencia de Google Analytics (<code>_ga</code>, <code>_ga_{GA4_ID.replace('G-', '')}</code>, 13 meses como máximo), sin publicidad{CLARITY_ID && '; la estabilidad de las páginas se mide con Microsoft Clarity, sin cookies'}. Detalles, base jurídica y cómo oponerse: <a href={route('privacy', lang)}>política de privacidad</a> y página de <a href={route('cookies', lang)}>cookies</a>.</p>) : (<p>Lo que introduce en las calculadoras no sale de su navegador y el sitio no instala cookies{CLARITY_ID && '; la estabilidad de las páginas se mide de forma anónima con Microsoft Clarity, sin cookies'}. Véase la <a href={route('privacy', lang)}>política de privacidad</a> y la página de <a href={route('cookies', lang)}>cookies</a>.</p>)}
+    {/* /gen-legal-pages:terms */}
     <h2>Ley aplicable</h2><p>Ley francesa, sin perjuicio de las protecciones del consumidor de su lugar de residencia. Actualizado: {displayDate(LAST_UPDATED, 'es-US')}.</p>
   </div>
 </PageLayout>

@@ -1,7 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import LegalIdentity from '../../components/LegalIdentity.astro';
-import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL, AUTHOR_NAME, LAST_UPDATED } from '../../data/site-config';
+import { AUTHOR_NAME, CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
 import { route } from '../../i18n/routes';
 import { displayDate } from '../../lib/format';
 const lang = 'en';
@@ -21,6 +21,10 @@ const lang = 'en';
     <h2>Trademarks</h2>
     <p>Ozempic, Wegovy, Rybelsus and NovoCare are trademarks of Novo Nordisk; Zepbound, Mounjaro, Foundayo, Trulicity and LillyDirect of Eli Lilly; other drug names belong to their owners. They are cited to identify the products only.</p>
     <h2>Embedding</h2><p>The calculator may be embedded free of charge with its credit link: see the <a href={route('widget', lang)}>embed page</a>.</p>
+    {/* gen-legal-pages:terms */}
+    <h2>Personal data and cookies</h2>
+    {GA4_ID ? (<p>What you type in the calculators stays in your browser. The site sets Google Analytics audience measurement cookies (<code>_ga</code>, <code>_ga_{GA4_ID.replace('G-', '')}</code>, 13 months at most), with no advertising{CLARITY_ID && '; page stability is monitored with Microsoft Clarity, cookie-free'}. Details, legal basis and how to object: <a href={route('privacy', lang)}>privacy policy</a> and <a href={route('cookies', lang)}>cookies</a> page.</p>) : (<p>What you type in the calculators stays in your browser and the site sets no cookies{CLARITY_ID && '; page stability is monitored anonymously with Microsoft Clarity, cookie-free'}. See the <a href={route('privacy', lang)}>privacy policy</a> and the <a href={route('cookies', lang)}>cookies</a> page.</p>)}
+    {/* /gen-legal-pages:terms */}
     <h2>Governing law</h2><p>French law, the publisher’s place of establishment, without prejudice to mandatory consumer protections where you live. Updated: {displayDate(LAST_UPDATED, 'en-US')}.</p>
   </div>
 </PageLayout>
