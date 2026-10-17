@@ -1,5 +1,5 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://glp1-cost.example";
+export const SITE_URL = "https://usglpcost.com";
 export const SITE_NAMES: Record<string, string> = {"en": "GLP-1 Cost Check", "es": "GLP-1 Cost Check"};
 export const LANG_TAGS: Record<string, string> = {"en": "en-US", "es": "es-US"};
 export const OG_LOCALES: Record<string, string> = {"en": "en_US", "es": "es_US"};
@@ -18,7 +18,7 @@ export const AUTHOR_DESC: Record<string, string> = {"en": "Radif Partners reads 
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"en": ["GLP-1 drug prices", "Manufacturer self-pay programs", "TrumpRx", "Medicare Part D out-of-pocket cap", "Medicare drug price negotiation", "Medicare GLP-1 Bridge", "Medicaid prescription drug coverage", "NADAC pharmacy acquisition cost"], "es": ["Precios de los GLP-1", "Programas de autopago de los fabricantes", "TrumpRx", "Tope de gastos de la Parte D de Medicare", "Negociación de precios de Medicare", "Medicare GLP-1 Bridge", "Cobertura de medicamentos de Medicaid", "Costo de adquisición NADAC"]};
-export const CONTACT_EMAIL = "contact@glp1-cost.example";
+export const CONTACT_EMAIL = "contact@usglpcost.com";
 export const THEME_COLOR = '#3C3B6E';
 export const LOGO_SYMBOL = 'Rx';
 export const BING_VERIFY_CODE = '';

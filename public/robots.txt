@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /*?*
 
-Sitemap: https://glp1-cost.example/sitemap-index.xml
+Sitemap: https://usglpcost.com/sitemap-index.xml

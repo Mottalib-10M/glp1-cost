@@ -68,6 +68,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: IndexNow
-        run: |
-          curl -s "https://api.indexnow.org/indexnow?url=https://glp1-cost.example/en/&key=7c1f4b2e9a6d4e0f8b3a5c2d1e9f7a60" || true
+      - name: Checkout (script IndexNow)
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+      - name: Ping IndexNow
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: bash scripts/indexnow.sh https://usglpcost.com
