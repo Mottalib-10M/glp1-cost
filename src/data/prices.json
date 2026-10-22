@@ -1,5 +1,5 @@
 {
- "retrieved_at": "2026-10-16",
+ "retrieved_at": "2026-10-22",
  "trumprx": {
   "ozempic": {
    "slug": "ozempic",
@@ -273,7 +273,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Vial",
@@ -285,7 +285,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Vial",
@@ -297,7 +297,7 @@
      "introPrice": null,
      "regular": null,
      "late": 499.0,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Vial",
@@ -309,7 +309,7 @@
      "introPrice": null,
      "regular": null,
      "late": 699.0,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Vial",
@@ -321,7 +321,7 @@
      "introPrice": null,
      "regular": null,
      "late": 699.0,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Vial",
@@ -333,7 +333,7 @@
      "introPrice": null,
      "regular": null,
      "late": 699.0,
-     "onMaker": true
+     "onMaker": false
     }
    ]
   },
@@ -357,7 +357,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Multi-dose KwikPen®",
@@ -369,7 +369,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Multi-dose KwikPen®",
@@ -381,7 +381,7 @@
      "introPrice": null,
      "regular": null,
      "late": 499.0,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Multi-dose KwikPen®",
@@ -393,7 +393,7 @@
      "introPrice": null,
      "regular": null,
      "late": 699.0,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Multi-dose KwikPen®",
@@ -405,7 +405,7 @@
      "introPrice": null,
      "regular": null,
      "late": 699.0,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Multi-dose KwikPen®",
@@ -417,7 +417,7 @@
      "introPrice": null,
      "regular": null,
      "late": 699.0,
-     "onMaker": true
+     "onMaker": false
     }
    ]
   },
@@ -441,7 +441,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -453,7 +453,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -465,7 +465,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -477,7 +477,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -489,7 +489,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -501,7 +501,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     }
    ]
   },
@@ -525,7 +525,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Tablet",
@@ -537,7 +537,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Tablet",
@@ -549,7 +549,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Tablet",
@@ -561,7 +561,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Tablet",
@@ -573,7 +573,7 @@
      "introPrice": null,
      "regular": null,
      "late": 349.0,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Tablet",
@@ -585,7 +585,7 @@
      "introPrice": null,
      "regular": null,
      "late": 349.0,
-     "onMaker": true
+     "onMaker": false
     }
    ]
   },
@@ -609,7 +609,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -621,7 +621,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -633,7 +633,7 @@
      "introPrice": null,
      "regular": null,
      "late": null,
-     "onMaker": true
+     "onMaker": false
     },
     {
      "form": "Single-dose Pen",
@@ -802,415 +802,439 @@
      "regular": null,
      "late": null,
      "onMaker": false
+    },
+    {
+     "form": "Tablet",
+     "strength": "100",
+     "quantity": "30",
+     "trx": 84.57,
+     "before": 330.0,
+     "introFills": null,
+     "introPrice": null,
+     "regular": null,
+     "late": null,
+     "onMaker": false
     }
    ]
   }
  },
  "nadac": {
   "OZEMPIC 0.25-0.5 MG/DOSE (2 MG/3 ML) PEN": {
-   "perUnit": 331.99085,
+   "perUnit": 332.02169,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "OZEMPIC 1 MG/DOSE (4 MG/3 ML) PEN": {
-   "perUnit": 331.90037,
+   "perUnit": 331.93928,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "OZEMPIC 1.5 MG TABLET": {
-   "perUnit": 33.12635,
+   "perUnit": 33.15291,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "OZEMPIC 2 MG/DOSE (8 MG/3 ML) PEN": {
-   "perUnit": 331.97208,
+   "perUnit": 332.00349,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "OZEMPIC 4 MG TABLET": {
-   "perUnit": 33.17974,
+   "perUnit": 33.18905,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "OZEMPIC 9 MG TABLET": {
-   "perUnit": 33.17868,
+   "perUnit": 33.18941,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 0.25 MG/0.5 ML PEN": {
-   "perUnit": 653.29422,
+   "perUnit": 653.32515,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 0.5 MG/0.5 ML PEN": {
-   "perUnit": 653.27365,
+   "perUnit": 653.29947,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 1 MG/0.5 ML PEN": {
-   "perUnit": 653.04458,
+   "perUnit": 653.06615,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 1.5 MG TABLET": {
-   "perUnit": 43.51871,
+   "perUnit": 43.52712,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 1.7 MG/0.75 ML PEN": {
-   "perUnit": 435.55769,
+   "perUnit": 435.56833,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 2.4 MG/0.75 ML PEN": {
-   "perUnit": 435.52629,
+   "perUnit": 435.57199,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 25 MG TABLET": {
-   "perUnit": 43.4289,
+   "perUnit": 43.46306,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 4 MG TABLET": {
-   "perUnit": 43.48634,
+   "perUnit": 43.49305,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY 9 MG TABLET": {
-   "perUnit": 43.46516,
+   "perUnit": 43.48426,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "WEGOVY HD 7.2 MG/0.75 ML PEN": {
-   "perUnit": 434.95017,
+   "perUnit": 434.94,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 10 MG/0.5 ML PEN": {
-   "perUnit": 526.04607,
+   "perUnit": 526.06981,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 10 MG/DOSE (40 MG/2.4 ML) KWIKPEN": {
-   "perUnit": 281.62145,
+   "perUnit": 281.78403,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 12.5 MG/0.5 ML PEN": {
-   "perUnit": 525.84865,
+   "perUnit": 525.83386,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 12.5 MG/DOSE (50 MG/2.4 ML) KWIKPEN": {
-   "perUnit": 281.98531,
+   "perUnit": 282.2326,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 15 MG/0.5 ML PEN": {
-   "perUnit": 525.92209,
+   "perUnit": 525.93123,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 15 MG/DOSE (60 MG/2.4 ML) KWIKPEN": {
-   "perUnit": 281.42838,
+   "perUnit": 281.67525,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 2.5 MG/0.5 ML PEN": {
-   "perUnit": 526.20422,
+   "perUnit": 526.2285,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 2.5 MG/DOSE (10 MG/2.4 ML) KWIKPEN": {
-   "perUnit": 201.2566,
+   "perUnit": 201.38737,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 5 MG/0.5 ML PEN": {
-   "perUnit": 526.08276,
+   "perUnit": 526.09535,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 5 MG/DOSE (20 MG/2.4 ML) KWIKPEN": {
-   "perUnit": 201.03732,
+   "perUnit": 201.19861,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 7.5 MG/0.5 ML PEN": {
-   "perUnit": 526.00415,
+   "perUnit": 526.04136,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ZEPBOUND 7.5 MG/DOSE (30 MG/2.4 ML) KWIKPEN": {
-   "perUnit": 200.9187,
+   "perUnit": 201.16042,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "MOUNJARO 10 MG/0.5 ML PEN": {
-   "perUnit": 538.68356,
+   "perUnit": 538.75779,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "MOUNJARO 12.5 MG/0.5 ML PEN": {
-   "perUnit": 538.52518,
+   "perUnit": 538.58594,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "MOUNJARO 15 MG/0.5 ML PEN": {
-   "perUnit": 538.51759,
+   "perUnit": 538.5675,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "MOUNJARO 2.5 MG/0.5 ML PEN": {
-   "perUnit": 538.68839,
+   "perUnit": 538.75037,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "MOUNJARO 5 MG/0.5 ML PEN": {
-   "perUnit": 538.63384,
+   "perUnit": 538.69656,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "MOUNJARO 7.5 MG/0.5 ML PEN": {
-   "perUnit": 538.68042,
+   "perUnit": 538.74363,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "RYBELSUS 14 MG TABLET": {
-   "perUnit": 33.18852,
+   "perUnit": 33.18894,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "RYBELSUS 3 MG TABLET": {
-   "perUnit": 33.19015,
+   "perUnit": 33.19006,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "RYBELSUS 7 MG TABLET": {
-   "perUnit": 33.19336,
+   "perUnit": 33.19466,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "TRULICITY 0.75 MG/0.5 ML PEN": {
-   "perUnit": 487.57264,
+   "perUnit": 487.6453,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "TRULICITY 1.5 MG/0.5 ML PEN": {
-   "perUnit": 487.54289,
+   "perUnit": 487.62033,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "TRULICITY 3 MG/0.5 ML PEN": {
-   "perUnit": 487.5022,
+   "perUnit": 487.56033,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "TRULICITY 4.5 MG/0.5 ML PEN": {
-   "perUnit": 487.41808,
+   "perUnit": 487.41567,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "FOUNDAYO 0.8 MG TABLET": {
-   "perUnit": 20.89256,
+   "perUnit": 20.91612,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
+  },
+  "FOUNDAYO 14.5 MG TABLET": {
+   "perUnit": 20.82833,
+   "unit": "EA",
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
+  },
+  "FOUNDAYO 17.2 MG TABLET": {
+   "perUnit": 21.07591,
+   "unit": "EA",
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "FOUNDAYO 2.5 MG TABLET": {
-   "perUnit": 20.83709,
+   "perUnit": 20.8926,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "FOUNDAYO 5.5 MG TABLET": {
-   "perUnit": 20.81886,
+   "perUnit": 20.87799,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "FOUNDAYO 9 MG TABLET": {
-   "perUnit": 20.8537,
+   "perUnit": 20.91628,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ELIQUIS 2.5 MG TABLET": {
-   "perUnit": 5.51282,
+   "perUnit": 5.51243,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ELIQUIS 5 MG TABLET": {
-   "perUnit": 5.52114,
+   "perUnit": 5.52144,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ELIQUIS DVT-PE TREATMENT 30-DAY STARTER 5 MG PACK": {
-   "perUnit": 5.50766,
+   "perUnit": 5.50699,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "JARDIANCE 10 MG TABLET": {
-   "perUnit": 11.18929,
+   "perUnit": 11.18898,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "JARDIANCE 25 MG TABLET": {
-   "perUnit": 11.1897,
+   "perUnit": 11.18957,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "XARELTO 1 MG/ML SUSPENSION": {
-   "perUnit": 3.77426,
+   "perUnit": 3.76182,
    "unit": "ML",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "XARELTO 10 MG TABLET": {
-   "perUnit": 19.52226,
+   "perUnit": 19.51936,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "XARELTO 15 MG TABLET": {
-   "perUnit": 19.53519,
+   "perUnit": 19.53423,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "XARELTO 2.5 MG TABLET": {
-   "perUnit": 9.77474,
+   "perUnit": 9.77539,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "XARELTO 20 MG TABLET": {
-   "perUnit": 19.54187,
+   "perUnit": 19.53935,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "XARELTO DVT-PE TREATMENT 30-DAY STARTER 15-20 MG PACK": {
-   "perUnit": 19.46651,
+   "perUnit": 19.47078,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "FARXIGA 10 MG TABLET": {
-   "perUnit": 12.07703,
+   "perUnit": 12.07647,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "FARXIGA 5 MG TABLET": {
-   "perUnit": 12.07577,
+   "perUnit": 12.07465,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "JANUVIA 100 MG TABLET": {
-   "perUnit": 10.55179,
+   "perUnit": 10.55001,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "JANUVIA 25 MG TABLET": {
-   "perUnit": 10.54364,
+   "perUnit": 10.54117,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "JANUVIA 50 MG TABLET": {
-   "perUnit": 10.55215,
+   "perUnit": 10.54591,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ENTRESTO 24 MG-26 MG TABLET": {
-   "perUnit": 11.5927,
+   "perUnit": 11.59231,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ENTRESTO 49 MG-51 MG TABLET": {
-   "perUnit": 11.56059,
+   "perUnit": 11.56125,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ENTRESTO 97 MG-103 MG TABLET": {
-   "perUnit": 11.58867,
+   "perUnit": 11.59281,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ENTRESTO SPRINKLE 15-16 MG PLT": {
-   "perUnit": 11.60672,
+   "perUnit": 11.60625,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   },
   "ENTRESTO SPRINKLE 6-6 MG PELLET": {
    "perUnit": 11.6248,
    "unit": "EA",
-   "effective": "2026-09-23",
-   "asOf": "2026-10-14"
+   "effective": "2026-10-21",
+   "asOf": "2026-10-21"
   }
  },
- "nadacAsOf": "2026-10-14",
+ "nadacAsOf": "2026-10-21",
  "nadacSource": "https://data.medicaid.gov/dataset/fbb83258-11c7-47f5-8b18-5f8e79f7e704",
  "mfp": {
   "file": "CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.csv",
   "url": "https://www.cms.gov/files/zip/selected-drug-list-negotiated-prices-also-known-maximum-fair-prices-statutezip.zip",
   "fileDate": "2026-09-21",
-  "retrieved_at": "2026-10-16",
+  "retrieved_at": "2026-10-22",
   "drugs": {
    "ELIQUIS; ELIQUIS SPRINKLE": {
     "ingredient": "APIXABAN",
