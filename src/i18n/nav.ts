@@ -19,7 +19,8 @@ export function navCategories(lang: Locale): NavCategory[] {
   const order: Group[] = lang === 'es' ? ['glp1', 'compare', 'medicare', 'medicaid', 'guides'] : ['glp1', 'other', 'compare', 'medicare', 'guides'];
   return order.map((g) => ({ label: GROUP_LABEL[lang][g], links: g === 'medicare' && lang === 'en' ? [...inGroup('medicare', lang), ...inGroup('medicaid', lang)] : inGroup(g, lang) })).filter((c) => c.links.length);
 }
-export const navDirect = (lang: Locale): NavLink[] => [link('method', lang)];
+// Methode : liee en bas de page, hors du menu du haut pour qu'il tienne sur une ligne.
+export const navDirect = (_lang: Locale): NavLink[] => [];
 export const footerColumns = (lang: Locale): NavCategory[] => [
   ...GROUPS.filter((g) => g !== 'other' || lang === 'en').map((g) => ({ label: GROUP_LABEL[lang][g], links: inGroup(g, lang) })).filter((c) => c.links.length),
   { label: lang === 'es' ? 'El sitio' : 'This site', links: ['home', 'method', 'about', 'contact', 'editorial', 'widget', 'terms', 'privacy', 'cookies'].map((i) => link(i, lang)) },
