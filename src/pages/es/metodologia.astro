@@ -11,7 +11,7 @@ const P = M.P; const q26 = P.partD['2026']; const q27 = P.partD['2027'];
 const path = route('method', lang);
 const S = (k: M.SourceKey) => P.sources[k];
 ---
-<PageLayout title="Precios de GLP-1 Cost Check: metodología y fuentes de datos" description="Cómo calculamos cada precio: autopago de TrumpRx y fabricantes, NADAC, precios negociados de CMS, reglas de la Parte D y datos de Medicaid, cada semana." lang={lang} jsonLd={[webPageSchema({ name: 'Metodología', description: 'Cómo se calcula cada precio', path, lang }), breadcrumbSchema([{ name: 'Inicio', path: route('home', lang) }, { name: 'Metodología', path }])]} breadcrumbs={[{ label: 'Metodología' }]}>
+<PageLayout title="Precios de US GLP Cost: metodología y fuentes de datos" description="Cómo calculamos cada precio: autopago de TrumpRx y fabricantes, NADAC, precios negociados de CMS, reglas de la Parte D y datos de Medicaid, cada semana." lang={lang} jsonLd={[webPageSchema({ name: 'Metodología', description: 'Cómo se calcula cada precio', path, lang }), breadcrumbSchema([{ name: 'Inicio', path: route('home', lang) }, { name: 'Metodología', path }])]} breadcrumbs={[{ label: 'Metodología' }]}>
   <div class="prose prose-slate max-w-none">
     <h1>Metodología y datos</h1>
     <p>Cada cifra del sitio sale de una fuente pública que leemos con un programa, con fecha y enlace. Solo las reglas que ningún archivo publica se escriben a mano, una sola vez, en un archivo de parámetros con la página de origen.</p>

@@ -14,7 +14,7 @@
  "outDir": "a-publier/Mottalib-10M",
  "url": "https://usglpcost.com",
  "locales": ["en", "es"],
- "names": {"en": "GLP-1 Cost Check", "es": "GLP-1 Cost Check"},
+ "names": {"en": "US GLP Cost", "es": "US GLP Cost"},
  "langTags": {"en": "en-US", "es": "es-US"},
  "ogLocales": {"en": "en_US", "es": "es_US"},
  "localeTag": "en-US",
@@ -32,12 +32,12 @@
  },
  "email": "contact@usglpcost.com",
  "indexnow": "7c1f4b2e9a6d4e0f8b3a5c2d1e9f7a60",
- "shortName": "GLP-1 Cost",
+ "shortName": "US GLP Cost",
  "description": "Monthly and yearly cost of Ozempic, Wegovy, Zepbound, Mounjaro and Foundayo by dose and channel: manufacturer cash, TrumpRx, pharmacy, Medicare Part D and Medicaid.",
  "port": 5520,
  "og": [
-  {"file": "og-en.png", "title": "GLP-1 Cost Check", "subtitle": "", "badge": "2026", "brand": "GLP-1 Cost Check"},
-  {"file": "og-es.png", "title": "GLP-1 Cost Check", "subtitle": "", "badge": "2026", "brand": "GLP-1 Cost Check"}
+  {"file": "og-en.png", "title": "US GLP Cost", "subtitle": "", "badge": "2026", "brand": "US GLP Cost"},
+  {"file": "og-es.png", "title": "US GLP Cost", "subtitle": "", "badge": "2026", "brand": "US GLP Cost"}
  ],
  "lastUpdated": "2026-10-15",
  "knowsAbout": {

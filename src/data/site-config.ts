@@ -1,6 +1,8 @@
 /** Configuration centrale du site (générée par new-site.py). */
 export const SITE_URL = "https://usglpcost.com";
-export const SITE_NAMES: Record<string, string> = {"en": "GLP-1 Cost Check", "es": "GLP-1 Cost Check"};
+// Partie du nom en couleur dans l'en-tete ('' = aucune).
+export const BRAND_ACCENT = 'GLP';
+export const SITE_NAMES: Record<string, string> = {"en": "US GLP Cost", "es": "US GLP Cost"};
 export const LANG_TAGS: Record<string, string> = {"en": "en-US", "es": "es-US"};
 export const OG_LOCALES: Record<string, string> = {"en": "en_US", "es": "es_US"};
 export const LOCALE_TAG = 'en-US';

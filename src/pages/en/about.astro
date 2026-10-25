@@ -6,11 +6,11 @@ import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema }
 import { displayDate } from '../../lib/format';
 const lang = 'en';
 ---
-<PageLayout title="GLP-1 Cost Check: Who Reads These Drug Prices, and How" description="GLP-1 Cost Check is published by Radif Partners: why one calculator for every way of paying for a GLP-1, where prices come from, and how to report an error." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
-  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About GLP-1 Cost Check</h1></header>
+<PageLayout title="GLP-1 drug prices: who runs US GLP Cost, and how it works" description="US GLP Cost is published by Radif Partners: why one calculator for every way of paying for a GLP-1, where prices come from, and how to report an error." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About US GLP Cost</h1></header>
   <div class="prose prose-slate max-w-none">
     <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
-    <p>GLP-1 Cost Check is an independent site published by Radif Partners. It exists because the price of Ozempic, Wegovy or Zepbound in 2026 depends on so many moving parts, manufacturer self-pay grids, TrumpRx, Medicare’s cap and negotiated prices, the GLP-1 Bridge, state Medicaid choices, that a single number on a price page is almost always wrong for the person reading it.</p>
+    <p>US GLP Cost is an independent site published by Radif Partners. It exists because the price of Ozempic, Wegovy or Zepbound in 2026 depends on so many moving parts, manufacturer self-pay grids, TrumpRx, Medicare’s cap and negotiated prices, the GLP-1 Bridge, state Medicaid choices, that a single number on a price page is almost always wrong for the person reading it.</p>
     <h2>What we do better than the first search results</h2>
     <p>When we built the site, the pages ranking first for “Ozempic cost without insurance” quoted prices from before the November 2025 cuts, sent readers to coupon sign-ups, or belonged to telehealth services selling a prescription. None set the self-pay price, the list price, the pharmacy cost, the Medicare share and the Medicaid record side by side for the reader’s own dose. That is what our calculator does, with every figure dated and linked to the body that publishes it.</p>
     <h2>How we work</h2>
