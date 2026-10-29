@@ -12,7 +12,7 @@ export const CURRENCY = 'USD';
 export const YEAR = 2026;
 /** Année de création du site — signal d'ancienneté (RECETTE §8.0). */
 export const SITE_FOUNDED = '2026';
-export const LAST_UPDATED = '2026-10-22';
+export const LAST_UPDATED = '2026-10-29';
 export const AUTHOR_NAME = 'Radif Partners';
 export const AUTHOR_ROLE: Record<string, string> = {"en": "Publisher of the US prescription price calculators (GLP-1 cash, TrumpRx, Medicare, Medicaid)", "es": "Editor de las calculadoras de precios de medicamentos en EE. UU. (GLP-1, TrumpRx, Medicare, Medicaid)"};
 export const AUTHOR_DESC: Record<string, string> = {"en": "Radif Partners reads the self-pay price lists that Novo Nordisk and Eli Lilly publish, the TrumpRx.gov listings, the CMS negotiated Medicare prices, the weekly NADAC pharmacy survey and the 2026 and 2027 Part D parameters, and turns them into one monthly and yearly figure per drug, dose and way of paying.", "es": "Radif Partners lee las listas de precios de autopago que publican Novo Nordisk y Eli Lilly, las fichas de TrumpRx.gov, los precios negociados de Medicare que publica CMS, la encuesta semanal NADAC de farmacias y los parámetros de la Parte D de 2026 y 2027, y los convierte en una cifra mensual y anual por medicamento, dosis y forma de pago."};
