@@ -98,9 +98,13 @@ describe('GLP-1 Bridge (FAQ CMS)', () => {
     for (const id of ['wegovy', 'wegovy-pill', 'foundayo'] as const) expect(M.bridgeEligible(M.product(id), M.dose(M.product(id), M.product(id).defaultDose))).toBe(true);
     for (const id of ['ozempic', 'mounjaro'] as const) expect(M.bridgeEligible(M.product(id), M.dose(M.product(id), M.product(id).defaultDose))).toBe(false);
   });
-  it('Medicare, perte de poids seule : 50 $ par mois, 600 $ par an', () => {
-    const r = M.compute({ product: 'wegovy', dose: '2.4', year: 2026, coverage: 'weightonly', newPatient: false, onTime: true, copay: 0, extraHelp: 'none', medicaidCopay: 4 });
-    expect(r.rule).toBe('bridge'); close(r.monthly!, 50); close(r.yearly!, 600);
+  // CMS, Medicare GLP-1 Bridge (FAQ, lue le 2026-10-31) : « between July 1, 2026, and December 31, 2027 », copaiement de 50 $.
+  it('Medicare, perte de poids seule : 50 $ par mois, 300 $ en 2026 (juillet à décembre), 600 $ en 2027', () => {
+    const q = { product: 'wegovy', dose: '2.4', coverage: 'weightonly', newPatient: false, onTime: true, copay: 0, extraHelp: 'none', medicaidCopay: 4 } as const;
+    const r = M.compute({ ...q, year: 2026 });
+    expect(r.rule).toBe('bridge'); close(r.monthly!, 50); close(r.yearly!, 300);
+    close(M.compute({ ...q, year: 2027 }).yearly!, 600);
+    expect(M.bridgeMonths(2026)).toBe(6); expect(M.bridgeMonths(2027)).toBe(12);
   });
   it('Foundayo en Partie D (usage exclu) bascule sur le Bridge', () => {
     expect(M.compute({ product: 'foundayo', dose: '9', year: 2026, coverage: 'partd', newPatient: false, onTime: true, copay: 0, extraHelp: 'none', medicaidCopay: 4 }).rule).toBe('bridge');

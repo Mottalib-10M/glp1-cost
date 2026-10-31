@@ -9,7 +9,7 @@ import NumberField from '../ui/NumberField';
 import Toggle from '../ui/Toggle';
 import { Shell, Row2, Row1, Head, Bars, Note, Actions, usd, T, yesNo, type L, type Line } from './kit';
 import { productName, productOption, doseLabel, coverageOptions, ruleText } from './labels';
-import { PRODUCTS, product, dose, compute, DATA, P, type Coverage, type Year, type ExtraHelp, type ProductId } from '../../lib/engine/index';
+import { PRODUCTS, product, dose, compute, bridgeMonths, DATA, P, type Coverage, type Year, type ExtraHelp, type ProductId } from '../../lib/engine/index';
 import { readParams, num, str, updateURL } from '../../lib/url-state';
 import { displayDate } from '../../lib/format';
 
@@ -61,7 +61,7 @@ export default function GlpCalculator({ lang = 'en', productId = 'wegovy', doseI
 
   const head = r.monthly === null
     ? { label: T(lang, 'Self-pay price', 'Precio de autopago'), value: T(lang, 'Not published', 'No publicado'), sub: r.nadac ? T(lang, `Pharmacy cost: ${usd(r.nadac.monthly, lang)} a month`, `Costo de la farmacia: ${usd(r.nadac.monthly, lang)} al mes`) : undefined }
-    : { label: T(lang, `You would pay, ${productName(p, lang)} ${doseLabel(d, lang)}`, `Usted pagaría, ${productName(p, lang)} ${doseLabel(d, lang)}`), value: `${usd(r.monthly, lang)}${T(lang, ' / month', ' / mes')}`, sub: `${usd(r.yearly ?? 0, lang)} ${T(lang, `in ${yr}`, `en ${yr}`)}` };
+    : { label: T(lang, `You would pay, ${productName(p, lang)} ${doseLabel(d, lang)}`, `Usted pagaría, ${productName(p, lang)} ${doseLabel(d, lang)}`), value: `${usd(r.monthly, lang)}${T(lang, ' / month', ' / mes')}`, sub: `${usd(r.yearly ?? 0, lang)} ${T(lang, `in ${yr}`, `en ${yr}`)}${r.rule === 'bridge' && bridgeMonths(yr) < 12 ? T(lang, `, ${bridgeMonths(yr)} months of Bridge`, `, ${bridgeMonths(yr)} meses de Bridge`) : ''}` };
 
   const lines: Line[] = [];
   lines.push({ label: T(lang, 'List price (wholesale acquisition cost)', 'Precio de lista (costo mayorista)'), value: r.list, text: T(lang, 'not published', 'no publicado') });

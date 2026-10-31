@@ -155,6 +155,16 @@ export function bridgeEligible(p: ProductDef, d: DoseDef): boolean {
   return list.includes(p.id);
 }
 
+/** Mois de l'année civile couverts par le Bridge (CMS : du 1er juillet 2026 au 31 décembre 2027),
+ *  soit 6 en 2026 et 12 en 2027 : le coût de l'année n'est pas 12 copaiements en 2026. */
+export function bridgeMonths(year: Year): number {
+  const [sy, sm] = P.bridge.start.split('-').map(Number);
+  const [ey, em] = P.bridge.end.split('-').map(Number);
+  const from = year < sy ? 13 : year === sy ? sm : 1;
+  const to = year > ey ? 0 : year === ey ? em : 12;
+  return Math.max(0, to - from + 1);
+}
+
 /** Carte d'économies d'un fabricant (assurance commerciale qui couvre le médicament), telle que
  *  ses conditions la publient : on paie au moins `floor`, l'économie est plafonnée à `maxMonthly`
  *  par mois et, chez Lilly, à `maxAnnual` et `maxFills` renouvellements par année civile. */
@@ -235,12 +245,12 @@ export function compute(q: Query): Result {
     }
     case 'partd': {
       if (p.partD === 'excluded' || !pd) {
-        return bridge ? { ...base, monthly: P.bridge.copay, yearly: 12 * P.bridge.copay, rule: 'bridge' } : { ...cashRes(), rule: cash ? 'not-covered-cash' : 'not-covered-none' };
+        return bridge ? { ...base, monthly: P.bridge.copay, yearly: bridgeMonths(q.year) * P.bridge.copay, rule: 'bridge' } : { ...cashRes(), rule: cash ? 'not-covered-cash' : 'not-covered-none' };
       }
       return { ...base, monthly: round2(pd.oop / 12), yearly: pd.oop, rule: q.extraHelp !== 'none' ? 'partd-lis' : pd.capped ? 'partd-cap' : 'partd' };
     }
     case 'weightonly': {
-      if (bridge) return { ...base, monthly: P.bridge.copay, yearly: 12 * P.bridge.copay, rule: 'bridge' };
+      if (bridge) return { ...base, monthly: P.bridge.copay, yearly: bridgeMonths(q.year) * P.bridge.copay, rule: 'bridge' };
       const r = cashRes();
       return { ...r, rule: cash ? 'not-covered-cash' : 'not-covered-none' };
     }
